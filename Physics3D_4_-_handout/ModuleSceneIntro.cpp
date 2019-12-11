@@ -223,6 +223,23 @@ void ModuleSceneIntro::DebugSpawnPrimitive(Primitive * p)
 // Update
 update_status ModuleSceneIntro::Update(float dt)
 {
+	const vec3 pa = car->body.GetPos();
+	const vec3 camera_offset(0, 6, -10);
+	const vec3 r = pa + camera_offset;
+	App->camera->Look(r, pa, false);
+
+
+	//const vec3 f = car->body.GetForwardVector();
+	//vec3 d; d.Set(pa.x + (f.x * -8), pa.y + (f.y + 5), pa.z + (f.z * -8));
+	//App->camera->Look(d, pa);
+
+	//const vec3 p = vehicle->GetPos();
+	//const vec3 camera_offset(0, 6, -10);
+	//const vec3 r = p + camera_offset;
+	//App->camera->Look(r, p, false);
+	//const vec3 f = vehicle->GetForwardVector();
+	//vec3 d; d.Set(p.x + (f.x * -8), p.y + (f.y + 5), p.z + (f.z * -8));
+	//App->camera->Look(d, p);
 	Plane p(vec3(0, 1, 0));
 	p.axis = true;
 	p.Render();

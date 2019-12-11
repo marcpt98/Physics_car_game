@@ -8,7 +8,9 @@ class btRigidBody;
 class btCollisionShape;
 struct btDefaultMotionState;
 class Module;
+class btRaycastVehicle;
 
+class vec3;
 class Sphere;
 class Cube;
 class Cylinder;
@@ -31,6 +33,8 @@ public:
 	void GetTransform(float* matrix) const;
 	void SetTransform(const float* matrix) const;
 	void SetPos(float x, float y, float z);
+	const vec3 GetPos() const;
+	vec3 GetForwardVector() const;
 
 	void SetSpeed(vec3 speed);
 	void Push(vec3 force);
@@ -45,6 +49,7 @@ private:
 public:
 	Primitive* parentPrimitive;
 	p2DynArray<Module*> collision_listeners;
+	btRaycastVehicle* vehicle;
 };
 
 #endif // __PhysBody3D_H__

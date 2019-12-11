@@ -135,3 +135,19 @@ void PhysBody3D::SetBody(btCollisionShape * shape, Primitive* parent, float mass
 
 	App->physics->AddBodyToWorld(body);
 }
+
+const vec3 PhysBody3D::GetPos() const
+{
+	float matrix[16];
+	GetTransform(matrix);
+	vec3 pos(matrix[12], matrix[13], matrix[14]);
+	return pos;
+}
+
+vec3 PhysBody3D::GetForwardVector() const
+{
+	btVector3 h = vehicle->getForwardVector();
+	vec3 ret;
+	ret.Set(h.getX(), h.getY(), h.getZ());
+	return ret;
+}
