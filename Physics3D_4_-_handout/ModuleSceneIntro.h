@@ -2,6 +2,7 @@
 #include "Module.h"
 #include "p2DynArray.h"
 #include "Globals.h"
+#include "glmath.h"
 
 class Primitive;
 class PhysBody3D;
@@ -20,6 +21,11 @@ public:
 	update_status PostUpdate(float dt) override;
 
 	void OnCollision(PhysBody3D* body1, PhysBody3D* body2) override;
+
+	// Map walls
+	void CreateLineBox(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction);
+	void CreateDiagonalBox(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction, float diagonal);
+	void CreateCurveBox(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction, float rad);
 
 	bool CleanUp();
 
