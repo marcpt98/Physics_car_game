@@ -4,17 +4,19 @@
 #include "Globals.h"
 #include "glmath.h"
 
+
 class Primitive;
 class PhysBody3D;
 class btHingeConstraint;
 class btSliderConstraint;
 class Cube;
 
-class ModuleSceneIntro : public Module
+
+class ModulePlayer : public Module
 {
 public:
-	ModuleSceneIntro(bool start_enabled = true);
-	~ModuleSceneIntro();
+	ModulePlayer(bool start_enabled = true);
+	~ModulePlayer();
 
 	bool Start();
 	update_status Update(float dt) override;
@@ -22,14 +24,16 @@ public:
 
 	void OnCollision(PhysBody3D* body1, PhysBody3D* body2) override;
 
-	void CreateMap();
-
+	// Map walls
 	bool CleanUp();
 
 private:
-	void HandleDebugInput();
-	void DebugSpawnPrimitive(Primitive* p);
+
+
+	Cube* car;
+	btHingeConstraint* wheels[4];
+	btSliderConstraint* Axis[4];
 
 public:
-	p2DynArray<Primitive*> ScenePrimitives;
+	p2DynArray<Primitive*> CarPrimitives;
 };

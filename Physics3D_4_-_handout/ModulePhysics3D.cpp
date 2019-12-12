@@ -214,7 +214,7 @@ void ModulePhysics3D::CreateLineBox(float posx, float posy, float posz, int leng
 	for (int n = 0; n < lenght; n++)
 	{
 		Cube* s = new Cube(size, 900000);
-		App->scene_intro->primitives.PushBack(s);
+		App->scene_intro->ScenePrimitives.PushBack(s);
 		s->SetPos(posx, posy, posz);
 
 		// Right
@@ -248,7 +248,7 @@ void ModulePhysics3D::CreateDiagonalBox(float posx, float posy, float posz, int 
 	for (int n = 0; n < lenght; n++)
 	{
 		Cube* s = new Cube(size, 900000);
-		App->scene_intro->primitives.PushBack(s);
+		App->scene_intro->ScenePrimitives.PushBack(s);
 		s->SetPos(posx, posy, posz);
 
 		// Diagonal top right
@@ -287,7 +287,7 @@ void ModulePhysics3D::CreateCurveBox(float posx, float posy, float posz, int len
 	for (int n = 0; n < lenght; n++)
 	{
 		Cube* s = new Cube(size);
-		App->scene_intro->primitives.PushBack(s);
+		App->scene_intro->ScenePrimitives.PushBack(s);
 		s->SetPos(posx, posy, posz);
 
 		if (direction == 0)
