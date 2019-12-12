@@ -209,6 +209,97 @@ btSliderConstraint* ModulePhysics3D::AddConstraintSlider(const Primitive& bodyA,
 	return constraint;
 }
 
+void ModulePhysics3D::CreateLineBox(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction)
+{
+	for (int n = 0; n < lenght; n++)
+	{
+		Cube* s = new Cube(size, 900000);
+		App->scene_intro->primitives.PushBack(s);
+		s->SetPos(posx, posy, posz);
+
+		// Right
+		if (direction == 0)
+		{
+			posx += interval;
+		}
+
+		// Left
+		else if (direction == 1)
+		{
+			posx -= interval;
+		}
+
+		// Forward
+		else if (direction == 2)
+		{
+			posz -= interval;
+		}
+
+		// Backward
+		else if (direction == 3)
+		{
+			posz += interval;
+		}
+	}
+}
+
+void ModulePhysics3D::CreateDiagonalBox(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction, float diagonal)
+{
+	for (int n = 0; n < lenght; n++)
+	{
+		Cube* s = new Cube(size, 900000);
+		App->scene_intro->primitives.PushBack(s);
+		s->SetPos(posx, posy, posz);
+
+		// Diagonal top right
+		if (direction == 0)
+		{
+			posx += interval;
+			posz -= diagonal;
+		}
+
+		// Diagonal bottom right
+
+		if (direction == 1)
+		{
+			posx += interval;
+			posz += diagonal;
+		}
+
+		// Diagonal top left
+		if (direction == 2)
+		{
+			posx -= interval;
+			posz -= diagonal;
+		}
+
+		// Diagonal bottom left
+		if (direction == 3)
+		{
+			posx -= interval;
+			posz += diagonal;
+		}
+	}
+}
+
+void ModulePhysics3D::CreateCurveBox(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction, float rad)
+{
+	for (int n = 0; n < lenght; n++)
+	{
+		Cube* s = new Cube(size);
+		App->scene_intro->primitives.PushBack(s);
+		s->SetPos(posx, posy, posz);
+
+		if (direction == 0)
+		{
+			posx += interval;
+			//posx = sqrt(pow(rad, 2) - pow(posx, 2));
+			posz += sqrt(pow(posx, 2)-pow(rad, 2));
+			posz = posz;
+		}
+	}
+}
+
 // =============================================
 void DebugDrawer::drawLine(const btVector3& from, const btVector3& to, const btVector3& color)
 {

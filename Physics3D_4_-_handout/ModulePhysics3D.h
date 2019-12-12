@@ -40,6 +40,11 @@ public:
 	btHingeConstraint* AddConstraintHinge(const Primitive & bodyA, const Primitive & bodyB, btVector3& pivotInA, btVector3& pivotInB, btVector3& axisInA, btVector3& axisInB);
 	btSliderConstraint* AddConstraintSlider(const Primitive& bodyA, const Primitive& bodyB, btTransform& frameinA, btTransform& frameinB, bool linearreference = true);
 
+	// Create map walls
+	void CreateLineBox(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction);
+	void CreateDiagonalBox(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction, float diagonal);
+	void CreateCurveBox(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction, float rad);
+
 private:
 	btDefaultCollisionConfiguration*	collision_conf;
 	btCollisionDispatcher*				dispatcher;

@@ -159,9 +159,7 @@ bool ModuleSceneIntro::Start()
 	*/
 	
 	// Creating map
-	CreateLineBox(0, 1.f, 7.5f, 7, vec3(0.5f, 1.f, 0.5f), 2.f, 3);
-	CreateDiagonalBox(5, 1.f, 15.f, 7, vec3(0.5f, 1.f, 0.5f), 0.5f, 0, 1.f);
-	CreateCurveBox(10, 1.f, 15.f, 7, vec3(0.5f, 1.f, 0.5f), 2.f, 0, 3.f);
+	CreateMap();
 
 	return ret;
 }
@@ -373,91 +371,12 @@ void ModuleSceneIntro::OnCollision(PhysBody3D * body1, PhysBody3D * body2)
 
 }
 
-void ModuleSceneIntro::CreateLineBox(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction)
+void ModuleSceneIntro::CreateMap()
 {
-	for (int n = 0; n < lenght; n++)
-	{
-		Cube* s = new Cube(size, 900000);
-		primitives.PushBack(s);
-		s->SetPos(posx, posy, posz);
-
-		// Right
-		if (direction == 0)
-		{
-			posx += interval;
-		}
-
-		// Left
-		else if (direction == 1)
-		{
-			posx -= interval;
-		}
-
-		// Forward
-		else if (direction == 2)
-		{
-			posz -= interval;
-		}
-
-		// Backward
-		else if (direction == 3)
-		{
-			posz += interval;
-		}
-	}
+	App->physics->CreateLineBox(5, 1.f, 0.f, 15, vec3(1.f, 2.f, 1.f), 2.f, 3);
+	App->physics->CreateLineBox(-5, 1.f, 0.f, 10, vec3(1.f, 2.f, 1.f), 2.f, 3);
+	App->physics->CreateDiagonalBox(5, 1.f, 30.f, 7, vec3(1.f, 2.f, 1.f), 1.5f, 3, 1.f);
+	App->physics->CreateDiagonalBox(-5, 1.f, 20.f, 7, vec3(1.f, 2.f, 1.f), 1.5f, 3, 1.f);
+	//App->physics->CreateCurveBox(10, 1.f, 15.f, 7, vec3(0.5f, 1.f, 0.5f), 0.5f, 0, 0.5f);
 }
 
-void ModuleSceneIntro::CreateDiagonalBox(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction, float diagonal)
-{
-	for (int n = 0; n < lenght; n++)
-	{
-		Cube* s = new Cube(size, 900000);
-		primitives.PushBack(s);
-		s->SetPos(posx, posy, posz);
-
-		// Diagonal top right
-		if (direction == 0)
-		{
-			posx += interval;
-			posz -= diagonal;
-		}
-
-		// Diagonal bottom right
-
-		if (direction == 1)
-		{
-			posx += interval;
-			posz += diagonal;
-		}
-
-		// Diagonal top left
-		if (direction == 2)
-		{
-			posx -= interval;
-			posz -= diagonal;
-		}
-
-		// Diagonal bottom left
-		if (direction == 3)
-		{
-			posx -= interval;
-			posz += diagonal;
-		}
-	}
-}
-
-void ModuleSceneIntro::CreateCurveBox(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction, float rad)
-{
-	for (int n = 0; n < lenght; n++)
-	{
-		Cube* s = new Cube(size);
-		primitives.PushBack(s);
-		s->SetPos(posx, posy, posz);
-
-		if (direction == 0)
-		{
-			posx += interval;
-			posz += sqrt(pow(rad, 2) - pow(posx, 2));
-		}
-	}
-}

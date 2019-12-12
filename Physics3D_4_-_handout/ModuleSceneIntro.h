@@ -22,18 +22,16 @@ public:
 
 	void OnCollision(PhysBody3D* body1, PhysBody3D* body2) override;
 
-	// Map walls
-	void CreateLineBox(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction);
-	void CreateDiagonalBox(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction, float diagonal);
-	void CreateCurveBox(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction, float rad);
+	void CreateMap();
 
 	bool CleanUp();
+
+	p2DynArray<Primitive*> primitives;
 
 private:
 	void HandleDebugInput();
 	void DebugSpawnPrimitive(Primitive* p);
 
-	p2DynArray<Primitive*> primitives;
 	Cube* car;
 	btHingeConstraint* wheels[4];
 	btSliderConstraint* Axis[4];
