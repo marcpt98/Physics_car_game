@@ -148,9 +148,22 @@ void ModuleSceneIntro::OnCollision(PhysBody3D * body1, PhysBody3D * body2)
 
 void ModuleSceneIntro::CreateMap()
 {
-	App->physics->CreateLineBox(5, 1.f, 0.f, 15, vec3(1.f, 2.f, 1.f), 2.f, 3);
-	App->physics->CreateLineBox(-5, 1.f, 0.f, 10, vec3(1.f, 2.f, 1.f), 2.f, 3);
-	App->physics->CreateDiagonalBox(5, 1.f, 30.f, 7, vec3(1.f, 2.f, 1.f), 1.5f, 3, 1.f);
-	App->physics->CreateDiagonalBox(-5, 1.f, 20.f, 7, vec3(1.f, 2.f, 1.f), 1.5f, 3, 1.f);
+	// First rect
+	App->physics->CreateLineBox(5, 1, 0, 15, vec3(1, 2, 1), 2, 3);
+	App->physics->CreateLineBox(-5, 1, 0, 10, vec3(1, 2, 1), 2, 3);
+
+	// First diagonal
+	App->physics->CreateDiagonalBox(5, 1, 30, 15, vec3(1, 2, 1), 1.5f, 3, 1);
+	App->physics->CreateDiagonalBox(-5, 1, 20, 9, vec3(1, 2, 1), 1.5f, 3, 1);
+
+	// Second rect
+	App->physics->CreateLineBox(-26, 1, 44, 5, vec3(1, 2, 1), 2, 0);
+	App->physics->CreateLineBox(-21, 1, 28, 2, vec3(1, 2, 1), 2, 0);
+
+	// Second diagonal
+	App->physics->CreateDiagonalBox(-28, 1, 44, 10, vec3(1, 2, 1), 1.5f, 2, 1);
+	App->physics->CreateDiagonalBox(-23, 1, 28, 5, vec3(1, 2, 1), 1.5f, 2, 1);
+
+
 	//App->physics->CreateCurveBox(10, 1.f, 15.f, 7, vec3(0.5f, 1.f, 0.5f), 0.5f, 0, 0.5f);
 }
