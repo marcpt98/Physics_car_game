@@ -32,4 +32,5 @@ private:
 
 public:
 	p2DynArray<Primitive*> ScenePrimitives;
+	bool camerafollow = false;
 };
