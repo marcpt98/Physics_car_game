@@ -33,8 +33,10 @@ private:
 	void HandleDebugInput();
 	void DebugSpawnPrimitive(Primitive* p);
 
-	p2DynArray<Primitive*> primitives;
+
 	Cube* car;
 	btHingeConstraint* wheels[4];
 	btSliderConstraint* Axis[4];
+public:
+	p2DynArray<Primitive*> ScenePrimitives;
 };
