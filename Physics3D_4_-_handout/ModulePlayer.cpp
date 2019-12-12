@@ -28,31 +28,26 @@ bool ModulePlayer::Start()
 
 	//Car body
 	car = new Cube(vec3(1, 1, 2));
-	//App->scene_intro->primitives.PushBack(car);
 	CarPrimitives.PushBack(car);
 	car->SetPos(0.f, 2.f, 2.5f);
 
 	//Wheel Axis
 	Cube* axis1 = new Cube(vec3(0.2, 0.7, 0.2));
-	//App->scene_intro->primitives.PushBack(axis1);
 	CarPrimitives.PushBack(axis1);
 	axis1->SetPos(0.7f, 2.f, 2.f);
 
 	//Wheel Axis Front
 	Cube* axis2 = new Cube(vec3(0.2, 0.7, 0.2));
-	//App->scene_intro->primitives.PushBack(axis2);
 	CarPrimitives.PushBack(axis2);
 	axis2->SetPos(-0.7f, 2.f, 2.f);
 
 	//Wheel Axis
 	Cube* axis3 = new Cube(vec3(0.2, 0.7, 0.2));
-	//App->scene_intro->primitives.PushBack(axis3);
 	CarPrimitives.PushBack(axis3);
 	axis3->SetPos(0.7f, 2.f, 3.f);
 
 	//Wheel Axis
 	Cube* axis4 = new Cube(vec3(0.2, 0.7, 0.2));
-	//App->scene_intro->primitives.PushBack(axis4);
 	CarPrimitives.PushBack(axis4);
 	axis4->SetPos(-0.7f, 2.f, 3.f);
 
@@ -70,51 +65,134 @@ bool ModulePlayer::Start()
 
 
 	Axis[0] = App->physics->AddConstraintSlider(**CarPrimitives.At(0), **CarPrimitives.At(1), localA, localB);
+	Axis[0]->setLowerLinLimit(0.1f);
+	Axis[0]->setUpperLinLimit(0.2f);
+	Axis[0]->setLowerAngLimit(-0.2f);
+	Axis[0]->setUpperAngLimit(0.2f);
 
 	localB.setIdentity();
 	localB.getBasis().setEulerZYX(0, 0, M_PI_2);
 	localB.setOrigin(btVector3(0.6f, 0.8f, 0.5f));
 
 	Axis[1] = App->physics->AddConstraintSlider(**CarPrimitives.At(0), **CarPrimitives.At(2), localA, localB);
+	Axis[1]->setLowerLinLimit(0.1f);
+	Axis[1]->setUpperLinLimit(0.2f);
+	Axis[1]->setLowerAngLimit(-0.2f);
+	Axis[1]->setUpperAngLimit(0.2f);
 
 	localB.setIdentity();
 	localB.getBasis().setEulerZYX(0, 0, M_PI_2);
 	localB.setOrigin(btVector3(-0.6f, 0.8f, -1.5f));
 
 	Axis[2] = App->physics->AddConstraintSlider(**CarPrimitives.At(0), **CarPrimitives.At(3), localA, localB);
+	Axis[2]->setLowerLinLimit(0.1f);
+	Axis[2]->setUpperLinLimit(0.2f);
+	Axis[2]->setLowerAngLimit(-0.2f);
+	Axis[2]->setUpperAngLimit(0.2f);
 
 	localB.setIdentity();
 	localB.getBasis().setEulerZYX(0, 0, M_PI_2);
 	localB.setOrigin(btVector3(0.6f, 0.8f, -1.5f));
 
 	Axis[3] = App->physics->AddConstraintSlider(**CarPrimitives.At(0), **CarPrimitives.At(4), localA, localB);
+	Axis[3]->setLowerLinLimit(0.1f);
+	Axis[3]->setUpperLinLimit(0.2f);
+	Axis[3]->setLowerAngLimit(-0.2f);
+	Axis[3]->setUpperAngLimit(0.2f);
 
+	
 
 
 	Cylinder* wheel = new Cylinder(0.4, 0.2, 0.4);
 	wheel->SetPos(-1.1f, 1.5f, 2.f);
-	//App->scene_intro->primitives.PushBack(wheel);
 	CarPrimitives.PushBack(wheel);
 
 	wheel = new Cylinder(0.4, 0.2, 0.4);
 	wheel->SetPos(-1.1f, 1.5f, 3.f);
-	//App->scene_intro->primitives.PushBack(wheel);
 	CarPrimitives.PushBack(wheel);
 
 	wheel = new Cylinder(0.4, 0.2, 0.4);
 	wheel->SetPos(1.1f, 1.5f, 2.f);
-	//App->scene_intro->primitives.PushBack(wheel);
 	CarPrimitives.PushBack(wheel);
 
 	wheel = new Cylinder(0.4, 0.2, 0.4);
 	wheel->SetPos(1.1f, 1.5f, 3.f);
 	CarPrimitives.PushBack(wheel);
-	//App->scene_intro->primitives.PushBack(wheel);
 
 	wheels[0] = App->physics->AddConstraintHinge(**CarPrimitives.At(2), **CarPrimitives.At(5), btVector3{ -0.2,-0.2,-0 }, btVector3{ 0, 0,0 }, btVector3{ 1, 0,0 }, btVector3{ 0,1,0 });
 	wheels[1] = App->physics->AddConstraintHinge(**CarPrimitives.At(4), **CarPrimitives.At(6), btVector3{ -0.2,-0.2,-0 }, btVector3{ 0, 0,0 }, btVector3{ 1, 0,0 }, btVector3{ 0,1,0 });
 	wheels[2] = App->physics->AddConstraintHinge(**CarPrimitives.At(1), **CarPrimitives.At(7), btVector3{ 0.2,-0.2, -0 }, btVector3{ 0, 0,0 }, btVector3{ -1, 0,0 }, btVector3{ 0,1,0 });
 	wheels[3] = App->physics->AddConstraintHinge(**CarPrimitives.At(3), **CarPrimitives.At(8), btVector3{ 0.2,-0.2, -0 }, btVector3{ 0, 0,0 }, btVector3{ -1, 0,0 }, btVector3{ 0,1,0 });
+
+	
+	float truckposx = 5.f, truckposy = 5.f, truckposz = -5.f;
+	TruckCab = new Cube(vec3(2, 2, 2));
+	TruckCab->color.Set(249,166,0);
+	CarPrimitives.PushBack(TruckCab);
+	TruckCab->SetPos(truckposx, truckposy, truckposz);
+
+	Cube* temp = new Cube(vec3(2.4, 0.5, 5));
+	CarPrimitives.PushBack(temp);
+	temp->SetPos(truckposx, truckposy, truckposz -3.5f);
+
+	temp = new Cube(vec3(3, 0.25, 0.25));
+	CarPrimitives.PushBack(temp);
+	temp->SetPos(truckposx, truckposy-1, truckposz);
+
+	temp = new Cube(vec3(3, 0.25, 0.25));
+	CarPrimitives.PushBack(temp);
+	temp->SetPos(truckposx, truckposy-1, truckposz - 5.5f);
+
+	temp = new Cube(vec3(3, 0.25, 0.25));
+	CarPrimitives.PushBack(temp);
+	temp->SetPos(truckposx, truckposy-1, truckposz - 2.2f);
+
+	Cylinder* temp2 = new Cylinder(0.4, 0.2, 0.4);
+	temp2->SetPos(truckposx+3, truckposy - 1, truckposz);
+	CarPrimitives.PushBack(temp2);
+
+	temp2 = new Cylinder(0.4, 0.2, 0.4);
+	temp2->SetPos(truckposx-3, truckposy - 1, truckposz);
+	CarPrimitives.PushBack(temp2);
+
+	temp2 = new Cylinder(0.4, 0.2, 0.4);
+	temp2->SetPos(truckposx+3, truckposy - 1, truckposz - 5.5f);
+	CarPrimitives.PushBack(temp2);
+
+	temp2 = new Cylinder(0.4, 0.2, 0.4);
+	temp2->SetPos(truckposx-3, truckposy - 1, truckposz - 5.5f);
+	CarPrimitives.PushBack(temp2);
+
+	temp2 = new Cylinder(0.4, 0.2, 0.4);
+	temp2->SetPos(truckposx + 3, truckposy - 1, truckposz - 2.2f);
+	CarPrimitives.PushBack(temp2);
+
+	temp2 = new Cylinder(0.4, 0.2, 0.4);
+	temp2->SetPos(truckposx - 3, truckposy - 1, truckposz - 2.2f);
+	CarPrimitives.PushBack(temp2);
+
+	App->physics->AddConstraintHinge(**CarPrimitives.At(9), **CarPrimitives.At(10), btVector3{ 0,-0.7 ,-1.1 }, btVector3{ 0,0, 2.6 }, btVector3{ 0, 1, 0 }, btVector3{ 0, 1, 0 });
+
+	/*btTransform localA;
+	btTransform localB;*/
+
+	localA.setOrigin(btVector3(0.0, 0.0, 0));
+	localB.setOrigin(btVector3(0.f, 1.5f, 0.f));
+	App->physics->AddConstraintSlider(**CarPrimitives.At(9), **CarPrimitives.At(11), localA, localB);
+	
+	localB.setOrigin(btVector3(0.f, 0.5f, -1.8f));
+	App->physics->AddConstraintSlider(**CarPrimitives.At(10), **CarPrimitives.At(12), localA, localB);
+
+	localB.setOrigin(btVector3(0.f, 0.5f, 1.8f));
+	App->physics->AddConstraintSlider(**CarPrimitives.At(10), **CarPrimitives.At(13), localA, localB);
+
+	temp = new Cube(vec3(2, 2, 2));
+	CarPrimitives.PushBack(temp);
+	temp->SetPos(truckposx, 1, truckposz - 3.5f);
+
+	temp = new Cube(vec3(2, 2, 2));
+	CarPrimitives.PushBack(temp);
+	temp->SetPos(truckposx, 1, truckposz+1.5);
 
 	return ret;
 }
@@ -139,11 +217,11 @@ update_status ModulePlayer::Update(float dt)
 
 
 	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT) {
-		//al reves para las de alante
+
 		wheels[0]->enableAngularMotor(true, 50.f, 1000.f);
 		//	wheels[1]->enableAngularMotor(true, 50.f, 100.f);
 		wheels[2]->enableAngularMotor(true, -50.f, 1000.f);
-		//	wheels[3]->enableAngularMotor(true, -50.f, 100.f);
+	
 	}
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) {
 		wheels[0]->enableAngularMotor(true, -50.f, 1000.f);

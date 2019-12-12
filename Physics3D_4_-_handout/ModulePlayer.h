@@ -29,8 +29,8 @@ public:
 
 private:
 
-
 	Cube* car;
+	Cube* TruckCab;
 	btHingeConstraint* wheels[4];
 	btSliderConstraint* Axis[4];
 
