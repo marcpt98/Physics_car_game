@@ -41,5 +41,7 @@ public:
 
 	Cube* TruckCab;
 	Cube* car;
+	Cube* temp;
+	Cylinder* temp2;
 	p2DynArray<Primitive*> CarPrimitives;
 };

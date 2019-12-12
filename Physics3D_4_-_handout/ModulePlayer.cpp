@@ -131,7 +131,7 @@ bool ModulePlayer::Start()
 	CarPrimitives.PushBack(TruckCab);
 	TruckCab->SetPos(truckposx, truckposy, truckposz);
 
-	Cube* temp = new Cube(vec3(2.4, 0.5, 5));
+	temp = new Cube(vec3(2.4, 0.5, 5));
 	CarPrimitives.PushBack(temp);
 	temp->SetPos(truckposx, truckposy, truckposz -3.5f);
 
@@ -149,7 +149,7 @@ bool ModulePlayer::Start()
 
 
 
-	Cylinder* temp2 = new Cylinder(0.4, 0.2, 0.4);
+	temp2 = new Cylinder(0.4, 0.2, 0.4);
 	temp2->SetPos(truckposx+3, truckposy - 1, truckposz);
 	temp2->color.Set(225, 0, 0);
 	temp2->body.GetBody()->setFriction(5);
