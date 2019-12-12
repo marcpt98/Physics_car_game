@@ -30,10 +30,10 @@ public:
 private:
 
 
-	Cube* car;
 	btHingeConstraint* wheels[4];
 	btSliderConstraint* Axis[4];
 
 public:
+	Cube* car;
 	p2DynArray<Primitive*> CarPrimitives;
 };
