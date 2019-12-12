@@ -30,14 +30,16 @@ public:
 
 private:
 
-	Cube* TruckCab;
 
 	btHingeConstraint* wheels[4];
 	btHingeConstraint* TruckWheels[6];
+	btHingeConstraint* Elevator;
 	btSliderConstraint* Axis[4];
 	btSliderConstraint* TruckAxis[3];
 
 public:
+
+	Cube* TruckCab;
 	Cube* car;
 	p2DynArray<Primitive*> CarPrimitives;
 };

@@ -20,7 +20,7 @@ bool ModuleSceneIntro::Start()
 
 	App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
 	App->camera->LookAt(vec3(0, 0, 0));
-
+	camerafollow = true;
 	
 	
 	// Creating map
@@ -97,13 +97,13 @@ update_status ModuleSceneIntro::Update(float dt)
 		}
 	}
 
-	if (camerafollow == true) 
-	{
-	const vec3 pa = App->player->car->body.GetPos();
+	//if (camerafollow == true) 
+//	{
+	const vec3 pa = App->player->TruckCab->body.GetPos();
 	const vec3 camera_offset(0, 6, -10);
 	const vec3 r = pa + camera_offset;
 	App->camera->Look(r, pa, false);
-	}
+	//}
 
 	//const vec3 f = car->body.GetForwardVector();
 	//vec3 d; d.Set(pa.x + (f.x * -8), pa.y + (f.y + 5), pa.z + (f.z * -8));

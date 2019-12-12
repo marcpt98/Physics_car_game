@@ -147,6 +147,8 @@ bool ModulePlayer::Start()
 	CarPrimitives.PushBack(temp);
 	temp->SetPos(truckposx, truckposy-1, truckposz - 2.2f);
 
+
+
 	Cylinder* temp2 = new Cylinder(0.4, 0.2, 0.4);
 	temp2->SetPos(truckposx+3, truckposy - 1, truckposz);
 	temp2->color.Set(225, 0, 0);
@@ -183,6 +185,21 @@ bool ModulePlayer::Start()
 	temp2->body.GetBody()->setFriction(5);
 	CarPrimitives.PushBack(temp2);
 
+	temp = new Cube(vec3(2.4, 0.25, 4.5));
+	CarPrimitives.PushBack(temp);
+	temp->SetPos(truckposx, truckposy + 1, truckposz - 3.5f);
+
+	temp = new Cube(vec3(0.25, 1, 4.5));
+	CarPrimitives.PushBack(temp);
+	temp->SetPos(truckposx-2, truckposy + 1, truckposz - 3.5f);
+
+	temp = new Cube(vec3(0.25, 1, 4.5));
+	CarPrimitives.PushBack(temp);
+	temp->color.Set(225, 0, 0);
+	temp->SetPos(truckposx+2, truckposy + 1, truckposz - 3.5f);
+
+	
+	
 	App->physics->AddConstraintHinge(**CarPrimitives.At(9), **CarPrimitives.At(10), btVector3{ 0,-0.7 ,-1.2 }, btVector3{ 0,0, 2.6 }, btVector3{ 0, 1, 0 }, btVector3{ 0, 1, 0 });
 
 	/*btTransform localA;
@@ -204,6 +221,16 @@ bool ModulePlayer::Start()
 	TruckWheels[3] = App->physics->AddConstraintHinge(**CarPrimitives.At(12), **CarPrimitives.At(17), btVector3{ -1.7f, 0, -0 }, btVector3{ 0, 0,0 }, btVector3{ 1, 0,0 }, btVector3{ 0,1,0 });
 	TruckWheels[4] = App->physics->AddConstraintHinge(**CarPrimitives.At(13), **CarPrimitives.At(18), btVector3{  1.7f, 0, -0 }, btVector3{ 0, 0,0 }, btVector3{ 1, 0,0 }, btVector3{ 0,1,0 });
 	TruckWheels[5] = App->physics->AddConstraintHinge(**CarPrimitives.At(13), **CarPrimitives.At(19), btVector3{ -1.7f, 0, -0 }, btVector3{ 0, 0,0 }, btVector3{ 1, 0,0 }, btVector3{ 0,1,0 });
+
+	Elevator = App->physics->AddConstraintHinge(**CarPrimitives.At(10), **CarPrimitives.At(20), btVector3{ 0, -0 , -2. }, btVector3{0 ,-0.5 , -2. }, btVector3{ 1, 0, 0 }, btVector3{ 1, 0, 0 });
+	App->physics->AddConstraintP2P(**CarPrimitives.At(20), **CarPrimitives.At(22), btVector3{ 1.2, 0.3, -2}, btVector3{ -0.25, 0 , -2 });
+	App->physics->AddConstraintP2P(**CarPrimitives.At(20), **CarPrimitives.At(21), btVector3{ -1.2, 0.3, -2 }, btVector3{ 0.25, 0 , -2 });
+	App->physics->AddConstraintP2P(**CarPrimitives.At(20), **CarPrimitives.At(22), btVector3{ 1.2, 0.3, 2 }, btVector3{ -0.25, 0 , 2 });
+	App->physics->AddConstraintP2P(**CarPrimitives.At(20), **CarPrimitives.At(21), btVector3{ -1.2, 0.3, 2 }, btVector3{ 0.25, 0 , 2 });
+//	App->physics->AddConstraintP2P(**CarPrimitives.At(21), **CarPrimitives.At(22), btVector3{ 1.2, 0.3, 0 }, btVector3{ -0.25, 0 , -1 });
+//	App->physics->AddConstraintP2P(**CarPrimitives.At(20), **CarPrimitives.At(21), btVector3{ 1.2,  0 , 0 }, btVector3{ 0 , 0 , 0 });
+
+	//App->physics->AddConstraintP2P(**CarPrimitives.At(20), **CarPrimitives.At(21), btVector3{ 1.2, 0.125 , 2.25 }, btVector3{ -0.25 ,-0.5 , -2.25 });
 
 	//temp = new Cube(vec3(1, 1, 0.5));
 	//CarPrimitives.PushBack(temp);
@@ -315,7 +342,6 @@ update_status ModulePlayer::Update(float dt)
 		wheels[3]->enableAngularMotor(true, -20.f, 1000.f);
 
 
-
 		//wheels[3]->enableMotor(false);
 		/*Axis[2]->setPoweredAngMotor(true);
 		Axis[2]->setLowerAngLimit(-0.5F);
@@ -350,6 +376,7 @@ void ModulePlayer::TruckInput(float dt) {
 	TruckWheels[3]->enableMotor(false);
 	TruckWheels[4]->enableMotor(false);
 	TruckWheels[5]->enableMotor(false);
+	Elevator->enableMotor(false);
 
 	Axis[0]->setPoweredAngMotor(false);
 
@@ -418,5 +445,10 @@ void ModulePlayer::TruckInput(float dt) {
 		TruckAxis[1]->setUpperAngLimit( 0.2f);
 		TruckAxis[2]->setLowerAngLimit(-0.2f);
 		TruckAxis[2]->setUpperAngLimit( 0.2f);
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_0) == KEY_REPEAT) {
+	Elevator->enableAngularMotor(true, 1.f, 100.f);
+
 	}
 }
