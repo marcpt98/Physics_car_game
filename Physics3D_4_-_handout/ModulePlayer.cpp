@@ -150,31 +150,37 @@ bool ModulePlayer::Start()
 	Cylinder* temp2 = new Cylinder(0.4, 0.2, 0.4);
 	temp2->SetPos(truckposx+3, truckposy - 1, truckposz);
 	temp2->color.Set(225, 0, 0);
+	temp2->body.GetBody()->setFriction(5);
 	CarPrimitives.PushBack(temp2);
 
 	temp2 = new Cylinder(0.4, 0.2, 0.4);
 	temp2->SetPos(truckposx-3, truckposy - 1, truckposz);
 	temp2->color.Set(0, 0, 225);
+	temp2->body.GetBody()->setFriction(5);
 	CarPrimitives.PushBack(temp2);
 
 	temp2 = new Cylinder(0.4, 0.2, 0.4);
 	temp2->SetPos(truckposx+3, truckposy - 1, truckposz - 5.5f);
 	temp2->color.Set(225, 0, 0);
+	temp2->body.GetBody()->setFriction(5);
 	CarPrimitives.PushBack(temp2);
 
 	temp2 = new Cylinder(0.4, 0.2, 0.4);
 	temp2->SetPos(truckposx-3, truckposy - 1, truckposz - 5.5f);
 	temp2->color.Set(0, 0, 225);
+	temp2->body.GetBody()->setFriction(5);
 	CarPrimitives.PushBack(temp2);
 
 	temp2 = new Cylinder(0.4, 0.2, 0.4);
 	temp2->SetPos(truckposx + 3, truckposy - 1, truckposz - 2.2f);
 	temp2->color.Set(225, 0, 0);
+	temp2->body.GetBody()->setFriction(5);
 	CarPrimitives.PushBack(temp2);
 
 	temp2 = new Cylinder(0.4, 0.2, 0.4);
 	temp2->SetPos(truckposx - 3, truckposy - 1, truckposz - 2.2f);
 	temp2->color.Set(0, 0, 225);
+	temp2->body.GetBody()->setFriction(5);
 	CarPrimitives.PushBack(temp2);
 
 	App->physics->AddConstraintHinge(**CarPrimitives.At(9), **CarPrimitives.At(10), btVector3{ 0,-0.7 ,-1.2 }, btVector3{ 0,0, 2.6 }, btVector3{ 0, 1, 0 }, btVector3{ 0, 1, 0 });
@@ -186,7 +192,7 @@ bool ModulePlayer::Start()
 	localB.setOrigin(btVector3(0.f, 1.6f, 0.f));
 	TruckAxis[0] = App->physics->AddConstraintSlider(**CarPrimitives.At(9), **CarPrimitives.At(11), localA, localB);
 	
-	localB.setOrigin(btVector3(0.f, 0.7f, -1.8f));
+	localB.setOrigin(btVector3(0.f, 0.7f, -1.f));
 	TruckAxis[1] =	App->physics->AddConstraintSlider(**CarPrimitives.At(10), **CarPrimitives.At(12), localA, localB);
 
 	localB.setOrigin(btVector3(0.f, 0.7f, 1.8f));
@@ -357,60 +363,60 @@ void ModulePlayer::TruckInput(float dt) {
 
 	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT) {
 		LOG("`forward");
-		TruckWheels[0]->enableAngularMotor(true, -50.f, 100.f);
-		TruckWheels[1]->enableAngularMotor(true, -50.f, 100.f);
-		TruckWheels[2]->enableAngularMotor(true, -20.f, 100.f);
-		TruckWheels[3]->enableAngularMotor(true, -20.f, 100.f);
-		TruckWheels[4]->enableAngularMotor(true, -20.f, 100.f);
-		TruckWheels[5]->enableAngularMotor(true, -20.f, 100.f);
+		TruckWheels[0]->enableAngularMotor(true, -20.f, 100.f);
+		TruckWheels[1]->enableAngularMotor(true, -20.f, 100.f);
+		TruckWheels[2]->enableAngularMotor(true, -10.f, 100.f);
+		TruckWheels[3]->enableAngularMotor(true, -10.f, 100.f);
+		TruckWheels[4]->enableAngularMotor(true, -10.f, 100.f);
+		TruckWheels[5]->enableAngularMotor(true, -10.f, 100.f);
 
 
 
 	}
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) {
 		LOG("back");
-		TruckWheels[0]->enableAngularMotor(true, 50.f, 100.f);
-		TruckWheels[1]->enableAngularMotor(true, 50.f, 100.f);
-		TruckWheels[2]->enableAngularMotor(true, 20.f, 100.f);
-		TruckWheels[3]->enableAngularMotor(true, 20.f, 100.f);
-		TruckWheels[4]->enableAngularMotor(true, 20.f, 100.f);
-		TruckWheels[5]->enableAngularMotor(true, 20.f, 100.f);
+		TruckWheels[0]->enableAngularMotor(true, 20.f, 100.f);
+		TruckWheels[1]->enableAngularMotor(true, 20.f, 100.f);
+		TruckWheels[2]->enableAngularMotor(true, 10.f, 100.f);
+		TruckWheels[3]->enableAngularMotor(true, 10.f, 100.f);
+		TruckWheels[4]->enableAngularMotor(true, 10.f, 100.f);
+		TruckWheels[5]->enableAngularMotor(true, 10.f, 100.f);
 
 	
 	}
 	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT) {
 		LOG("right");
-		TruckWheels[0]->enableAngularMotor(true, -50.f, 100.f);
-		TruckWheels[1]->enableAngularMotor(true, -10.f, 100.f);
-		TruckWheels[2]->enableAngularMotor(true, -50.f, 100.f);
-		TruckWheels[4]->enableAngularMotor(true, -50.f, 100.f);
+		TruckWheels[0]->enableAngularMotor(true, -20.f, 100.f);
+		TruckWheels[1]->enableAngularMotor(true, -5.f, 100.f);
+		TruckWheels[2]->enableAngularMotor(true, -20.f, 100.f);
+		TruckWheels[4]->enableAngularMotor(true, -20.f, 100.f);
 
 		TruckAxis[0]->setPoweredAngMotor(true);
-		TruckAxis[0]->setTargetAngMotorVelocity(1);
-		TruckAxis[0]->setMaxAngMotorForce(10);
-		TruckAxis[0]->setLowerAngLimit(-0.7f);
-		TruckAxis[0]->setUpperAngLimit(0.7f);
-		TruckAxis[1]->setLowerAngLimit(-0.7f);
-		TruckAxis[1]->setUpperAngLimit(0.7f);
-		TruckAxis[2]->setLowerAngLimit(-0.7f);
-		TruckAxis[2]->setUpperAngLimit(0.7f);
+		TruckAxis[0]->setTargetAngMotorVelocity(0.1);
+	//	TruckAxis[0]->setMaxAngMotorForce(10);
+		TruckAxis[0]->setLowerAngLimit(-0.2f);
+		TruckAxis[0]->setUpperAngLimit( 0.2f);
+		TruckAxis[1]->setLowerAngLimit(-0.2f);
+		TruckAxis[1]->setUpperAngLimit( 0.2f);
+		TruckAxis[2]->setLowerAngLimit(-0.2f);
+		TruckAxis[2]->setUpperAngLimit( 0.2f);
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT) {
 		LOG("left");
-		TruckWheels[0]->enableAngularMotor(true, -10.f, 100.f);
-		TruckWheels[1]->enableAngularMotor(true, -50.f, 100.f);
-		TruckWheels[3]->enableAngularMotor(true, -50.f, 100.f);
-		TruckWheels[5]->enableAngularMotor(true, -50.f, 100.f);
+		TruckWheels[0]->enableAngularMotor(true, -5.f, 100.f);
+		TruckWheels[1]->enableAngularMotor(true, -20.f, 100.f);
+		TruckWheels[3]->enableAngularMotor(true, -20.f, 100.f);
+		TruckWheels[5]->enableAngularMotor(true, -20.f, 100.f);
 
 		TruckAxis[0]->setPoweredAngMotor(true);
-		TruckAxis[0]->setTargetAngMotorVelocity(-1);
-		TruckAxis[0]->setMaxAngMotorForce(10);
-		TruckAxis[0]->setLowerAngLimit(-0.7f);
-		TruckAxis[0]->setUpperAngLimit( 0.7f);
-		TruckAxis[1]->setLowerAngLimit(-0.7f);
-		TruckAxis[1]->setUpperAngLimit( 0.7f);
-		TruckAxis[2]->setLowerAngLimit(-0.7f);
-		TruckAxis[2]->setUpperAngLimit( 0.7f);
+		TruckAxis[0]->setTargetAngMotorVelocity(-0.1);
+		//TruckAxis[0]->setMaxAngMotorForce(-10);
+		TruckAxis[0]->setLowerAngLimit(-0.2f);
+		TruckAxis[0]->setUpperAngLimit( 0.2f);
+		TruckAxis[1]->setLowerAngLimit(-0.2f);
+		TruckAxis[1]->setUpperAngLimit( 0.2f);
+		TruckAxis[2]->setLowerAngLimit(-0.2f);
+		TruckAxis[2]->setUpperAngLimit( 0.2f);
 	}
 }
