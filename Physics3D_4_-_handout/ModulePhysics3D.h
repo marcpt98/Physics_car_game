@@ -55,6 +55,9 @@ private:
 	p2List<btPoint2PointConstraint*>	P2PConstraints;
 	p2List<btHingeConstraint*>			HingeConstraints;
 	p2List<btSliderConstraint*>			SliderConstraints;
+
+	// Change color of map walls
+	int color = 0;
 };
 
 class DebugDrawer : public btIDebugDraw

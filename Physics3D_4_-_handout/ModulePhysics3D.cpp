@@ -214,6 +214,25 @@ void ModulePhysics3D::CreateLineBox(float posx, float posy, float posz, int leng
 	for (int n = 0; n < lenght; n++)
 	{
 		Cube* s = new Cube(size, 900000);
+		
+		if (color == 0)
+		{
+			s->color = { 255,255,255 };
+		}
+		if (color == 1)
+		{
+			s->color = { 255,0,0 };
+		}
+
+		if (color == 0)
+		{
+			color = 1;
+		}
+		else if (color == 1)
+		{
+			color = 0;
+		}
+
 		App->scene_intro->ScenePrimitives.PushBack(s);
 		s->SetPos(posx, posy, posz);
 
@@ -248,6 +267,25 @@ void ModulePhysics3D::CreateDiagonalBox(float posx, float posy, float posz, int 
 	for (int n = 0; n < lenght; n++)
 	{
 		Cube* s = new Cube(size, 900000);
+
+		if (color == 0)
+		{
+			s->color = { 255,255,255 };
+		}
+		if (color == 1)
+		{
+			s->color = { 255,0,0 };
+		}
+
+		if (color == 0)
+		{
+			color = 1;
+		}
+		else if (color == 1)
+		{
+			color = 0;
+		}
+
 		App->scene_intro->ScenePrimitives.PushBack(s);
 		s->SetPos(posx, posy, posz);
 
