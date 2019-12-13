@@ -266,20 +266,21 @@ update_status ModulePlayer::Update(float dt)
 	
 
 	if (App->input->GetKey(SDL_SCANCODE_I) == KEY_REPEAT) {
-
+		car->body.Push(vec3{ 0,0,0 });
 		wheels[0]->enableAngularMotor(true, 50.f, 1000.f);
 		//	wheels[1]->enableAngularMotor(true, 50.f, 100.f);
 		wheels[2]->enableAngularMotor(true, -50.f, 1000.f);
 	
 	}
 	if (App->input->GetKey(SDL_SCANCODE_K) == KEY_REPEAT) {
+		car->body.Push(vec3{ 0,0,0 });
 		wheels[0]->enableAngularMotor(true, -50.f, 1000.f);
 		//	wheels[1]->enableAngularMotor(true, 50.f, 100.f);
 		wheels[2]->enableAngularMotor(true, 50.f, 1000.f);
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_L) == KEY_REPEAT) {
-
+		car->body.Push(vec3{ 0,0,0 });
 		Axis[1]->setPoweredAngMotor(true);
 		Axis[1]->setLowerAngLimit(-0.7F);
 		Axis[1]->setUpperAngLimit(0.7F);
@@ -318,6 +319,7 @@ update_status ModulePlayer::Update(float dt)
 		//Axis[3]->setMaxAngMotorForce(10);
 	}
 	if (App->input->GetKey(SDL_SCANCODE_J) == KEY_REPEAT) {
+		car->body.Push(vec3{ 0,0,0 });
 		Axis[1]->setPoweredAngMotor(true);
 		Axis[1]->setLowerAngLimit(-0.7F);
 		Axis[1]->setUpperAngLimit(0.7F);
@@ -389,7 +391,7 @@ void ModulePlayer::TruckInput(float dt) {
 
 
 	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT) {
-		LOG("`forward");
+		TruckCab->body.Push(vec3{ 0,0,0 });
 		TruckWheels[0]->enableAngularMotor(true, -20.f, 100.f);
 		TruckWheels[1]->enableAngularMotor(true, -20.f, 100.f);
 		TruckWheels[2]->enableAngularMotor(true, -10.f, 100.f);
@@ -400,19 +402,9 @@ void ModulePlayer::TruckInput(float dt) {
 
 
 	}
-	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) {
-		LOG("back");
-		TruckWheels[0]->enableAngularMotor(true, 20.f, 100.f);
-		TruckWheels[1]->enableAngularMotor(true, 20.f, 100.f);
-		TruckWheels[2]->enableAngularMotor(true, 10.f, 100.f);
-		TruckWheels[3]->enableAngularMotor(true, 10.f, 100.f);
-		TruckWheels[4]->enableAngularMotor(true, 10.f, 100.f);
-		TruckWheels[5]->enableAngularMotor(true, 10.f, 100.f);
-
 	
-	}
 	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT) {
-		LOG("right");
+		TruckCab->body.Push(vec3{ 0,0,0 });
 		TruckWheels[0]->enableAngularMotor(true, -20.f, 100.f);
 		TruckWheels[1]->enableAngularMotor(true, -5.f, 100.f);
 		TruckWheels[2]->enableAngularMotor(true, -20.f, 100.f);
@@ -430,7 +422,7 @@ void ModulePlayer::TruckInput(float dt) {
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT) {
-		LOG("left");
+		TruckCab->body.Push(vec3{ 0,0,0 });
 		TruckWheels[0]->enableAngularMotor(true, -5.f, 100.f);
 		TruckWheels[1]->enableAngularMotor(true, -20.f, 100.f);
 		TruckWheels[3]->enableAngularMotor(true, -20.f, 100.f);
@@ -446,8 +438,19 @@ void ModulePlayer::TruckInput(float dt) {
 		TruckAxis[2]->setLowerAngLimit(-0.2f);
 		TruckAxis[2]->setUpperAngLimit( 0.2f);
 	}
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) {
+		TruckCab->body.Push(vec3{ 0,0,0 });
+		TruckWheels[0]->enableAngularMotor(true, 20.f, 100.f);
+		TruckWheels[1]->enableAngularMotor(true, 20.f, 100.f);
+		TruckWheels[2]->enableAngularMotor(true, 10.f, 100.f);
+		TruckWheels[3]->enableAngularMotor(true, 10.f, 100.f);
+		TruckWheels[4]->enableAngularMotor(true, 10.f, 100.f);
+		TruckWheels[5]->enableAngularMotor(true, 10.f, 100.f);
 
+
+	}
 	if (App->input->GetKey(SDL_SCANCODE_0) == KEY_REPEAT) {
+		TruckCab->body.Push(vec3{ 0,0,0 });
 	Elevator->enableAngularMotor(true, 1.f, 100.f);
 
 	}
