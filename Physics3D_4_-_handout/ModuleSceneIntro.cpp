@@ -152,12 +152,44 @@ void ModuleSceneIntro::CreateMap()
 
 	//App->physics->CreateCurveBox(10, 1.f, 15.f, 7, vec3(0.5f, 1.f, 0.5f), 0.5f, 0, 0.5f);*/
 
-	// 1
-	App->physics->CreateLineBox(26, 20, -195, 1, vec3(28, 20, 5), 12, 3);
-	App->physics->CreateLineBox(40, 1, -185, 6, vec3(6, 0, 10), 12, 3, true);
-	App->physics->CreateLineBox(11, 1, -185, 6, vec3(6, 0, 10), 12, 3, true);
+	// 1 (first rect)
+	App->physics->CreateLineBox(46, 20, -195, 1, vec3(28, 20, 5), 12, 3);
+	App->physics->CreateLineBox(60, 1, -185, 7, vec3(6, 0, 10), 12, 3, true);
+	App->physics->CreateLineBox(31, 1, -185, 4, vec3(6, 0, 10), 12, 3, true);
 
-	// 2
-	App->physics->CreateLineBox(0, 1, 5, 1, vec3(1, 1, 1), 12, 3);
-	App->physics->CreateLineBox(0.5, 1, 5, 1, vec3(3, 1, 1), 12, 3);
+	// 2 (second rect)
+	App->physics->CreateLineBox(52, 1, -104, 3, vec3(10, 0, 6), 13, 1, true);
+	App->physics->CreateLineBox(29, 1, -140, 3, vec3(10, 0, 6), 13, 1, true);
+
+	// 3 (third rect)
+	App->physics->CreateLineBox(-5, 1, -130, 6, vec3(6, 0, 10), 12, 3, true);
+	App->physics->CreateLineBox(24, 1, -94, 3, vec3(6, 0, 10), 12, 3, true);
+
+	// 4 (roundabout, interior)
+	App->physics->CreateLineBox(15, 1, -48, 5, vec3(2, 5, 1), 3, 1);
+	App->physics->CreateDiagonalBox(18, 1, -47, 4, vec3(1, 5, 2), 2, 1, 4);
+	App->physics->CreateDiagonalBox(0, 1, -47, 4, vec3(1, 5, 2), 2, 3, 4);
+	App->physics->CreateDiagonalBox(18, 1, -24, 3, vec3(1, 5, 2), 2, 0, 4);
+	App->physics->CreateDiagonalBox(-4, 1, -32, 3, vec3(1, 5, 2), 2, 1, 4);
+	App->physics->CreateLineBox(15, 1, -22, 5, vec3(2, 5, 1), 3, 1);
+
+	// 5 (figure)
+	App->physics->CreateLineBox(12, 1, -36, 1, vec3(3, 7, 3), 3, 1);
+	App->physics->CreateLineBox(7, 1, -36, 1, vec3(3, 7, 3), 3, 1);
+	App->physics->CreateLineBox(9, 8, -36, 1, vec3(10, 7, 5), 3, 1);
+	App->physics->CreateLineBox(9, 15, -36, 1, vec3(20, 3, 5), 3, 1);
+	App->physics->CreateLineBox(9, 20, -36, 1, vec3(7, 7, 7), 3, 1);
+
+	// 6 (roundabout, exterior)
+	App->physics->CreateDiagonalBox(28, 1, -62, 5, vec3(1, 5, 2), 2, 1, 4);
+	App->physics->CreateDiagonalBox(-9, 1, -62, 5, vec3(1, 5, 2), 2, 3, 4);
+
+	// FIRST 3 BALLS
+	// 7
+	App->physics->CreateLineBox(-24, 1, -25, 5, vec3(10, 0, 6), 13, 1, true);
+	App->physics->CreateLineBox(-24, 1, -48, 5, vec3(10, 0, 6), 13, 1, true);
+
+	// 8
+
+
 }
