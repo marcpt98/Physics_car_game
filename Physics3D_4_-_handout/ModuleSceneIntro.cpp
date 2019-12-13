@@ -86,50 +86,8 @@ void ModuleSceneIntro::DebugSpawnPrimitive(Primitive * p)
 // Update
 update_status ModuleSceneIntro::Update(float dt)
 {
-	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
-		if (camerafollow ==false) 
-		{
-			camerafollow = true;
-		}
-		else if (camerafollow == true) 
-		{
-			camerafollow = false;
-		}
-	}
 
-	if (camerafollow == true) 
-	{
-		/*
-		const vec3 pa = App->player->temp->body.GetPos();
-		const vec3 camera_offset(0, 6, -10);
-		const vec3 r = pa + camera_offset;
-		App->camera->Look(r, pa, false);
-
-		vec3 d;
-		//App->camera->Look(r, pa, false);
-		d.Set(App->player->temp2->body.GetPos().x, App->player->temp2->body.GetPos().y + 5, App->player->temp2->body.GetPos().z);
-		App->camera->Position = d;
-		App->camera->LookAt(App->player->TruckCab->body.GetPos());
-		*/
-		const vec3 pa = App->player->TruckCab->body.GetPos();
-		const vec3 f = App->player->TruckCab->body.GetForwardVector();
-		vec3 d; 
-		d.Set(pa.x + (f.x * -11), pa.y + (f.y + 5), pa.z + (f.z * -11));
-		App->camera->Look(d,pa);
-
-	}
-
-	//const vec3 f = car->body.GetForwardVector();
-	//vec3 d; d.Set(pa.x + (f.x * -8), pa.y + (f.y + 5), pa.z + (f.z * -8));
-	//App->camera->Look(d, pa);
-
-	//const vec3 p = vehicle->GetPos();
-	//const vec3 camera_offset(0, 6, -10);
-	//const vec3 r = p + camera_offset;
-	//App->camera->Look(r, p, false);
-	//const vec3 f = vehicle->GetForwardVector();
-	//vec3 d; d.Set(p.x + (f.x * -8), p.y + (f.y + 5), p.z + (f.z * -8));
-	//App->camera->Look(d, p);
+	
 	Plane p(vec3(0, 1, 0));
 	p.axis = true;
 	p.Render();
@@ -175,7 +133,7 @@ void ModuleSceneIntro::OnCollision(PhysBody3D * body1, PhysBody3D * body2)
 
 void ModuleSceneIntro::CreateMap()
 {
-	// First rect
+	/*// First rect
 	App->physics->CreateLineBox(5, 1, 0, 15, vec3(1, 2, 1), 2, 3);
 	App->physics->CreateLineBox(-5, 1, 0, 10, vec3(1, 2, 1), 2, 3);
 
@@ -192,5 +150,14 @@ void ModuleSceneIntro::CreateMap()
 	App->physics->CreateDiagonalBox(-23, 1, 28, 5, vec3(1, 2, 1), 1.5f, 2, 1);
 
 
-	//App->physics->CreateCurveBox(10, 1.f, 15.f, 7, vec3(0.5f, 1.f, 0.5f), 0.5f, 0, 0.5f);
+	//App->physics->CreateCurveBox(10, 1.f, 15.f, 7, vec3(0.5f, 1.f, 0.5f), 0.5f, 0, 0.5f);*/
+
+	// 1
+	App->physics->CreateLineBox(26, 20, -195, 1, vec3(28, 20, 5), 12, 3);
+	App->physics->CreateLineBox(40, 1, -185, 6, vec3(6, 0, 10), 12, 3, true);
+	App->physics->CreateLineBox(11, 1, -185, 6, vec3(6, 0, 10), 12, 3, true);
+
+	// 2
+	App->physics->CreateLineBox(0, 1, 5, 1, vec3(1, 1, 1), 12, 3);
+	App->physics->CreateLineBox(0.5, 1, 5, 1, vec3(3, 1, 1), 12, 3);
 }

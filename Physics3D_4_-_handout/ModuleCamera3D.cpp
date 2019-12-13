@@ -41,7 +41,7 @@ update_status ModuleCamera3D::Update(float dt)
 	// Now we can make this movememnt frame rate independant!
 
 	vec3 newPos(0,0,0);
-	float speed = 3.0f * dt;
+	float speed = 50.0f * dt;
 	if(App->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_REPEAT)
 		speed = 8.0f * dt;
 
@@ -95,6 +95,28 @@ update_status ModuleCamera3D::Update(float dt)
 		Position = Reference + Z * length(Position);
 	}
 
+	//Camera following code
+
+	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
+		if (App->scene_intro->camerafollow == false)
+		{
+			App->scene_intro->camerafollow = true;
+		}
+		else if (App->scene_intro->camerafollow == true)
+		{
+			App->scene_intro->camerafollow = false;
+		}
+	}
+
+	if (App->scene_intro->camerafollow == true)
+	{
+		const vec3 pa = App->player->TruckCab->body.GetPos();
+		const vec3 f = App->player->TruckCab->body.GetForwardVector();
+		vec3 d;
+		d.Set(pa.x + (f.x * -11), pa.y + (f.y + 2), pa.z + (f.z * -11));
+		App->camera->Look(d, pa);
+
+	}
 	return UPDATE_CONTINUE;
 }
 
