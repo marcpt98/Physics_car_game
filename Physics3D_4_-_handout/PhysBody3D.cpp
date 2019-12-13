@@ -146,8 +146,12 @@ const vec3 PhysBody3D::GetPos() const
 
 vec3 PhysBody3D::GetForwardVector() const
 {
-	btVector3 h = vehicle->getForwardVector();
-	vec3 ret;
-	ret.Set(h.getX(), h.getY(), h.getZ());
-	return ret;
+	mat4x4 transform;
+	body->getWorldTransform().getOpenGLMatrix(&transform); //aqui pilla la rotacio y la traslació
+	mat3x3 rotation(transform);       //aqui guardamos la rotacion
+	
+	vec3 forward(0.f, 0.f, 1.f);
+	forward = rotation * forward;
+
+	return forward;
 }
