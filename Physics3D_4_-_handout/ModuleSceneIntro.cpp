@@ -39,16 +39,16 @@ bool ModuleSceneIntro::CleanUp()
 
 void ModuleSceneIntro::HandleDebugInput()
 {
-	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
+	if (App->input->GetKey(SDL_SCANCODE_F3) == KEY_DOWN)
 		DebugSpawnPrimitive(new Sphere());
-	if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
+	if (App->input->GetKey(SDL_SCANCODE_F4) == KEY_DOWN)
 		DebugSpawnPrimitive(new Cube());
-	if (App->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
+	if (App->input->GetKey(SDL_SCANCODE_F5) == KEY_DOWN)
 		DebugSpawnPrimitive(new Cylinder());
-	if (App->input->GetKey(SDL_SCANCODE_4) == KEY_DOWN)
+	if (App->input->GetKey(SDL_SCANCODE_F6) == KEY_DOWN)
 		for (uint n = 0; n < ScenePrimitives.Count(); n++)
 			ScenePrimitives[n]->SetPos((float)(std::rand() % 40 - 20), 10.f, (float)(std::rand() % 40 - 20));
-	if (App->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN)
+	if (App->input->GetKey(SDL_SCANCODE_F7) == KEY_DOWN)
 		for (uint n = 0; n < ScenePrimitives.Count(); n++)
 			ScenePrimitives[n]->body.Push(vec3((float)(std::rand() % 500) - 250, 500, (float)(std::rand() % 500) - 250));
 
