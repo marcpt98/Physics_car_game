@@ -209,10 +209,15 @@ btSliderConstraint* ModulePhysics3D::AddConstraintSlider(const Primitive& bodyA,
 	return constraint;
 }
 
-void ModulePhysics3D::CreateLineBox(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction)
+void ModulePhysics3D::CreateLineBox(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction, bool randh)
 {
 	for (int n = 0; n < lenght; n++)
 	{
+		if (randh == true)
+		{
+			size.y = (float)(std::rand() % 30 + 10);
+		}
+
 		Cube* s = new Cube(size, 900000);
 		
 		if (color == 0)
@@ -262,7 +267,7 @@ void ModulePhysics3D::CreateLineBox(float posx, float posy, float posz, int leng
 	}
 }
 
-void ModulePhysics3D::CreateDiagonalBox(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction, float diagonal)
+void ModulePhysics3D::CreateDiagonalBox(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction, float diagonal, bool randh)
 {
 	for (int n = 0; n < lenght; n++)
 	{
