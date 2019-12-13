@@ -99,6 +99,7 @@ update_status ModuleSceneIntro::Update(float dt)
 
 	if (camerafollow == true) 
 	{
+		/*
 		const vec3 pa = App->player->temp->body.GetPos();
 		const vec3 camera_offset(0, 6, -10);
 		const vec3 r = pa + camera_offset;
@@ -109,6 +110,13 @@ update_status ModuleSceneIntro::Update(float dt)
 		d.Set(App->player->temp2->body.GetPos().x, App->player->temp2->body.GetPos().y + 5, App->player->temp2->body.GetPos().z);
 		App->camera->Position = d;
 		App->camera->LookAt(App->player->TruckCab->body.GetPos());
+		*/
+		const vec3 pa = App->player->TruckCab->body.GetPos();
+		const vec3 f = App->player->temp->body.GetForwardVector();
+		vec3 d; 
+		d.Set(pa.x + (f.x * -11), pa.y + (f.y + 5), pa.z + (f.z * -11));
+		App->camera->Look(d,pa);
+
 	}
 
 	//const vec3 f = car->body.GetForwardVector();
