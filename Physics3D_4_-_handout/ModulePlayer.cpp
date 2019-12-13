@@ -127,7 +127,7 @@ bool ModulePlayer::Start()
 	
 	float truckposx = 5.f, truckposy = 5.f, truckposz = -5.f;
 	TruckCab = new Cube(vec3(2, 2, 2));
-	TruckCab->color.Set(249,166,0);
+	TruckCab->color.Set(100,100,100);
 	CarPrimitives.PushBack(TruckCab);
 	TruckCab->SetPos(truckposx, truckposy, truckposz);
 
@@ -232,20 +232,22 @@ bool ModulePlayer::Start()
 	App->physics->AddConstraintP2P(**CarPrimitives.At(20), **CarPrimitives.At(21), btVector3{ -1.1,0.5, -2 }, btVector3{ 0.25, -0.0 , -2 });
 	App->physics->AddConstraintP2P(**CarPrimitives.At(20), **CarPrimitives.At(22), btVector3{ 1.1, 0.5, 2 }, btVector3{ -0.25, -0.0 , 2 });
 	App->physics->AddConstraintP2P(**CarPrimitives.At(20), **CarPrimitives.At(21), btVector3{ -1.1,0.5, 2 }, btVector3{ 0.25,  -0.0 , 2 });
-	//App->physics->AddConstraintP2P(**CarPrimitives.At(21), **CarPrimitives.At(22), btVector3{ 0, 0, 2 }, btVector3{ -2, 0 , 0 });
+	
+	
 
-//	App->physics->AddConstraintP2P(**CarPrimitives.At(21), **CarPrimitives.At(22), btVector3{ 1.2, 0.3, 0 }, btVector3{ -0.25, 0 , -1 });
-//	App->physics->AddConstraintP2P(**CarPrimitives.At(20), **CarPrimitives.At(21), btVector3{ 1.2,  0 , 0 }, btVector3{ 0 , 0 , 0 });
+	temp2 = new Cylinder(0.4, 0.4, 0.4);
+	temp2->SetPos(truckposx, truckposy + 3, truckposz);
+	CarPrimitives.PushBack(temp2);
 
-	//App->physics->AddConstraintP2P(**CarPrimitives.At(20), **CarPrimitives.At(21), btVector3{ 1.2, 0.125 , 2.25 }, btVector3{ -0.25 ,-0.5 , -2.25 });
+	temp = new Cube(vec3(0.4, 1, 0.2));
+	CarPrimitives.PushBack(temp);
+	temp->SetPos(truckposx, truckposy +3.3, truckposz);
 
-	//temp = new Cube(vec3(1, 1, 0.5));
-	//CarPrimitives.PushBack(temp);
-	//temp->SetPos(truckposx, 1, truckposz - 3.5f);
+	HingeArm[0] = App->physics->AddConstraintHinge(**CarPrimitives.At(9), **CarPrimitives.At(23), btVector3{ 0, 3, 0 }, btVector3{ 0, 0 , 0 }, btVector3{ 0, 1, 0 }, btVector3{ 0, 1 , 0 });
 
-	//temp = new Cube(vec3(1, 1, 0.5));
-	//CarPrimitives.PushBack(temp);
-	//temp->SetPos(truckposx, 1, truckposz+1.5);
+	
+	HingeArm[1] = App->physics->AddConstraintHinge(**CarPrimitives.At(23), **CarPrimitives.At(24), btVector3{ 0, 1, 0 }, btVector3{ 0, 0 , 0 }, btVector3{ 1, 0, 0 }, btVector3{ 1, 0 , 0 });
+
 	
 	return ret;
 }

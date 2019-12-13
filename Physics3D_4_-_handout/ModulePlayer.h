@@ -36,6 +36,9 @@ private:
 	btHingeConstraint* Elevator;
 	btSliderConstraint* Axis[4];
 	btSliderConstraint* TruckAxis[3];
+	btSliderConstraint* SliderArm[3];
+	btHingeConstraint* HingeArm[4];
+
 
 public:
 
