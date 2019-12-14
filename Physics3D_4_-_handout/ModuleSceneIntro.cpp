@@ -154,7 +154,7 @@ void ModuleSceneIntro::CreateMap()
 
 	// 1 (first rect)
 	App->physics->CreateLineBox(46, 20, -195, 1, vec3(28, 20, 5), 12, 3);
-	App->physics->CreateLineBox(60, 1, -185, 7, vec3(6, 0, 10), 12, 3, true);
+	App->physics->CreateLineBox(60, 1, -185, 7, vec3(6, 0, 10), 12, 3, true);//x y z /number of block u want / block size / distance betwen blocks / direction of the line/ true=random high
 	App->physics->CreateLineBox(31, 1, -185, 4, vec3(6, 0, 10), 12, 3, true);
 
 	// 2 (second rect)
@@ -189,7 +189,20 @@ void ModuleSceneIntro::CreateMap()
 	App->physics->CreateLineBox(-24, 1, -25, 5, vec3(10, 0, 6), 13, 1, true);
 	App->physics->CreateLineBox(-24, 1, -48, 5, vec3(10, 0, 6), 13, 1, true);
 
-	// 8
+	// Left were u pick the spheres
+	App->physics->CreateLineBox(-85, 1, -122, 7, vec3(6, 0, 10), 12, 3, true);
+	App->physics->CreateLineBox(-85, 1, -23, 7, vec3(6, 0, 10), 12, 3, true);
 
+	// Right were u pick the spheres
+	App->physics->CreateLineBox(-115, 1, -122, 7, vec3(6, 0, 10), 12, 3, true);
+	App->physics->CreateLineBox(-115, 1, -23, 7, vec3(6, 0, 10), 12, 3, true);
 
+	//City edificies
+	App->physics->CreateLineBox(-75, 1, -132, 7, vec3(6, 0, 10), 12, 3, true);
+	App->physics->CreateLineBox(-65, 1, -132, 7, vec3(6, 0, 10), 12, 3, true);
+	App->physics->CreateLineBox(-55, 1, -132, 7, vec3(6, 0, 10), 12, 3, true);
+	App->physics->CreateLineBox(-45, 1, -132, 7, vec3(6, 0, 10), 12, 3, true);
+	App->physics->CreateLineBox(-35, 1, -132, 7, vec3(6, 0, 10), 12, 3, true);
+	App->physics->CreateLineBox(-25, 1, -132, 7, vec3(6, 0, 10), 12, 3, true);
+	App->physics->CreateLineBox(-15, 1, -132, 7, vec3(6, 0, 10), 12, 3, true);
 }

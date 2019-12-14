@@ -3,6 +3,7 @@
 #include "ModulePhysics3D.h"
 #include "PhysBody3D.h"
 #include "Primitive.h"
+#include "Globals.h"
 
 #include "glut/glut.h"
 
@@ -219,24 +220,8 @@ void ModulePhysics3D::CreateLineBox(float posx, float posy, float posz, int leng
 		}
 
 		Cube* s = new Cube(size, 900000);
-		
-		if (color == 0)
-		{
-			s->color = { 255,255,255 };
-		}
-		if (color == 1)
-		{
-			s->color = { 255,0,0 };
-		}
 
-		if (color == 0)
-		{
-			color = 1;
-		}
-		else if (color == 1)
-		{
-			color = 0;
-		}
+		s->color = { ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f) };
 
 		App->scene_intro->ScenePrimitives.PushBack(s);
 		s->SetPos(posx, posy, posz);
@@ -273,24 +258,7 @@ void ModulePhysics3D::CreateDiagonalBox(float posx, float posy, float posz, int 
 	{
 		Cube* s = new Cube(size, 900000);
 
-		if (color == 0)
-		{
-			s->color = { 255,255,255 };
-		}
-		if (color == 1)
-		{
-			s->color = { 255,0,0 };
-		}
-
-		if (color == 0)
-		{
-			color = 1;
-		}
-		else if (color == 1)
-		{
-			color = 0;
-		}
-
+		s->color = { ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f) };
 		App->scene_intro->ScenePrimitives.PushBack(s);
 		s->SetPos(posx, posy, posz);
 
