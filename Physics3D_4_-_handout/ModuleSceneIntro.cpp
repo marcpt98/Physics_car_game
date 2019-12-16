@@ -183,21 +183,51 @@ void ModuleSceneIntro::CreateMap()
 	// 6 (roundabout, exterior)
 	App->physics->CreateDiagonalBox(28, 1, -62, 5, vec3(1, 5, 2), 2, 1, 4);
 	App->physics->CreateDiagonalBox(-9, 1, -62, 5, vec3(1, 5, 2), 2, 3, 4);
+	App->physics->CreateDiagonalBox(-18, 1, -19, 5, vec3(1, 5, 2), 2, 1, 4);
+	App->physics->CreateDiagonalBox(36, 1, -19, 5, vec3(1, 5, 2), 2, 3, 4);
 
 	// FIRST 3 BALLS
-	// 7
+	// 7 (first rect)
 	App->physics->CreateLineBox(-24, 1, -25, 5, vec3(10, 0, 6), 13, 1, true);
 	App->physics->CreateLineBox(-24, 1, -48, 5, vec3(10, 0, 6), 13, 1, true);
-
-	// Left were u pick the spheres
+	
+	// 8 (Left were u pick the spheres)
 	App->physics->CreateLineBox(-85, 1, -122, 7, vec3(6, 0, 10), 12, 3, true);
 	App->physics->CreateLineBox(-85, 1, -23, 7, vec3(6, 0, 10), 12, 3, true);
+	App->physics->CreateLineBox(-87, 1, 59, 3, vec3(10, 0, 6), 12, 1, true);
 
-	// Right were u pick the spheres
+
+	// 9 (Right were u pick the spheres)
 	App->physics->CreateLineBox(-115, 1, -122, 7, vec3(6, 0, 10), 12, 3, true);
 	App->physics->CreateLineBox(-115, 1, -23, 7, vec3(6, 0, 10), 12, 3, true);
+	App->physics->CreateLineBox(-87, 1, -132, 3, vec3(10, 0, 6), 12, 1, true);
 
-	//City edificies
+	// 10 (Forward were u pick the spheres)
+	App->physics->CreateLineBox(-125, 1, -50, 5, vec3(10, 0, 6), 12, 1, true);
+	App->physics->CreateLineBox(-125, 1, -25, 5, vec3(10, 0, 6), 12, 1, true);
+	App->physics->CreateLineBox(-183, 1, -48, 3, vec3(6, 0, 10), 12, 3, true);
+
+	// SECOND 2 BALLS
+	// 11 (first rect)
+	App->physics->CreateLineBox(24, 1, 4, 3, vec3(6, 0, 10), 12, 3, true);
+	App->physics->CreateLineBox(-6, 1, 4, 3, vec3(6, 0, 10), 12, 3, true);
+	
+	// 12 (Bridge)
+	App->physics->CreateRamp(9, 1, 34, 25, vec3(26, 0.3, 1), 1, 3);
+	App->physics->CreateLineBox(9, 1, 61, 1, vec3(26, 8, 20), 12, 3);
+
+
+
+
+	// THIRD 1 BALL
+	// X (first rect)
+	App->physics->CreateLineBox(42, 1, -17, 4, vec3(10, 0, 6), 13, 0, true);
+	App->physics->CreateLineBox(42, 1, -48, 4, vec3(10, 0, 6), 13, 0, true);
+	
+	
+	
+	
+	// X (City edificies that don't create track)
 	App->physics->CreateLineBox(-75, 1, -132, 7, vec3(6, 0, 10), 12, 3, true);
 	App->physics->CreateLineBox(-65, 1, -132, 7, vec3(6, 0, 10), 12, 3, true);
 	App->physics->CreateLineBox(-55, 1, -132, 7, vec3(6, 0, 10), 12, 3, true);
@@ -205,4 +235,7 @@ void ModuleSceneIntro::CreateMap()
 	App->physics->CreateLineBox(-35, 1, -132, 7, vec3(6, 0, 10), 12, 3, true);
 	App->physics->CreateLineBox(-25, 1, -132, 7, vec3(6, 0, 10), 12, 3, true);
 	App->physics->CreateLineBox(-15, 1, -132, 7, vec3(6, 0, 10), 12, 3, true);
+
+	
+	
 }
