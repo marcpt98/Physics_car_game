@@ -54,12 +54,14 @@ private:
 	btSequentialImpulseConstraintSolver* solver;
 
 	DebugDrawer*						debug_draw;
-	p2List<btPoint2PointConstraint*>	P2PConstraints;
 	p2List<btHingeConstraint*>			HingeConstraints;
 	p2List<btSliderConstraint*>			SliderConstraints;
 
 	// Change color of map walls
 	int color = 0;
+public:
+	p2List<btPoint2PointConstraint*>	P2PConstraints;
+
 };
 
 class DebugDrawer : public btIDebugDraw

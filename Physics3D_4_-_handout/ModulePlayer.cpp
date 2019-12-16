@@ -25,7 +25,7 @@ bool ModulePlayer::CleanUp()
 bool ModulePlayer::Start()
 {
 	bool ret = true;
-
+	grip = nullptr;
 	//Car body
 	car = new Cube(vec3(1, 1, 2));
 	CarPrimitives.PushBack(car);
@@ -293,7 +293,7 @@ update_status ModulePlayer::PostUpdate(float dt)
 
 void ModulePlayer::OnCollision(PhysBody3D* body1, PhysBody3D* body2) {
 	if (body1->parentPrimitive->name == "Claw" && body2->parentPrimitive->name == "Ball" && cangrip) {
-		grip = App->physics->AddConstraintP2P(*body1->parentPrimitive, *body2->parentPrimitive, btVector3{ 0, -1, 0 }, btVector3{ 0, 0 , 0 });
+		body2->SetPos(TruckCab->body.GetPos().x, TruckCab->body.GetPos().y+2, TruckCab->body.GetPos().z-2);
 	}
 	
 }
@@ -419,9 +419,7 @@ void ModulePlayer::TruckInput(float dt) {
 		if (cangrip)
 		{
 			cangrip = false;
-			if (grip != nullptr) {
-				App->physics->world->removeConstraint(grip);
-			}
+
 		}
 		else { cangrip = true; 
 		}
