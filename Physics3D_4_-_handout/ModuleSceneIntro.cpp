@@ -133,27 +133,8 @@ void ModuleSceneIntro::OnCollision(PhysBody3D * body1, PhysBody3D * body2)
 
 void ModuleSceneIntro::CreateMap()
 {
-	/*// First rect
-	App->physics->CreateLineBox(5, 1, 0, 15, vec3(1, 2, 1), 2, 3);
-	App->physics->CreateLineBox(-5, 1, 0, 10, vec3(1, 2, 1), 2, 3);
-
-	// First diagonal
-	App->physics->CreateDiagonalBox(5, 1, 30, 15, vec3(1, 2, 1), 1.5f, 3, 1);
-	App->physics->CreateDiagonalBox(-5, 1, 20, 9, vec3(1, 2, 1), 1.5f, 3, 1);
-
-	// Second rect
-	App->physics->CreateLineBox(-26, 1, 44, 5, vec3(1, 2, 1), 2, 0);
-	App->physics->CreateLineBox(-21, 1, 28, 2, vec3(1, 2, 1), 2, 0);
-
-	// Second diagonal
-	App->physics->CreateDiagonalBox(-28, 1, 44, 10, vec3(1, 2, 1), 1.5f, 2, 1);
-	App->physics->CreateDiagonalBox(-23, 1, 28, 5, vec3(1, 2, 1), 1.5f, 2, 1);
-
-
-	//App->physics->CreateCurveBox(10, 1.f, 15.f, 7, vec3(0.5f, 1.f, 0.5f), 0.5f, 0, 0.5f);*/
-
 	// 1 (first rect)
-	App->physics->CreateLineBox(46, 20, -195, 1, vec3(28, 20, 5), 12, 3);
+	App->physics->CreateLineBox(46, 1, -193, 1, vec3(28, 20, 5), 12, 3);
 	App->physics->CreateLineBox(60, 1, -185, 7, vec3(6, 0, 10), 12, 3, true);//x y z /number of block u want / block size / distance betwen blocks / direction of the line/ true=random high
 	App->physics->CreateLineBox(31, 1, -185, 4, vec3(6, 0, 10), 12, 3, true);
 
@@ -177,8 +158,8 @@ void ModuleSceneIntro::CreateMap()
 	App->physics->CreateLineBox(12, 1, -36, 1, vec3(3, 7, 3), 3, 1);
 	App->physics->CreateLineBox(7, 1, -36, 1, vec3(3, 7, 3), 3, 1);
 	App->physics->CreateLineBox(9, 8, -36, 1, vec3(10, 7, 5), 3, 1);
-	App->physics->CreateLineBox(9, 15, -36, 1, vec3(20, 3, 5), 3, 1);
-	App->physics->CreateLineBox(9, 20, -36, 1, vec3(7, 7, 7), 3, 1);
+	App->physics->CreateLineBox(9, 13, -36, 1, vec3(20, 3, 5), 3, 1);
+	App->physics->CreateLineBox(9, 18, -36, 1, vec3(7, 7, 7), 3, 1);
 
 	// 6 (roundabout, exterior)
 	App->physics->CreateDiagonalBox(28, 1, -62, 5, vec3(1, 5, 2), 2, 1, 4);
@@ -224,7 +205,7 @@ void ModuleSceneIntro::CreateMap()
 	App->physics->CreateDiagonalBox(-43, 1, 127, 5, vec3(1, 5, 2), 2, 3, 4);
 	App->physics->CreateLineBox(-55, 1, 150, 2, vec3(6, 0, 10), 12, 3, true);
 	App->physics->CreateDiagonalBox(-52, 1, 169, 5, vec3(1, 5, 2), 2, 1, 4);
-	App->physics->CreateLineBox(-37, 10, 188, 8, vec3(10, 0, 6), 12, 0, true);
+	App->physics->CreateLineBox(-37, 1, 188, 8, vec3(10, 0, 6), 12, 0, true);
 	App->physics->CreateDiagonalBox(-7, 1, 183, 5, vec3(1, 5, 2), 2, 0, 4);
 	App->physics->CreateLineBox(-28, 1, 162, 7, vec3(10, 0, 6), 12, 0, true);
 
@@ -237,9 +218,9 @@ void ModuleSceneIntro::CreateMap()
 	App->physics->CreateDiagonalBox(15, 1, 167, 5, vec3(1, 5, 2), 2, 1, 4);
 
 	// THIRD 1 BALL
-	// X (first rect)
-	App->physics->CreateLineBox(42, 1, -17, 4, vec3(10, 0, 6), 13, 0, true);
-	App->physics->CreateLineBox(42, 1, -48, 4, vec3(10, 0, 6), 13, 0, true);
+	// 15 (first rect)
+	App->physics->CreateLineBox(42, 1, -17, 1, vec3(10, 0, 6), 13, 0, true);
+	App->physics->CreateLineBox(42, 1, -48, 1, vec3(10, 0, 6), 13, 0, true);
 	
 	
 	

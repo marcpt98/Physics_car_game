@@ -226,7 +226,7 @@ void ModulePhysics3D::CreateLineBox(float posx, float posy, float posz, int leng
 			}
 		}
 
-		Cube* s = new Cube(size, 900000);
+		Cube* s = new Cube(size, 0);
 
 		s->color = { ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f) };
 
@@ -263,7 +263,7 @@ void ModulePhysics3D::CreateDiagonalBox(float posx, float posy, float posz, int 
 {
 	for (int n = 0; n < lenght; n++)
 	{
-		Cube* s = new Cube(size, 900000);
+		Cube* s = new Cube(size, 0);
 
 		s->color = { ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f) };
 		App->scene_intro->ScenePrimitives.PushBack(s);
@@ -304,7 +304,7 @@ void ModulePhysics3D::CreateCurveBox(float posx, float posy, float posz, int len
 {
 	for (int n = 0; n < lenght; n++)
 	{
-		Cube* s = new Cube(size);
+		Cube* s = new Cube(size, 0);
 		App->scene_intro->ScenePrimitives.PushBack(s);
 		s->SetPos(posx, posy, posz);
 
@@ -322,7 +322,7 @@ void ModulePhysics3D::CreateRamp(float posx, float posy, float posz, int lenght,
 {
 	for (int n = 0; n < lenght; n++)
 	{
-		Cube* s = new Cube(size, 900000);
+		Cube* s = new Cube(size, 0);
 
 		s->color = { ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f) };
 		App->scene_intro->ScenePrimitives.PushBack(s);
