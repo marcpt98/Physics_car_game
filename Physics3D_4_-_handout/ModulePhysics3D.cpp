@@ -210,7 +210,7 @@ btSliderConstraint* ModulePhysics3D::AddConstraintSlider(const Primitive& bodyA,
 	return constraint;
 }
 
-void ModulePhysics3D::CreateLineBox(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction, bool randh, bool veryhight)
+void ModulePhysics3D::CreateLineBox(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction, bool randh, bool veryhight, bool tunnelL, bool tunnelR, bool tunnelU)
 {
 	for (int n = 0; n < lenght; n++)
 	{
@@ -232,6 +232,23 @@ void ModulePhysics3D::CreateLineBox(float posx, float posy, float posz, int leng
 
 		App->scene_intro->ScenePrimitives.PushBack(s);
 		s->SetPos(posx, posy, posz);
+
+		if (tunnelL == true)
+		{
+			posy -= 0.15;
+			posz += 0.15;
+
+		}
+		else if (tunnelR == true)
+		{
+			posy -= 0.15;
+			posz -= 0.15;
+		}
+		else if (tunnelU == true)
+		{
+			posy -= 0.15;
+			size.z -= 0.3;
+		}
 
 		// Right
 		if (direction == 0)
@@ -334,7 +351,7 @@ void ModulePhysics3D::CreateRamp(float posx, float posy, float posz, int lenght,
 		}
 		else if (updown == 1)
 		{
-			size.y -= 0.3;
+			size.y -= 0.25;
 		}
 
 		// Right
@@ -362,6 +379,7 @@ void ModulePhysics3D::CreateRamp(float posx, float posy, float posz, int lenght,
 		}
 	}
 }
+
 
 // =============================================
 void DebugDrawer::drawLine(const btVector3& from, const btVector3& to, const btVector3& color)
