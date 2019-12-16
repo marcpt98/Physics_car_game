@@ -213,11 +213,28 @@ void ModuleSceneIntro::CreateMap()
 	App->physics->CreateLineBox(-6, 1, 4, 3, vec3(6, 0, 10), 12, 3, true);
 	
 	// 12 (Bridge)
-	App->physics->CreateRamp(9, 1, 34, 25, vec3(26, 0.3, 1), 1, 3);
-	App->physics->CreateLineBox(9, 1, 61, 1, vec3(26, 8, 20), 12, 3);
+	App->physics->CreateRamp(9, 1, 34, 28, vec3(26, 0.3, 1), 1.2, 3, 0);
+	App->physics->CreateLineBox(9, 1, 80, 1, vec3(26, 9, 25), 12, 3);
+	App->physics->CreateRamp(9, 1, 93.5, 28, vec3(26, 9, 1), 1.2, 3, 1);
+	App->physics->CreateLineBox(24, 1, 35, 31, vec3(2, 0, 2), 3, 3, true, true);
+	App->physics->CreateLineBox(-6, 1, 35, 31, vec3(2, 0, 2), 3, 3, true, true);
 
+	// 13 (right part)
+	App->physics->CreateLineBox(-37, 1, 123, 3, vec3(10, 0, 6), 12, 0, true);
+	App->physics->CreateDiagonalBox(-43, 1, 127, 5, vec3(1, 5, 2), 2, 3, 4);
+	App->physics->CreateLineBox(-55, 1, 150, 2, vec3(6, 0, 10), 12, 3, true);
+	App->physics->CreateDiagonalBox(-52, 1, 169, 5, vec3(1, 5, 2), 2, 1, 4);
+	App->physics->CreateLineBox(-37, 10, 188, 8, vec3(10, 0, 6), 12, 0, true);
+	App->physics->CreateDiagonalBox(-7, 1, 183, 5, vec3(1, 5, 2), 2, 0, 4);
+	App->physics->CreateLineBox(-28, 1, 162, 7, vec3(10, 0, 6), 12, 0, true);
 
-
+	// 14 (left part)
+	App->physics->CreateLineBox(55, 1, 123, 3, vec3(10, 0, 6), 12, 1, true);
+	App->physics->CreateDiagonalBox(61, 1, 127, 5, vec3(1, 5, 2), 2, 1, 4);
+	App->physics->CreateLineBox(73, 1, 150, 2, vec3(6, 0, 10), 12, 3, true);
+	App->physics->CreateDiagonalBox(62, 1, 185, 5, vec3(1, 5, 2), 2, 0, 4);
+	App->physics->CreateLineBox(58, 1, 186, 2, vec3(2, 5, 1), 3, 1);
+	App->physics->CreateDiagonalBox(15, 1, 167, 5, vec3(1, 5, 2), 2, 1, 4);
 
 	// THIRD 1 BALL
 	// X (first rect)

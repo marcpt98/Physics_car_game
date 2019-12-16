@@ -210,13 +210,20 @@ btSliderConstraint* ModulePhysics3D::AddConstraintSlider(const Primitive& bodyA,
 	return constraint;
 }
 
-void ModulePhysics3D::CreateLineBox(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction, bool randh)
+void ModulePhysics3D::CreateLineBox(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction, bool randh, bool veryhight)
 {
 	for (int n = 0; n < lenght; n++)
 	{
 		if (randh == true)
 		{
-			size.y = (float)(std::rand() % 30 + 10);
+			if (veryhight == true)
+			{
+				size.y = (float)(std::rand() % 30 + 15);
+			}
+			else
+			{
+				size.y = (float)(std::rand() % 30 + 10);
+			}
 		}
 
 		Cube* s = new Cube(size, 900000);
@@ -311,7 +318,7 @@ void ModulePhysics3D::CreateCurveBox(float posx, float posy, float posz, int len
 	}
 }
 
-void ModulePhysics3D::CreateRamp(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction)
+void ModulePhysics3D::CreateRamp(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction, int updown)
 {
 	for (int n = 0; n < lenght; n++)
 	{
@@ -321,7 +328,14 @@ void ModulePhysics3D::CreateRamp(float posx, float posy, float posz, int lenght,
 		App->scene_intro->ScenePrimitives.PushBack(s);
 		s->SetPos(posx, posy, posz);
 
-		size.y += 0.3;
+		if (updown == 0)
+		{
+			size.y += 0.3;
+		}
+		else if (updown == 1)
+		{
+			size.y -= 0.3;
+		}
 
 		// Right
 		if (direction == 0)

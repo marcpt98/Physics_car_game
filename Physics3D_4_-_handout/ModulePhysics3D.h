@@ -41,10 +41,10 @@ public:
 	btSliderConstraint* AddConstraintSlider(const Primitive& bodyA, const Primitive& bodyB, btTransform& frameinA, btTransform& frameinB, bool linearreference = true);
 
 	// Create map walls
-	void CreateLineBox(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction, bool randh = false);
+	void CreateLineBox(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction, bool randh = false, bool veryhight = false);
 	void CreateDiagonalBox(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction, float diagonal, bool randh = false);
 	void CreateCurveBox(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction, float rad);
-	void CreateRamp(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction);
+	void CreateRamp(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction, int updown);
 
 	btDiscreteDynamicsWorld*			world;
 private:
