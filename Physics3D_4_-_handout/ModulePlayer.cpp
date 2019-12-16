@@ -125,7 +125,7 @@ bool ModulePlayer::Start()
 	wheels[3] = App->physics->AddConstraintHinge(**CarPrimitives.At(3), **CarPrimitives.At(8), btVector3{ 0.2,-0.2, -0 }, btVector3{ 0, 0,0 }, btVector3{ -1, 0,0 }, btVector3{ 0,1,0 });
 
 	
-	float truckposx = 5.f, truckposy = 5.f, truckposz = -5.f;
+	float truckposx = 45.f, truckposy = 5.f, truckposz = -175.f;
 	TruckCab = new Cube(vec3(2, 2, 2));
 	TruckCab->color.Set(100,100,100);
 	CarPrimitives.PushBack(TruckCab);
