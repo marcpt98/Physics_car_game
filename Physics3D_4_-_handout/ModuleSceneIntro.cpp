@@ -212,6 +212,9 @@ void ModuleSceneIntro::CreateMap()
 	App->physics->CreateLineBox(24, 1, 4, 3, vec3(6, 0, 10), 12, 3, true);
 	App->physics->CreateLineBox(-6, 1, 4, 3, vec3(6, 0, 10), 12, 3, true);
 	
+	// 12 (Bridge)
+	App->physics->CreateRamp(9, 1, 34, 25, vec3(26, 0.3, 1), 1, 3);
+	App->physics->CreateLineBox(9, 1, 61, 1, vec3(26, 8, 20), 12, 3);
 
 
 

@@ -311,6 +311,44 @@ void ModulePhysics3D::CreateCurveBox(float posx, float posy, float posz, int len
 	}
 }
 
+void ModulePhysics3D::CreateRamp(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction)
+{
+	for (int n = 0; n < lenght; n++)
+	{
+		Cube* s = new Cube(size, 900000);
+
+		s->color = { ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f) };
+		App->scene_intro->ScenePrimitives.PushBack(s);
+		s->SetPos(posx, posy, posz);
+
+		size.y += 0.3;
+
+		// Right
+		if (direction == 0)
+		{
+			posx += interval;
+		}
+
+		// Left
+		else if (direction == 1)
+		{
+			posx -= interval;
+		}
+
+		// Forward
+		else if (direction == 2)
+		{
+			posz -= interval;
+		}
+
+		// Backward
+		else if (direction == 3)
+		{
+			posz += interval;
+		}
+	}
+}
+
 // =============================================
 void DebugDrawer::drawLine(const btVector3& from, const btVector3& to, const btVector3& color)
 {

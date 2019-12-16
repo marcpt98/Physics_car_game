@@ -44,6 +44,7 @@ public:
 	void CreateLineBox(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction, bool randh = false);
 	void CreateDiagonalBox(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction, float diagonal, bool randh = false);
 	void CreateCurveBox(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction, float rad);
+	void CreateRamp(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction);
 
 private:
 	btDefaultCollisionConfiguration*	collision_conf;
