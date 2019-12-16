@@ -45,12 +45,13 @@ public:
 	void CreateDiagonalBox(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction, float diagonal, bool randh = false);
 	void CreateCurveBox(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction, float rad);
 
+	btDiscreteDynamicsWorld*			world;
 private:
 	btDefaultCollisionConfiguration*	collision_conf;
 	btCollisionDispatcher*				dispatcher;
 	btBroadphaseInterface*				broad_phase;
 	btSequentialImpulseConstraintSolver* solver;
-	btDiscreteDynamicsWorld*			world;
+
 	DebugDrawer*						debug_draw;
 	p2List<btPoint2PointConstraint*>	P2PConstraints;
 	p2List<btHingeConstraint*>			HingeConstraints;

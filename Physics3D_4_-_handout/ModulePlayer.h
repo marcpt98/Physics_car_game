@@ -39,7 +39,8 @@ private:
 	btSliderConstraint* TruckAxis[3];
 	btSliderConstraint* SliderArm[3];
 	btHingeConstraint* HingeArm[4];
-
+	btPoint2PointConstraint* grip;
+	bool cangrip = false;
 
 public:
 
@@ -47,5 +48,6 @@ public:
 	Cube* car;
 	Cube* temp;
 	Cylinder* temp2;
+	Sphere* temp3;
 	p2DynArray<Primitive*> CarPrimitives;
 };

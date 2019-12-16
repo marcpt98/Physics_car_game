@@ -247,14 +247,28 @@ bool ModulePlayer::Start()
 	CarPrimitives.PushBack(temp);
 	temp->SetPos(truckposx + 1, truckposy + 3.3, truckposz);
 
+	temp = new Cube(vec3(0.3, 0.3, 0.1), 0.01);
+	CarPrimitives.PushBack(temp);
+	temp->SetPos(truckposx + 1.4, truckposy + 3.3, truckposz);
+	CarPrimitives[26]->name = "Claw";
+	CarPrimitives[26]->body.collision_listeners.PushBack(this);
+
+	temp3 = new Sphere(1, 0.01);
+	CarPrimitives.PushBack(temp3);
+	temp3->SetPos(truckposx + 5, truckposy , truckposz);
+	CarPrimitives[27]->name = "Ball";
+
 	HingeArm[0] = App->physics->AddConstraintHinge(**CarPrimitives.At(9), **CarPrimitives.At(23), btVector3{ 0, 1.2f, 0 }, btVector3{ 0, 0 , 0 }, btVector3{ 0, 1, 0 }, btVector3{ 0, 1 , 0 });
 	HingeArm[1] = App->physics->AddConstraintHinge(**CarPrimitives.At(23), **CarPrimitives.At(24), btVector3{ 0, 0.4, 0 }, btVector3{ 0, -1 , 0 }, btVector3{ 0, 0, 1 }, btVector3{ 0, 0 , 1 });
 	//HingeArm[1]->setLimit(0.5, 0, 100);
 	HingeArm[2] = App->physics->AddConstraintHinge(**CarPrimitives.At(24), **CarPrimitives.At(25), btVector3{ 0, 0.8, 0.15 }, btVector3{ 0, -1.25 , 0 }, btVector3{ 0, 0, 1 }, btVector3{ 0, 0 , 1 });
 
+	App->physics->AddConstraintP2P(**CarPrimitives.At(25), **CarPrimitives.At(26), btVector3{ 0, 1.3, 0 }, btVector3{ 0, 0 , 0 });
 
 	//btCollisionObject::
 	
+	cangrip = false;
+
 	return ret;
 }
 
@@ -278,7 +292,10 @@ update_status ModulePlayer::PostUpdate(float dt)
 }
 
 void ModulePlayer::OnCollision(PhysBody3D* body1, PhysBody3D* body2) {
-
+	if (body1->parentPrimitive->name == "Claw" && body2->parentPrimitive->name == "Ball" && cangrip) {
+		grip = App->physics->AddConstraintP2P(*body1->parentPrimitive, *body2->parentPrimitive, btVector3{ 0, -1, 0 }, btVector3{ 0, 0 , 0 });
+	}
+	
 }
 
 void ModulePlayer::TruckInput(float dt) {
@@ -398,6 +415,17 @@ void ModulePlayer::TruckInput(float dt) {
 		HingeArm[2]->enableAngularMotor(true, -1.f, 10);
 
 	}
+	if (App->input->GetKey(SDL_SCANCODE_4) == KEY_DOWN) {
+		if (cangrip)
+		{
+			cangrip = false;
+			if (grip != nullptr) {
+				App->physics->world->removeConstraint(grip);
+			}
+		}
+		else { cangrip = true; 
+		}
+	}
 
 }
 
@@ -513,5 +541,6 @@ void ModulePlayer::CarInput(float dt)
 		Axis[3]->setTargetAngMotorVelocity(1);
 		Axis[3]->setMaxAngMotorForce(10);*/
 	}
+
 
 }
