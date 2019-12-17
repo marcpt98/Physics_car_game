@@ -194,9 +194,9 @@ void ModuleSceneIntro::CreateMap()
 	App->physics->CreateLineBox(-6, 1, 4, 3, vec3(6, 0, 10), 12, 3, true);
 	
 	// 12 (Bridge)
-	App->physics->CreateRamp(9, 1, 34, 31, vec3(26, 0.3, 1), 1, 3, 0);
-	App->physics->CreateLineBox(9, 1, 77, 1, vec3(26, 9, 25), 12, 3);
-	App->physics->CreateRamp(9, 1, 90, 36, vec3(26, 9, 1), 1, 3, 1);
+	App->physics->CreateRamp(9, 0, 34, 31, vec3(26, 0.3, 1), 1, 3, 0);
+	App->physics->CreateLineBox(9, 1, 77, 1, vec3(26, 7, 25), 12, 3);
+	App->physics->CreateRamp(9, 1, 90, 35, vec3(26, 7, 1), 1, 3, 1);
 	App->physics->CreateLineBox(23, 1, 35, 31, vec3(2, 0, 2), 3, 3, true, true);
 	App->physics->CreateLineBox(-5, 1, 35, 31, vec3(2, 0, 2), 3, 3, true, true);
 
@@ -245,6 +245,21 @@ void ModuleSceneIntro::CreateMap()
 	App->physics->CreateLineBox(171, 8, -32.5, 1, vec3(2, 2, 15), 2, 0);
 	App->physics->CreateLineBox(169, 8, -32.5, 1, vec3(2, 2, 13), 2, 0);
 	
+	// DECORATION
+	// 17 (first rect)
+	App->physics->CreateLineBox(36.5, 0, -164.2, 1, vec3(5, 0.5, 54.3), 0, 0);
+	App->physics->CreateLineBox(54.5, 0, -149, 1, vec3(5, 0.5, 83.5), 0, 0);
+	App->physics->CreateLamp(39.5, 0, -185, 5, 13, 3);
+	App->physics->CreateLamp(51.5, 0, -185, 6, 13, 3);
+
+	// 18 (second rect)
+	App->physics->CreateLineBox(36.5, 0, -109.5, 1, vec3(54.3, 0.5, 5), 0, 0);
+	
+
+
+
+
+
 	// X (City edificies that don't create track)
 	App->physics->CreateLineBox(-75, 1, -132, 7, vec3(6, 0, 10), 12, 3, true);
 	App->physics->CreateLineBox(-65, 1, -132, 7, vec3(6, 0, 10), 12, 3, true);

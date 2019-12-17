@@ -351,8 +351,53 @@ void ModulePhysics3D::CreateRamp(float posx, float posy, float posz, int lenght,
 		}
 		else if (updown == 1)
 		{
-			size.y -= 0.25;
+			size.y -= 0.2;
+			posy -= 0.03;
 		}
+
+		// Right
+		if (direction == 0)
+		{
+			posx += interval;
+		}
+
+		// Left
+		else if (direction == 1)
+		{
+			posx -= interval;
+		}
+
+		// Forward
+		else if (direction == 2)
+		{
+			posz -= interval;
+		}
+
+		// Backward
+		else if (direction == 3)
+		{
+			posz += interval;
+		}
+	}
+}
+
+void ModulePhysics3D::CreateLamp(float posx, float posy, float posz, int lenght, float interval, int direction)
+{
+	for (int n = 0; n < lenght; n++)
+	{
+		Cube* s = new Cube({ 0.5,20,0.5 }, 0);
+		Cube* d = new Cube({ 2.5,2.5,2.5 }, 0);
+		Cube* f = new Cube({ 1,0.2,1 }, 0);
+
+		s->color = { ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f) };
+		d->color = { 255,255,0 };
+		f->color = { ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f) };
+		App->scene_intro->ScenePrimitives.PushBack(s);
+		App->scene_intro->ScenePrimitives.PushBack(d);
+		App->scene_intro->ScenePrimitives.PushBack(f);
+		s->SetPos(posx, posy, posz);
+		d->SetPos(posx, posy + 10, posz);
+		f->SetPos(posx, posy, posz);
 
 		// Right
 		if (direction == 0)
