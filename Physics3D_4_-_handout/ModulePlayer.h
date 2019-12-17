@@ -33,7 +33,7 @@ private:
 
 
 	btHingeConstraint* wheels[4];
-	btHingeConstraint* TruckWheels[6];
+	btHingeConstraint* TruckWheels[7];
 	btHingeConstraint* Elevator;
 	btSliderConstraint* Axis[4];
 	btSliderConstraint* TruckAxis[3];
@@ -45,6 +45,7 @@ private:
 public:
 
 	Cube* TruckCab;
+	Cube* TruckBody;
 	Cube* car;
 	Cube* temp;
 	Cylinder* temp2;
