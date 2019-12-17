@@ -24,6 +24,13 @@ bool ModulePlayer::CleanUp()
 
 bool ModulePlayer::Start()
 {
+	/*Sensor_cube = new Cube(vec3(5,5, 10),0);
+	Sensor_cube->body.collision_listeners.PushBack(this);
+	Sensor_cube->body.SetAsSensor(true);
+
+	Sensor_cube->body.is_sensor = true;
+	Sensor_cube->body.parentPrimitive->name = "Car";*/
+
 	bool ret = true;
 	grip = nullptr;
 	//Car body
@@ -130,6 +137,8 @@ bool ModulePlayer::Start()
 	TruckCab->color.Set(100,100,100);
 	CarPrimitives.PushBack(TruckCab);
 	TruckCab->SetPos(truckposx, truckposy, truckposz);
+	CarPrimitives[9]->name = "Cart";
+	CarPrimitives[9]->body.collision_listeners.PushBack(this);
 
 	temp = new Cube(vec3(2.4, 0.5, 5));
 	CarPrimitives.PushBack(temp);
@@ -294,7 +303,9 @@ bool ModulePlayer::Start()
 
 update_status ModulePlayer::Update(float dt)
 {
-	
+	//Sensor_cube->SetPos(TruckCab->body.GetPos().x, TruckCab->body.GetPos().y, TruckCab->body.GetPos().z);
+	//Sensor_cube->Update();
+
 	TruckInput(dt);
 	CarInput(dt);
 
@@ -312,10 +323,19 @@ update_status ModulePlayer::PostUpdate(float dt)
 }
 
 void ModulePlayer::OnCollision(PhysBody3D* body1, PhysBody3D* body2) {
+
 	if (body1->parentPrimitive->name == "Claw" && body2->parentPrimitive->name == "Ball") {
 		body2->SetPos(TruckBody->body.GetPos().x, TruckBody->body.GetPos().y+1, TruckBody->body.GetPos().z);
 	}
-	
+
+	if (body1->parentPrimitive->name == "Cart" && body2->parentPrimitive->name == "sensor1") {
+		LOG("SENSOOOORS WOOORKS");
+	}
+
+	/*if (body1->parentPrimitive->name == "Claw" && body2->parentPrimitive->name == "sensor1" &&  body2->IsSensor() == true) {
+		LOG("ALL SENSOOOORS WOOORKS");
+	}*/
+
 }
 
 void ModulePlayer::TruckInput(float dt) {
@@ -363,7 +383,7 @@ void ModulePlayer::TruckInput(float dt) {
 		TruckWheels[2]->enableAngularMotor(true, -20.f, 100.f);
 		TruckWheels[4]->enableAngularMotor(true, -20.f, 100.f);
 
-		TruckAxis[0]->setPoweredAngMotor(true);
+		//TruckAxis[0]->setPoweredAngMotor(true);
 		TruckAxis[0]->setTargetAngMotorVelocity(0.1);
 	//	TruckAxis[0]->setMaxAngMotorForce(10);
 		TruckAxis[0]->setLowerAngLimit(-0.2f);
@@ -381,7 +401,7 @@ void ModulePlayer::TruckInput(float dt) {
 		TruckWheels[3]->enableAngularMotor(true, -20.f, 100.f);
 		TruckWheels[5]->enableAngularMotor(true, -20.f, 100.f);
 
-		TruckAxis[0]->setPoweredAngMotor(true);
+		//TruckAxis[0]->setPoweredAngMotor(true);
 		TruckAxis[0]->setTargetAngMotorVelocity(-0.1);
 		//TruckAxis[0]->setMaxAngMotorForce(-10);
 		TruckAxis[0]->setLowerAngLimit(-0.2f);
@@ -554,6 +574,5 @@ void ModulePlayer::CarInput(float dt)
 		Axis[3]->setTargetAngMotorVelocity(1);
 		Axis[3]->setMaxAngMotorForce(10);*/
 	}
-
-
+	
 }

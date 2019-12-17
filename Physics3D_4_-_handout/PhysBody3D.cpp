@@ -147,11 +147,28 @@ const vec3 PhysBody3D::GetPos() const
 vec3 PhysBody3D::GetForwardVector() const
 {
 	mat4x4 transform;
-	body->getWorldTransform().getOpenGLMatrix(&transform); //aqui pilla la rotacio y la traslació
-	mat3x3 rotation(transform);       //aqui guardamos la rotacion
+	body->getWorldTransform().getOpenGLMatrix(&transform); //Here we pick the rotation and the translation 
+	mat3x3 rotation(transform);       //And here we save the translation
 	
 	vec3 forward(0.f, 0.f, 1.f);
 	forward = rotation * forward;
 
 	return forward;
+}
+
+void PhysBody3D::SetAsSensor(bool is_sensor)
+{
+	if (this->is_sensor != is_sensor)
+	{
+		this->is_sensor = is_sensor;
+		if (is_sensor == true)
+			body->setCollisionFlags(body->getCollisionFlags() | btCollisionObject::CF_NO_CONTACT_RESPONSE);
+		else
+			body->setCollisionFlags(body->getCollisionFlags() & ~btCollisionObject::CF_NO_CONTACT_RESPONSE);
+	}
+}
+
+bool PhysBody3D::IsSensor() const
+{
+	return is_sensor;
 }

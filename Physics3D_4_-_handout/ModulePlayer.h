@@ -44,6 +44,7 @@ private:
 
 public:
 
+	//Cube* Sensor_cube;
 	Cube* TruckCab;
 	Cube* TruckBody;
 	Cube* car;

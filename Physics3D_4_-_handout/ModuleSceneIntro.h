@@ -34,4 +34,6 @@ public:
 	p2DynArray<Primitive*> ScenePrimitives;
 	bool camerafollow = false;
 	bool camerafollowhelicopter = false;
+	Cube* Sensor_cube;
+	PhysBody3D* sensor = nullptr;
 };

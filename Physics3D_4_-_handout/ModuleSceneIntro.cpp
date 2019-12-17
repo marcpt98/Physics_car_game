@@ -15,6 +15,16 @@ ModuleSceneIntro::~ModuleSceneIntro()
 // Load assets
 bool ModuleSceneIntro::Start()
 {
+	//Sensors
+	Sensor_cube = new Cube(vec3(10, 10, 20), 0);
+	Sensor_cube->SetPos(45, 1, -148);
+	//ScenePrimitives.PushBack(Sensor_cube);
+	Sensor_cube->body.SetAsSensor(true);
+	Sensor_cube->name = "sensor1";
+	Sensor_cube->body.collision_listeners.PushBack(this);
+	Sensor_cube->body.is_sensor = true;
+
+
 	LOG("Loading Intro assets");
 	bool ret = true;
 
@@ -73,6 +83,7 @@ void ModuleSceneIntro::HandleDebugInput()
 			body->parentPrimitive->color = Color((float)(std::rand() % 255) / 255.f, (float)(std::rand() % 255) / 255.f, (float)(std::rand() % 255) / 255.f);
 		}
 	}
+
 }
 
 void ModuleSceneIntro::DebugSpawnPrimitive(Primitive * p)
@@ -126,8 +137,8 @@ void ModuleSceneIntro::OnCollision(PhysBody3D * body1, PhysBody3D * body2)
 {
 	Color color = Color((float)(std::rand() % 255) / 255.f, (float)(std::rand() % 255) / 255.f, (float)(std::rand() % 255) / 255.f);
 
-	body1->parentPrimitive->color = color;
-	body2->parentPrimitive->color = color;
+	//body1->parentPrimitive->color = color;
+	//body2->parentPrimitive->color = color;
 
 }
 

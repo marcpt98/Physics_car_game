@@ -36,6 +36,9 @@ public:
 	const vec3 GetPos() const;
 	vec3 GetForwardVector() const;
 
+	void SetAsSensor(bool is_sensor);
+	bool IsSensor() const;
+
 	void SetSpeed(vec3 speed);
 	void Push(vec3 force);
 	void Stop();
@@ -50,7 +53,7 @@ public:
 	Primitive* parentPrimitive;
 	p2DynArray<Module*> collision_listeners;
 	btRaycastVehicle* vehicle;
-	
+	bool is_sensor = false;
 };
 
 #endif // __PhysBody3D_H__
