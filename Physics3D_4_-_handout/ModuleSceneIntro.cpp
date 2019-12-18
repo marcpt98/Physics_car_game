@@ -24,6 +24,13 @@ bool ModuleSceneIntro::Start()
 	Sensor_cube->body.collision_listeners.PushBack(this);
 	Sensor_cube->body.is_sensor = true;
 
+	//Sphere creation 
+	ball1 = new Sphere(0.8, 0.2);
+	ScenePrimitives.PushBack(ball1);
+	ball1->SetPos(45, 1, -148);
+	//ball1->body.GetBody().collision_listeners.PushBack(this);
+	//ball1->body.collision_listeners.PushBack(this);
+	ScenePrimitives[0]->name = "ball";
 
 	LOG("Loading Intro assets");
 	bool ret = true;
@@ -139,6 +146,11 @@ void ModuleSceneIntro::OnCollision(PhysBody3D * body1, PhysBody3D * body2)
 
 	//body1->parentPrimitive->color = color;
 	//body2->parentPrimitive->color = color;
+	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball") {
+		//body2->SetPos(App->player->TruckBody->body.GetPos().x, App->player->TruckBody->body.GetPos().y + 1, App->player->TruckBody->body.GetPos().z);
+		body2->parentPrimitive->name = "none";
+		LOG("A spicy meatball");
+	}
 
 }
 

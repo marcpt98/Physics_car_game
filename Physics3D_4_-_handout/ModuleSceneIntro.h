@@ -9,6 +9,7 @@ class PhysBody3D;
 class btHingeConstraint;
 class btSliderConstraint;
 class Cube;
+class Sphere;
 
 class ModuleSceneIntro : public Module
 {
@@ -36,4 +37,5 @@ public:
 	bool camerafollowhelicopter = false;
 	Cube* Sensor_cube;
 	PhysBody3D* sensor = nullptr;
+	Sphere* ball1;
 };
