@@ -425,6 +425,70 @@ void ModulePhysics3D::CreateLamp(float posx, float posy, float posz, int lenght,
 	}
 }
 
+void ModulePhysics3D::CreatePerson(float posx, float posy, float posz, int lenght, float interval, int direction)
+{
+	for (int n = 0; n < lenght; n++)
+	{
+		Cube* s = new Cube({ 0.5, 3, 0.5 }, 0);
+		Cube* d = new Cube({ 0.5, 3, 0.5 }, 0);
+		Cube* f = new Cube({ 2, 1.5, 1 }, 0);
+		Cube* g = new Cube({ 3.5, 0.5, 1 }, 0);
+		Cube* h = new Cube({ 1.5, 1.5, 1.5 }, 0);
+
+		s->color = { ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f) };
+		d->color = { ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f) };
+		f->color = { ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f) };
+		g->color = { ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f) };
+		h->color = { ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f) };
+
+		App->scene_intro->ScenePrimitives.PushBack(s);
+		App->scene_intro->ScenePrimitives.PushBack(d);
+		App->scene_intro->ScenePrimitives.PushBack(f);
+		App->scene_intro->ScenePrimitives.PushBack(g);
+		App->scene_intro->ScenePrimitives.PushBack(h);
+
+		s->SetPos(posx, posy, posz);
+		d->SetPos(posx-1, posy, posz);
+		f->SetPos(posx-0.5, posy+2, posz);
+		g->SetPos(posx-0.5, posy+3, posz);
+		h->SetPos(posx-0.5, posy+4, posz);
+
+		// Right
+		if (direction == 0)
+		{
+			posx += interval;
+		}
+
+		// Left
+		else if (direction == 1)
+		{
+			posx -= interval;
+		}
+
+		// Forward
+		else if (direction == 2)
+		{
+			posz -= interval;
+		}
+
+		// Backward
+		else if (direction == 3)
+		{
+			posz += interval;
+		}
+	}
+}
+
+void ModulePhysics3D::CreateFloor(float posx, float posy, float posz, vec3& size)
+{
+	Cube* s = new Cube(size, 0);
+
+	s->color = { 300/255,300/255,300/255 };
+
+	App->scene_intro->ScenePrimitives.PushBack(s);
+	s->SetPos(posx, posy, posz);
+}
+
 
 // =============================================
 void DebugDrawer::drawLine(const btVector3& from, const btVector3& to, const btVector3& color)

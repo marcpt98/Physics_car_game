@@ -46,6 +46,8 @@ public:
 	void CreateCurveBox(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction, float rad);
 	void CreateRamp(float posx, float posy, float posz, int lenght, vec3& size, float interval, int direction, int updown);
 	void CreateLamp(float posx, float posy, float posz, int lenght, float interval, int direction);
+	void CreatePerson(float posx, float posy, float posz, int lenght, float interval, int direction);
+	void CreateFloor(float posx, float posy, float posz, vec3& size);
 
 	btDiscreteDynamicsWorld*			world;
 private:

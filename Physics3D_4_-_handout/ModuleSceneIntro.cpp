@@ -108,7 +108,7 @@ update_status ModuleSceneIntro::Update(float dt)
 	
 	Plane p(vec3(0, 1, 0));
 	p.axis = true;
-	p.Render();
+	//p.Render();
 
 	if (App->input->GetKey(SDL_SCANCODE_X) == KEY_DOWN) {
 		for (uint n = 0; n < ScenePrimitives.Count(); n++)
@@ -269,6 +269,8 @@ void ModuleSceneIntro::CreateMap()
 	App->physics->CreateLineBox(169, 8, -32.5, 1, vec3(2, 2, 13), 2, 0);
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////	
+	// Floor
+	App->physics->CreateFloor(0, 0, 0, vec3(400, 0, 400));
 
 	// DECORATION
 	// 17 (first rect)
@@ -276,6 +278,7 @@ void ModuleSceneIntro::CreateMap()
 	App->physics->CreateLineBox(54.5, 0, -149, 1, vec3(5, 0.5, 83.5), 0, 0);
 	App->physics->CreateLamp(39.5, 0, -185, 5, 13, 3);
 	App->physics->CreateLamp(51.5, 0, -185, 6, 13, 3);
+	App->physics->CreatePerson(37.5, 0, -164.2, 1, 3, 0);
 
 	// 18 (second rect)
 	App->physics->CreateLineBox(37.5, 0, -109.5, 1, vec3(29, 0.5, 5), 0, 1);
