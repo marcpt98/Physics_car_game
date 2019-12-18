@@ -50,11 +50,6 @@ bool ModuleSceneIntro::Start()
 	ball1->SetPos(-98, 1, 40);
 	ScenePrimitives[4]->name = "ball5";
 
-	ball1 = new Sphere(1.2, 5);
-	ScenePrimitives.PushBack(ball1);
-	ball1->SetPos(45, 1, -148);
-	ScenePrimitives[5]->name = "ball6";
-
 	LOG("Loading Intro assets");
 	bool ret = true;
 
@@ -124,9 +119,6 @@ update_status ModuleSceneIntro::Update(float dt)
 	p.axis = true;
 	//p.Render();
 
-	
-	
-
 	if (App->debug == true)
 		HandleDebugInput();
 
@@ -136,6 +128,11 @@ update_status ModuleSceneIntro::Update(float dt)
 	for (uint n = 0; n < ScenePrimitives.Count(); n++)
 		ScenePrimitives[n]->Update();
 
+
+	if (case1 == false && case2 == false && case3 == false && case4 == false && case5 == false)
+	{
+		finalWall->SetPos(48, 31, -32.5);
+	}
 	return UPDATE_CONTINUE;
 }
 
@@ -162,28 +159,28 @@ void ModuleSceneIntro::OnCollision(PhysBody3D * body1, PhysBody3D * body2)
 		//body2->parentPrimitive->name = "none";
 		leg1->color = White;
 		LOG("A spicy meatball");
+		case1 = true;
 	}
 	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball2") {
 		leg2->color = White;
 		LOG("A spicy meatball");
+		case2 = true;
 	}
 	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball3") {
 		body->color = White;
 		LOG("A spicy meatball");
+		case3 = true;
 	}
 	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball4") {
 		arm->color = White;
 		LOG("A spicy meatball");
+		case4 = true;
 	}
 	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball5") {
 		head->color = White;
 		LOG("A spicy meatball");
+		case5 = true;
 	}
-	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball6") {
-		leg1->color = White;
-		LOG("A spicy meatball");
-	}
-
 }
 
 void ModuleSceneIntro::CreateMap()

@@ -38,7 +38,11 @@ public:
 	Cube* Sensor_cube;
 	PhysBody3D* sensor = nullptr;
 	Sphere* ball1;
-
+	bool case1 = false;
+	bool case2 = false;
+	bool case3 = false;
+	bool case4 = false;
+	bool case5 = false;
 private:
 	Cube* leg1;
 	Cube* leg2;
