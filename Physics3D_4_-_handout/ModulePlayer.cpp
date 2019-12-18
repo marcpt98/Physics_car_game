@@ -351,9 +351,25 @@ update_status ModulePlayer::PostUpdate(float dt)
 
 void ModulePlayer::OnCollision(PhysBody3D* body1, PhysBody3D* body2) {
 
-	if (body1->parentPrimitive->name == "Claw" && body2->parentPrimitive->name == "ball") {
+	if (body1->parentPrimitive->name == "Claw" && body2->parentPrimitive->name == "ball" ) {
 		body2->SetPos(TruckBody->body.GetPos().x, TruckBody->body.GetPos().y+1, TruckBody->body.GetPos().z);
 	}
+	if (body1->parentPrimitive->name == "Claw" && body2->parentPrimitive->name ==  "ball2" ) {
+		body2->SetPos(TruckBody->body.GetPos().x, TruckBody->body.GetPos().y + 1, TruckBody->body.GetPos().z);
+	}
+	if (body1->parentPrimitive->name == "Claw" && body2->parentPrimitive->name == "ball3") {
+		body2->SetPos(TruckBody->body.GetPos().x, TruckBody->body.GetPos().y + 1, TruckBody->body.GetPos().z);
+	}
+	if (body1->parentPrimitive->name == "Claw" && body2->parentPrimitive->name ==  "ball4") {
+		body2->SetPos(TruckBody->body.GetPos().x, TruckBody->body.GetPos().y + 1, TruckBody->body.GetPos().z);
+	}
+	if (body1->parentPrimitive->name == "Claw" && body2->parentPrimitive->name ==  "ball5" ) {
+		body2->SetPos(TruckBody->body.GetPos().x, TruckBody->body.GetPos().y + 1, TruckBody->body.GetPos().z);
+	}
+	if (body1->parentPrimitive->name == "Claw" && body2->parentPrimitive->name ==  "ball6") {
+		body2->SetPos(TruckBody->body.GetPos().x, TruckBody->body.GetPos().y + 1, TruckBody->body.GetPos().z);
+	}
+
 
 	if (body1->parentPrimitive->name == "Cart" && body2->parentPrimitive->name == "sensor1") {
 		LOG("SENSOOOORS WOOORKS");

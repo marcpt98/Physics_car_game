@@ -16,8 +16,8 @@ ModuleSceneIntro::~ModuleSceneIntro()
 bool ModuleSceneIntro::Start()
 {
 	//Sensors
-	Sensor_cube = new Cube(vec3(10, 10, 20), 0);
-	Sensor_cube->SetPos(45, 1, -148);
+	Sensor_cube = new Cube(vec3(10, 15, 10), 0);
+	Sensor_cube->SetPos(10, 0, -43);
 	//ScenePrimitives.PushBack(Sensor_cube);
 	Sensor_cube->body.SetAsSensor(true);
 	Sensor_cube->name = "sensor1";
@@ -27,10 +27,33 @@ bool ModuleSceneIntro::Start()
 	//Sphere creation 
 	ball1 = new Sphere(0.8, 0.2);
 	ScenePrimitives.PushBack(ball1);
+	ball1->SetPos(180, 1, -33);
+	ScenePrimitives[0]->name = "ball1";
+
+	ball1 = new Sphere(0.8, 0.2);
+	ScenePrimitives.PushBack(ball1);
+	ball1->SetPos(40, 1, 175);
+	ScenePrimitives[1]->name = "ball2";
+
+	ball1 = new Sphere(0.8, 0.2);
+	ScenePrimitives.PushBack(ball1);
+	ball1->SetPos(-20, 1, 175);
+	ScenePrimitives[2]->name = "ball3";
+
+	ball1 = new Sphere(0.8, 0.2);
+	ScenePrimitives.PushBack(ball1);
+	ball1->SetPos(-98, 1, -118);
+	ScenePrimitives[3]->name = "ball4";
+
+	ball1 = new Sphere(0.8, 0.2);
+	ScenePrimitives.PushBack(ball1);
+	ball1->SetPos(-98, 1, 40);
+	ScenePrimitives[4]->name = "ball5";
+
+	ball1 = new Sphere(0.8, 0.2);
+	ScenePrimitives.PushBack(ball1);
 	ball1->SetPos(45, 1, -148);
-	//ball1->body.GetBody().collision_listeners.PushBack(this);
-	//ball1->body.collision_listeners.PushBack(this);
-	ScenePrimitives[0]->name = "ball";
+	ScenePrimitives[5]->name = "ball6";
 
 	LOG("Loading Intro assets");
 	bool ret = true;
@@ -134,9 +157,30 @@ void ModuleSceneIntro::OnCollision(PhysBody3D * body1, PhysBody3D * body2)
 
 	//body1->parentPrimitive->color = color;
 	//body2->parentPrimitive->color = color;
-	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball") {
+	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball1") {
 		//body2->SetPos(App->player->TruckBody->body.GetPos().x, App->player->TruckBody->body.GetPos().y + 1, App->player->TruckBody->body.GetPos().z);
 		//body2->parentPrimitive->name = "none";
+		leg1->color = White;
+		LOG("A spicy meatball");
+	}
+	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball2") {
+		leg2->color = White;
+		LOG("A spicy meatball");
+	}
+	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball3") {
+		body->color = White;
+		LOG("A spicy meatball");
+	}
+	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball4") {
+		arm->color = White;
+		LOG("A spicy meatball");
+	}
+	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball5") {
+		head->color = White;
+		LOG("A spicy meatball");
+	}
+	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball6") {
+		leg1->color = White;
 		LOG("A spicy meatball");
 	}
 
@@ -158,19 +202,50 @@ void ModuleSceneIntro::CreateMap()
 	App->physics->CreateLineBox(26, 1, -94, 3, vec3(6, 0, 10), 12, 3, true);
 
 	// 4 (roundabout, interior)
-	App->physics->CreateLineBox(15, 1, -48, 5, vec3(2, 5, 1), 3, 1);
+	//App->physics->CreateLineBox(15, 1, -48, 5, vec3(2, 5, 1), 3, 1);
 	App->physics->CreateDiagonalBox(18, 1, -47, 4, vec3(1, 5, 2), 2, 1, 4);
 	App->physics->CreateDiagonalBox(0, 1, -47, 4, vec3(1, 5, 2), 2, 3, 4);
 	App->physics->CreateDiagonalBox(18, 1, -24, 3, vec3(1, 5, 2), 2, 0, 4);
 	App->physics->CreateDiagonalBox(-4, 1, -32, 3, vec3(1, 5, 2), 2, 1, 4);
 	App->physics->CreateLineBox(15, 1, -22, 5, vec3(2, 5, 1), 3, 1);
 
-	// 5 (figure)
-	App->physics->CreateLineBox(12, 1, -36, 1, vec3(3, 7, 3), 3, 1);
-	App->physics->CreateLineBox(7, 1, -36, 1, vec3(3, 7, 3), 3, 1);
-	App->physics->CreateLineBox(9, 8, -36, 1, vec3(10, 7, 5), 3, 1);
-	App->physics->CreateLineBox(9, 13, -36, 1, vec3(20, 3, 5), 3, 1);
-	App->physics->CreateLineBox(9, 18, -36, 1, vec3(7, 7, 7), 3, 1);
+	// 5 (figure) Has to be done like this in order to change every part color
+	leg1 = new Cube({ 3, 7, 3 }, 0);
+	leg2 = new Cube({ 3, 7, 3 }, 0);
+	body = new Cube({ 10, 7, 5 }, 0);
+	arm = new Cube({ 20, 3, 5 }, 0);
+	head = new Cube({ 7, 7, 7 }, 0);
+
+	ScenePrimitives.PushBack(leg1);
+	ScenePrimitives.PushBack(leg2);
+	ScenePrimitives.PushBack(body);
+	ScenePrimitives.PushBack(arm);
+	ScenePrimitives.PushBack(head);
+
+	leg1->SetPos(12, 1, -36);
+	leg2->SetPos(7, 1, -36);
+	body->SetPos(9, 8, -36);
+	arm->SetPos(9, 13, -36);
+	head->SetPos(9, 18, -36);
+
+	ScenePrimitives[0]->name = "leg1";
+	ScenePrimitives[1]->name = "leg2";
+	ScenePrimitives[2]->name = "body";
+	ScenePrimitives[3]->name = "arm";
+	ScenePrimitives[4]->name = "head";
+
+	leg1->color = { ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f) };
+	leg2->color = { ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f) };
+	body->color = { ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f) };
+	arm->color = { ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f) };
+	head->color = { ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f) };
+	
+	//This code can't change colors
+	/*App->physics->CreateLineBox(12, 1, -36, 1, vec3(3, 7, 3));
+	App->physics->CreateLineBox(7, 1, -36, 1, vec3(3, 7, 3));
+	App->physics->CreateLineBox(9, 8, -36, 1, vec3(10, 7, 5));
+	App->physics->CreateLineBox(9, 13, -36, 1, vec3(20, 3, 5));
+	App->physics->CreateLineBox(9, 18, -36, 1, vec3(7, 7, 7));*/
 
 	// 6 (roundabout, exterior)
 	App->physics->CreateDiagonalBox(28, 1, -62, 5, vec3(1, 5, 2), 2, 1, 4);

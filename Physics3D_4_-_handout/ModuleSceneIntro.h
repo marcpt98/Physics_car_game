@@ -38,4 +38,11 @@ public:
 	Cube* Sensor_cube;
 	PhysBody3D* sensor = nullptr;
 	Sphere* ball1;
+
+private:
+	Cube* leg1;
+	Cube* leg2;
+	Cube* body;
+	Cube* arm;
+	Cube* head;
 };
