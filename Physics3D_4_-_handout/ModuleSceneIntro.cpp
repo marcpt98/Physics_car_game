@@ -27,7 +27,7 @@ bool ModuleSceneIntro::Start()
 	//Sphere creation 
 	ball1 = new Sphere(0.8, 0.2);
 	ScenePrimitives.PushBack(ball1);
-	ball1->SetPos(180, 1, -33);
+	ball1->SetPos(-165, 1, -36);
 	ScenePrimitives[0]->name = "ball1";
 
 	ball1 = new Sphere(0.8, 0.2);
@@ -122,7 +122,7 @@ update_status ModuleSceneIntro::Update(float dt)
 	
 	Plane p(vec3(0, 1, 0));
 	p.axis = true;
-	//p.Render();
+	p.Render();
 
 	
 	
@@ -228,11 +228,11 @@ void ModuleSceneIntro::CreateMap()
 	arm->SetPos(9, 13, -36);
 	head->SetPos(9, 18, -36);
 
-	ScenePrimitives[0]->name = "leg1";
-	ScenePrimitives[1]->name = "leg2";
-	ScenePrimitives[2]->name = "body";
-	ScenePrimitives[3]->name = "arm";
-	ScenePrimitives[4]->name = "head";
+	ScenePrimitives[6]->name = "leg1";
+	ScenePrimitives[7]->name = "leg2";
+	ScenePrimitives[8]->name = "body";
+	ScenePrimitives[9]->name = "arm";
+	ScenePrimitives[10]->name = "head";
 
 	leg1->color = { ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f) };
 	leg2->color = { ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f) };
@@ -333,7 +333,7 @@ void ModuleSceneIntro::CreateMap()
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	// Floor
-	App->physics->CreateFloor(0, 0, 0, vec3(400, 0, 400));
+	//App->physics->CreateFloor(0, 0, 0, vec3(400, 0, 400));
 
 	// DECORATION
 	// 17 (first rect)
@@ -341,7 +341,8 @@ void ModuleSceneIntro::CreateMap()
 	App->physics->CreateLineBox(54.5, 0, -149, 1, vec3(5, 0.5, 83.5), 0, 0);
 	App->physics->CreateLamp(39.5, 0, -185, 5, 13, 3);
 	App->physics->CreateLamp(51.5, 0, -185, 6, 13, 3);
-	App->physics->CreatePerson(37.5, 0, -164.2, 1, 3, 0);
+	App->physics->CreatePerson(37.5, 0, -164.2, 2, 25, 3);
+	App->physics->CreatePerson(54.5, 0, -120.2, 1, 25, 3);
 
 	// 18 (second rect)
 	App->physics->CreateLineBox(37.5, 0, -109.5, 1, vec3(29, 0.5, 5), 0, 1);
@@ -354,6 +355,8 @@ void ModuleSceneIntro::CreateMap()
 	App->physics->CreateLineBox(20.5, 0, -88.5, 1, vec3(5, 0.5, 47), 0, 0);
 	App->physics->CreateLamp(17.5, 0, -110.5, 4, 13, 3);
 	App->physics->CreateLamp(3.5, 0, -130.5, 6, 13, 3);
+	App->physics->CreatePerson(20.5, 0, -104.2, 2, 25, 3);
+	App->physics->CreatePerson(0.5, 0, -85.2, 1, 25, 3);
 
 	// FIRST 3 BALLS
 	// 20 (initial rect)
@@ -361,6 +364,7 @@ void ModuleSceneIntro::CreateMap()
 	App->physics->CreateLineBox(-52, 0, -29.5, 1, vec3(66, 0.5, 3), 0, 1);
 	App->physics->CreateLamp(-21, 0, -31.5, 2, 40, 1);
 	App->physics->CreateLamp(-40, 0, -41.5, 2, 40, 1);
+	App->physics->CreatePerson(-30, 0, -43.5, 2, 40, 1);
 
 	// 21 (left side)
 	App->physics->CreateLineBox(-87.5, 0, 12.5, 1, vec3(5, 0.5, 87), 0, 1);
@@ -369,6 +373,8 @@ void ModuleSceneIntro::CreateMap()
 	App->physics->CreateLamp(-90.5, 0, -29, 7, 13, 3);
 	App->physics->CreateLamp(-106.5, 0, -22, 6, 13, 3);
 	App->physics->CreateLamp(-103, 0, 50.5, 2, 8, 0);
+	App->physics->CreatePerson(-87, 0, -23, 2, 40, 3);
+	App->physics->CreatePerson(-109, 0, -15, 3, 30, 3);
 
 	// 22 (right side)
 	App->physics->CreateLineBox(-87.5, 0, -85.5, 1, vec3(5, 0.5, 87), 0, 1);
@@ -377,6 +383,9 @@ void ModuleSceneIntro::CreateMap()
 	App->physics->CreateLamp(-90.5, 0, -44, 7, 13, 2);
 	App->physics->CreateLamp(-106.5, 0, -50, 6, 13, 2);
 	App->physics->CreateLamp(-103, 0, -123.5, 2, 8, 0);
+	App->physics->CreatePerson(-87, 0, -63, 2, 25, 2);
+	App->physics->CreatePerson(-109, 0, -55, 3, 25, 2);
+	App->physics->CreatePerson(-150, 0, -43.5, 1, 40, 1);
 
 	// 23 (forward side)
 	App->physics->CreateLineBox(-143.5, 0, -43.5, 1, vec3(73, 0.5, 3), 0, 1);
@@ -386,12 +395,42 @@ void ModuleSceneIntro::CreateMap()
 	App->physics->CreateLineBox(-178.5, 0, -36.5, 1, vec3(3, 0.5, 11), 0, 1);
 	App->physics->CreateLamp(-176.5, 0, -36.5, 1, 40, 1);
 
-	// X (City edificies that don't create track)
-	/*App->physics->CreateLineBox(-75, 1, -132, 7, vec3(6, 0, 10), 12, 3, true);
-	App->physics->CreateLineBox(-65, 1, -132, 7, vec3(6, 0, 10), 12, 3, true);
-	App->physics->CreateLineBox(-55, 1, -132, 7, vec3(6, 0, 10), 12, 3, true);
-	App->physics->CreateLineBox(-45, 1, -132, 7, vec3(6, 0, 10), 12, 3, true);
-	App->physics->CreateLineBox(-35, 1, -132, 7, vec3(6, 0, 10), 12, 3, true);
-	App->physics->CreateLineBox(-25, 1, -132, 7, vec3(6, 0, 10), 12, 3, true);
-	App->physics->CreateLineBox(-15, 1, -132, 7, vec3(6, 0, 10), 12, 3, true);*/
+	// SECOND 2 BALLS
+	// 24 (entrance)
+	App->physics->CreateLineBox(8, 0, 156.5, 1, vec3(82, 0.5, 5), 0, 1);
+	App->physics->CreateLineBox(-25, 0, 128.5, 1, vec3(34, 0.5, 5), 0, 1);
+	App->physics->CreateLineBox(43, 0, 128.5, 1, vec3(34, 0.5, 5), 0, 1);
+	App->physics->CreateLamp(43, 0, 153.5, 10, 8, 1);
+	App->physics->CreateLamp(55, 0, 131.5, 4, 8, 1);
+	App->physics->CreateLamp(-13, 0, 131.5, 4, 8, 1);
+	App->physics->CreatePerson(-13, 0, 128.5, 2, 65, 0);
+	App->physics->CreatePerson(0, 0, 156.5, 4, 7, 0);
+
+	// 25 (forward)
+	App->physics->CreateLineBox(-49.5, 0, 156, 1, vec3(5, 0.5, 22), 0, 1);
+	App->physics->CreateLineBox(67.5, 0, 156, 1, vec3(5, 0.5, 22), 0, 1);
+	App->physics->CreateLamp(-46.5, 0, 147.5, 3, 8, 3);
+	App->physics->CreateLamp(64.5, 0, 147.5, 3, 8, 3);
+	App->physics->CreatePerson(67, 0, 156.5, 1, 7, 0);
+	App->physics->CreatePerson(37, 0, 183.5, 2, 60, 1);
+
+	// 26 (right part)
+	App->physics->CreateLineBox(-25, 0, 183.5, 1, vec3(34, 0.5, 3), 0, 1);
+	App->physics->CreateLineBox(-18, 0, 166.5, 1, vec3(30, 0.5, 3), 0, 1);
+	App->physics->CreateLamp(-13, 0, 181.5, 2, 16, 1);
+	App->physics->CreateLamp(-5, 0, 168.5, 2, 16, 1);
+
+	// 27 (left part)
+	App->physics->CreateLineBox(38.5, 0, 183.5, 1, vec3(27, 0.5, 3), 0, 1);
+	App->physics->CreateLineBox(34, 0, 166.5, 1, vec3(30, 0.5, 3), 0, 1);
+	App->physics->CreateLamp(46.5, 0, 181.5, 2, 16, 1);
+	App->physics->CreateLamp(38.5, 0, 168.5, 2, 16, 1);
+
+
+	// Final wall
+	finalWall = new Cube({ 2, 28, 25 }, 0);
+	ScenePrimitives.PushBack(finalWall);
+	finalWall->SetPos(49, 1, -32.5);
+	ScenePrimitives[11]->name = "finalWall";
+	finalWall->color = { 1,1,1 };
 }

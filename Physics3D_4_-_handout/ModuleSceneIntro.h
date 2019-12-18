@@ -45,4 +45,5 @@ private:
 	Cube* body;
 	Cube* arm;
 	Cube* head;
+	Cube* finalWall;
 };
