@@ -53,20 +53,11 @@ void ModuleSceneIntro::HandleDebugInput()
 		DebugSpawnPrimitive(new Sphere());
 	if (App->input->GetKey(SDL_SCANCODE_F4) == KEY_DOWN)
 		DebugSpawnPrimitive(new Cube());
-	if (App->input->GetKey(SDL_SCANCODE_F5) == KEY_DOWN)
-		DebugSpawnPrimitive(new Cylinder());
-	if (App->input->GetKey(SDL_SCANCODE_F6) == KEY_DOWN)
-		for (uint n = 0; n < ScenePrimitives.Count(); n++)
-			ScenePrimitives[n]->SetPos((float)(std::rand() % 40 - 20), 10.f, (float)(std::rand() % 40 - 20));
-	if (App->input->GetKey(SDL_SCANCODE_F7) == KEY_DOWN)
-		for (uint n = 0; n < ScenePrimitives.Count(); n++)
-			ScenePrimitives[n]->body.Push(vec3((float)(std::rand() % 500) - 250, 500, (float)(std::rand() % 500) - 250));
 
 	if (App->input->GetMouseButton(SDL_BUTTON_LEFT) == KEY_DOWN)
 	{
-		//TODO: NEW CODE
-		//A snippet of new code that may be useful for you. Nothing to do here really
-
+		
+		
 
 		//Get a vector indicating the direction from the camera viewpoint to the "mouse"
 		const vec2 mousePos(((float)App->input->GetMouseX() / (float)App->window->Width()) * 2.f - 1.f,
@@ -103,10 +94,7 @@ update_status ModuleSceneIntro::Update(float dt)
 	p.axis = true;
 	p.Render();
 
-	if (App->input->GetKey(SDL_SCANCODE_X) == KEY_DOWN) {
-		for (uint n = 0; n < ScenePrimitives.Count(); n++)
-			ScenePrimitives[n]->SetPos(0,0,0);
-	}
+	
 	
 
 	if (App->debug == true)

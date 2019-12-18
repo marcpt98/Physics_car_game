@@ -22,7 +22,7 @@ public:
 	update_status Update(float dt) override;
 	update_status PostUpdate(float dt) override;
 	void TruckInput(float dt);
-	void CarInput(float dt);
+	
 
 	void OnCollision(PhysBody3D* body1, PhysBody3D* body2) override;
 
@@ -41,6 +41,7 @@ private:
 	btHingeConstraint* HingeArm[4];
 	btPoint2PointConstraint* grip;
 	bool cangrip = false;
+	void setInitialPos();
 
 public:
 
@@ -52,4 +53,5 @@ public:
 	Cylinder* temp2;
 	Sphere* temp3;
 	p2DynArray<Primitive*> CarPrimitives;
+	vec3 primitivesPos[19];
 };
