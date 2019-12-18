@@ -413,12 +413,14 @@ void ModulePlayer::TruckInput(float dt) {
 	}
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) {
 		TruckCab->body.Push(vec3{ 0,0,0 });
+		
 		TruckWheels[0]->enableAngularMotor(true, 20.f, 100.f);
 		TruckWheels[1]->enableAngularMotor(true, 20.f, 100.f);
 		TruckWheels[2]->enableAngularMotor(true, 20.f, 100.f);
 		TruckWheels[3]->enableAngularMotor(true, 20.f, 100.f);
 		TruckWheels[4]->enableAngularMotor(true, 20.f, 100.f);
 		TruckWheels[5]->enableAngularMotor(true, 20.f, 100.f);
+	
 
 
 	}
