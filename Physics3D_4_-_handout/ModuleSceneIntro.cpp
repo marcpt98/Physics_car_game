@@ -15,6 +15,8 @@ ModuleSceneIntro::~ModuleSceneIntro()
 // Load assets
 bool ModuleSceneIntro::Start()
 {
+	App->audio->PlayMusic("Assets/Music/BestSongEver.ogg");
+	
 	//Sensors
 	Sensor_cube = new Cube(vec3(10, 15, 10), 0);
 	Sensor_cube->SetPos(10, 0, -43);
