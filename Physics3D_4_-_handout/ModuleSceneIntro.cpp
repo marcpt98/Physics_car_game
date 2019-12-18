@@ -25,32 +25,32 @@ bool ModuleSceneIntro::Start()
 	Sensor_cube->body.is_sensor = true;
 
 	//Sphere creation 
-	ball1 = new Sphere(0.8, 0.2);
+	ball1 = new Sphere(1.2, 5);
 	ScenePrimitives.PushBack(ball1);
 	ball1->SetPos(-165, 1, -36);
 	ScenePrimitives[0]->name = "ball1";
 
-	ball1 = new Sphere(0.8, 0.2);
+	ball1 = new Sphere(1.2, 5);
 	ScenePrimitives.PushBack(ball1);
 	ball1->SetPos(40, 1, 175);
 	ScenePrimitives[1]->name = "ball2";
 
-	ball1 = new Sphere(0.8, 0.2);
+	ball1 = new Sphere(1.2, 5);
 	ScenePrimitives.PushBack(ball1);
 	ball1->SetPos(-20, 1, 175);
 	ScenePrimitives[2]->name = "ball3";
 
-	ball1 = new Sphere(0.8, 0.2);
+	ball1 = new Sphere(1.2, 5);
 	ScenePrimitives.PushBack(ball1);
 	ball1->SetPos(-98, 1, -118);
 	ScenePrimitives[3]->name = "ball4";
 
-	ball1 = new Sphere(0.8, 0.2);
+	ball1 = new Sphere(1.2, 5);
 	ScenePrimitives.PushBack(ball1);
 	ball1->SetPos(-98, 1, 40);
 	ScenePrimitives[4]->name = "ball5";
 
-	ball1 = new Sphere(0.8, 0.2);
+	ball1 = new Sphere(1.2, 5);
 	ScenePrimitives.PushBack(ball1);
 	ball1->SetPos(45, 1, -148);
 	ScenePrimitives[5]->name = "ball6";
@@ -122,7 +122,7 @@ update_status ModuleSceneIntro::Update(float dt)
 	
 	Plane p(vec3(0, 1, 0));
 	p.axis = true;
-	p.Render();
+	//p.Render();
 
 	
 	
@@ -333,7 +333,7 @@ void ModuleSceneIntro::CreateMap()
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	// Floor
-	//App->physics->CreateFloor(0, 0, 0, vec3(400, 0, 400));
+	App->physics->CreateFloor(0, 0, 0, vec3(400, 0, 400));
 
 	// DECORATION
 	// 17 (first rect)

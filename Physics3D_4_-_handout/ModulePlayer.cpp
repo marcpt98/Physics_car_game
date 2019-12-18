@@ -133,7 +133,7 @@ bool ModulePlayer::Start()
 
 	
 	float truckposx = 45.f, truckposy = 5.f, truckposz = -175.f;
-	TruckCab = new Cube(vec3(2, 2, 2));
+	TruckCab = new Cube(vec3(2, 2, 2), 10);
 	TruckCab->color.Set(100,100,100);
 	CarPrimitives.PushBack(TruckCab);
 	primitivesPos[0] = { truckposx, truckposy, truckposz };
@@ -141,22 +141,22 @@ bool ModulePlayer::Start()
 	CarPrimitives[0]->name = "Cart";
 	CarPrimitives[0]->body.collision_listeners.PushBack(this);
 
-	temp = new Cube(vec3(2.4, 0.5, 5));
+	temp = new Cube(vec3(2.4, 0.5, 5),10);
 	CarPrimitives.PushBack(temp);
 	temp->SetPos(truckposx, truckposy, truckposz -3.5f);
 	primitivesPos[1] = { truckposx, truckposy, truckposz - 3.5f };
 
-	temp = new Cube(vec3(2.5f, 0.25, 0.25));
+	temp = new Cube(vec3(2.5f, 0.25, 0.25),10);
 	CarPrimitives.PushBack(temp);
 	temp->SetPos(truckposx, truckposy-1, truckposz);
 	primitivesPos[2] = { truckposx, truckposy - 1, truckposz };
 
-	temp = new Cube(vec3(2.5f, 0.25, 0.25));
+	temp = new Cube(vec3(2.5f, 0.25, 0.25),10);
 	CarPrimitives.PushBack(temp);
 	temp->SetPos(truckposx, truckposy-1, truckposz - 5.5f);
 	primitivesPos[3] = { truckposx, truckposy - 1, truckposz - 5.5f };
 
-	temp = new Cube(vec3(2.5f, 0.25, 0.25));
+	temp = new Cube(vec3(2.5f, 0.25, 0.25),10);
 	CarPrimitives.PushBack(temp);
 	temp->SetPos(truckposx, truckposy-1, truckposz - 2.2f);
 	primitivesPos[4] = { truckposx, truckposy - 1, truckposz - 2.2f };
@@ -371,9 +371,9 @@ void ModulePlayer::OnCollision(PhysBody3D* body1, PhysBody3D* body2) {
 	}
 
 
-	if (body1->parentPrimitive->name == "Cart" && body2->parentPrimitive->name == "sensor1") {
+	/*if (body1->parentPrimitive->name == "Cart" && body2->parentPrimitive->name == "sensor1") {
 		LOG("SENSOOOORS WOOORKS");
-	}
+	}*/
 
 	/*if (body1->parentPrimitive->name == "Claw" && body2->parentPrimitive->name == "sensor1" &&  body2->IsSensor() == true) {
 		LOG("ALL SENSOOOORS WOOORKS");
