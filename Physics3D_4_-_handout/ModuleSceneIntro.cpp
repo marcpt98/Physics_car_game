@@ -26,6 +26,12 @@ bool ModuleSceneIntro::Start()
 	Sensor_cube->body.collision_listeners.PushBack(this);
 	Sensor_cube->body.is_sensor = true;
 
+	Rainbow_cube = new Cube(vec3(10, 15, 60), 0);
+	Rainbow_cube->SetPos(180, 0, -20);
+	Rainbow_cube->body.SetAsSensor(true);
+	Rainbow_cube->name = "sensor2";
+	Rainbow_cube->body.collision_listeners.PushBack(this);
+	Rainbow_cube->body.is_sensor = true;
 	//Sphere creation 
 	ball1 = new Sphere(1.2, 5);
 	ScenePrimitives.PushBack(ball1);
@@ -52,6 +58,8 @@ bool ModuleSceneIntro::Start()
 	ball1->SetPos(-98, 1, 40);
 	ScenePrimitives[4]->name = "ball5";
 
+	
+
 	LOG("Loading Intro assets");
 	bool ret = true;
 
@@ -62,7 +70,7 @@ bool ModuleSceneIntro::Start()
 	
 	// Creating map
 	CreateMap();
-
+	finalWall->SetPos(48, 31, -32.5);
 	return ret;
 }
 
@@ -116,7 +124,6 @@ void ModuleSceneIntro::DebugSpawnPrimitive(Primitive * p)
 update_status ModuleSceneIntro::Update(float dt)
 {
 
-	
 	Plane p(vec3(0, 1, 0));
 	p.axis = true;
 	//p.Render();
@@ -131,7 +138,7 @@ update_status ModuleSceneIntro::Update(float dt)
 		ScenePrimitives[n]->Update();
 
 
-	if (case1 == false && case2 == false && case3 == false && case4 == false && case5 == false)
+	if (case1 == true && case2 == true && case3 == true && case4 == true && case5 == true)
 	{
 		finalWall->SetPos(48, 31, -32.5);
 	}
@@ -159,29 +166,33 @@ void ModuleSceneIntro::OnCollision(PhysBody3D * body1, PhysBody3D * body2)
 	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball1") {
 		//body2->SetPos(App->player->TruckBody->body.GetPos().x, App->player->TruckBody->body.GetPos().y + 1, App->player->TruckBody->body.GetPos().z);
 		//body2->parentPrimitive->name = "none";
-		leg1->color = White;
+		leg1->color = {255,255,255};
 		LOG("A spicy meatball");
 		case1 = true;
 	}
 	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball2") {
-		leg2->color = White;
+		leg2->color = { 255,255,255 };
 		LOG("A spicy meatball");
 		case2 = true;
 	}
 	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball3") {
-		body->color = White;
+		body->color = { 255,255,255 };
 		LOG("A spicy meatball");
 		case3 = true;
 	}
 	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball4") {
-		arm->color = White;
+		arm->color = { 255,255,255 };
 		LOG("A spicy meatball");
 		case4 = true;
 	}
 	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball5") {
-		head->color = White;
+		head->color = { 255,255,255 };
 		LOG("A spicy meatball");
 		case5 = true;
+	}
+
+	if (body1->parentPrimitive->name == "sensor2" && body2->parentPrimitive->name == "Cart") {
+		EndGame = true;
 	}
 }
 
@@ -202,6 +213,12 @@ void ModuleSceneIntro::CreateMap()
 
 	// 4 (roundabout, interior)
 	//App->physics->CreateLineBox(15, 1, -48, 5, vec3(2, 5, 1), 3, 1);
+	App->physics->CreateLineBox(15, 1, -48, 2, vec3(2, 5, 1), 2, 1);
+	App->physics->CreateLineBox(5, 1, -48, 2, vec3(2, 5, 1), 2, 1);
+	App->physics->CreateLineBox(5.5, 1, -44, 1, vec3(1, 5, 7), 2, 1);
+	App->physics->CreateLineBox(12.5, 1, -44, 1, vec3(1, 5, 7), 2, 1);
+	App->physics->CreateLineBox(9, 1, -40, 1, vec3(8, 5, 1), 2, 1);
+
 	App->physics->CreateDiagonalBox(18, 1, -47, 4, vec3(1, 5, 2), 2, 1, 4);
 	App->physics->CreateDiagonalBox(0, 1, -47, 4, vec3(1, 5, 2), 2, 3, 4);
 	App->physics->CreateDiagonalBox(18, 1, -24, 3, vec3(1, 5, 2), 2, 0, 4);

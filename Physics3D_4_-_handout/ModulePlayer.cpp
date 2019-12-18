@@ -512,8 +512,16 @@ void ModulePlayer::TruckInput(float dt) {
 
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_F3) == KEY_DOWN) {
+	//We reset all positions froms spheres also from THE	 WALL
+	if (App->input->GetKey(SDL_SCANCODE_F3) == KEY_DOWN || App->scene_intro->EndGame == true) {
 		setInitialPos();
+		App->scene_intro->EndGame = false;
+		App->scene_intro->ScenePrimitives[0]->SetPos(-165, 1, -36);
+		App->scene_intro->ScenePrimitives[1]->SetPos(40, 1, 175);
+		App->scene_intro->ScenePrimitives[2]->SetPos(-20, 1, 175);
+		App->scene_intro->ScenePrimitives[3]->SetPos(-98, 1, -118);
+		App->scene_intro->ScenePrimitives[4]->SetPos(-98, 1, 40);
+		App->scene_intro->finalWall->SetPos(49, 1, -32.5);
 	}
 
 }

@@ -33,21 +33,31 @@ private:
 
 public:
 	p2DynArray<Primitive*> ScenePrimitives;
+
 	bool camerafollow = false;
 	bool camerafollowhelicopter = false;
-	Cube* Sensor_cube;
+	
 	PhysBody3D* sensor = nullptr;
 	Sphere* ball1;
+
+	Cube* Sensor_cube;
+	Cube* Rainbow_cube;
+	Cube* parking1;
+	Cube* parking2;
+	Cube* parking3;
+	Cube* finalWall;
+
 	bool case1 = false;
 	bool case2 = false;
 	bool case3 = false;
 	bool case4 = false;
 	bool case5 = false;
+	bool EndGame = false;
+
 private:
 	Cube* leg1;
 	Cube* leg2;
 	Cube* body;
 	Cube* arm;
 	Cube* head;
-	Cube* finalWall;
 };
