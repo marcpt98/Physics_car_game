@@ -24,6 +24,13 @@ bool ModuleSceneIntro::Start()
 	Sensor_cube->body.collision_listeners.PushBack(this);
 	Sensor_cube->body.is_sensor = true;
 
+	//Sphere creation 
+	ball1 = new Sphere(0.8, 0.2);
+	ScenePrimitives.PushBack(ball1);
+	ball1->SetPos(45, 1, -148);
+	//ball1->body.GetBody().collision_listeners.PushBack(this);
+	//ball1->body.collision_listeners.PushBack(this);
+	ScenePrimitives[0]->name = "ball";
 
 	LOG("Loading Intro assets");
 	bool ret = true;
@@ -92,7 +99,7 @@ update_status ModuleSceneIntro::Update(float dt)
 	
 	Plane p(vec3(0, 1, 0));
 	p.axis = true;
-	p.Render();
+	//p.Render();
 
 	
 	
@@ -127,6 +134,11 @@ void ModuleSceneIntro::OnCollision(PhysBody3D * body1, PhysBody3D * body2)
 
 	//body1->parentPrimitive->color = color;
 	//body2->parentPrimitive->color = color;
+	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball") {
+		//body2->SetPos(App->player->TruckBody->body.GetPos().x, App->player->TruckBody->body.GetPos().y + 1, App->player->TruckBody->body.GetPos().z);
+		body2->parentPrimitive->name = "none";
+		LOG("A spicy meatball");
+	}
 
 }
 
@@ -245,6 +257,8 @@ void ModuleSceneIntro::CreateMap()
 	App->physics->CreateLineBox(169, 8, -32.5, 1, vec3(2, 2, 13), 2, 0);
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////	
+	// Floor
+	App->physics->CreateFloor(0, 0, 0, vec3(400, 0, 400));
 
 	// DECORATION
 	// 17 (first rect)
@@ -252,6 +266,7 @@ void ModuleSceneIntro::CreateMap()
 	App->physics->CreateLineBox(54.5, 0, -149, 1, vec3(5, 0.5, 83.5), 0, 0);
 	App->physics->CreateLamp(39.5, 0, -185, 5, 13, 3);
 	App->physics->CreateLamp(51.5, 0, -185, 6, 13, 3);
+	App->physics->CreatePerson(37.5, 0, -164.2, 1, 3, 0);
 
 	// 18 (second rect)
 	App->physics->CreateLineBox(37.5, 0, -109.5, 1, vec3(29, 0.5, 5), 0, 1);
