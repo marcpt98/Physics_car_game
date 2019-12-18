@@ -351,7 +351,7 @@ update_status ModulePlayer::PostUpdate(float dt)
 
 void ModulePlayer::OnCollision(PhysBody3D* body1, PhysBody3D* body2) {
 
-	if (body1->parentPrimitive->name == "Claw" && body2->parentPrimitive->name == "Ball") {
+	if (body1->parentPrimitive->name == "Claw" && body2->parentPrimitive->name == "ball") {
 		body2->SetPos(TruckBody->body.GetPos().x, TruckBody->body.GetPos().y+1, TruckBody->body.GetPos().z);
 	}
 

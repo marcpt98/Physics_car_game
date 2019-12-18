@@ -136,7 +136,7 @@ void ModuleSceneIntro::OnCollision(PhysBody3D * body1, PhysBody3D * body2)
 	//body2->parentPrimitive->color = color;
 	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball") {
 		//body2->SetPos(App->player->TruckBody->body.GetPos().x, App->player->TruckBody->body.GetPos().y + 1, App->player->TruckBody->body.GetPos().z);
-		body2->parentPrimitive->name = "none";
+		//body2->parentPrimitive->name = "none";
 		LOG("A spicy meatball");
 	}
 
