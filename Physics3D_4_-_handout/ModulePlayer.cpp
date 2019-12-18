@@ -275,7 +275,7 @@ bool ModulePlayer::Start()
 
 	App->physics->AddConstraintP2P(**CarPrimitives.At(25), **CarPrimitives.At(26), btVector3{ 0, 1.3, 0 }, btVector3{ 0, -0.3 , 0 });
 	
-	TruckWheels[6] = App->physics->AddConstraintHinge(**CarPrimitives.At(20), **CarPrimitives.At(27), btVector3{ 0, 0.2, -2.2 }, btVector3{ 0, -0.8, 0.125 }, btVector3{ 1, 0,0 }, btVector3{ 1,0,0 });
+	TruckWheels[6] = App->physics->AddConstraintHinge(**CarPrimitives.At(20), **CarPrimitives.At(27), btVector3{ 0, 0.2, -2.2 }, btVector3{ 0, -0.7, 0.125 }, btVector3{ 1, 0,0 }, btVector3{ 1,0,0 });
 	//btCollisionObject::
 	
 
@@ -371,45 +371,64 @@ void ModulePlayer::TruckInput(float dt) {
 		TruckWheels[3]->enableAngularMotor(true, -20.f, 100.f);
 		TruckWheels[4]->enableAngularMotor(true, -20.f, 100.f);
 		TruckWheels[5]->enableAngularMotor(true, -20.f, 100.f);
-
-
-
 	}
 	
 	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT) {
 		TruckCab->body.Push(vec3{ 0,0,0 });
-		TruckWheels[0]->enableAngularMotor(true, -20.f, 100.f);
-		TruckWheels[1]->enableAngularMotor(true, -5.f, 100.f);
-		TruckWheels[2]->enableAngularMotor(true, -20.f, 100.f);
-		TruckWheels[4]->enableAngularMotor(true, -20.f, 100.f);
+		
+			TruckWheels[0]->enableAngularMotor(true, -20.f, 100.f);
+			TruckWheels[1]->enableAngularMotor(true, -5.f, 100.f);
+			TruckWheels[2]->enableAngularMotor(true, -20.f, 100.f);
+			TruckWheels[4]->enableAngularMotor(true, -20.f, 100.f);
+		
 
-		//TruckAxis[0]->setPoweredAngMotor(true);
-		TruckAxis[0]->setTargetAngMotorVelocity(0.1);
-	//	TruckAxis[0]->setMaxAngMotorForce(10);
-		TruckAxis[0]->setLowerAngLimit(-0.2f);
-		TruckAxis[0]->setUpperAngLimit( 0.2f);
-		TruckAxis[1]->setLowerAngLimit(-0.2f);
-		TruckAxis[1]->setUpperAngLimit( 0.2f);
-		TruckAxis[2]->setLowerAngLimit(-0.2f);
-		TruckAxis[2]->setUpperAngLimit( 0.2f);
+		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) {
+
+			TruckWheels[0]->enableAngularMotor(true, 20.f, 100.f);
+			TruckWheels[1]->enableAngularMotor(true, 5.f, 100.f);
+			TruckWheels[2]->enableAngularMotor(true, 20.f, 100.f);
+			TruckWheels[4]->enableAngularMotor(true, 20.f, 100.f);
+		}
+
+			//TruckAxis[0]->setPoweredAngMotor(true);
+			TruckAxis[0]->setTargetAngMotorVelocity(0.1);
+			//	TruckAxis[0]->setMaxAngMotorForce(10);
+			TruckAxis[0]->setLowerAngLimit(-0.2f);
+			TruckAxis[0]->setUpperAngLimit(0.2f);
+			TruckAxis[1]->setLowerAngLimit(-0.2f);
+			TruckAxis[1]->setUpperAngLimit(0.2f);
+			TruckAxis[2]->setLowerAngLimit(-0.2f);
+			TruckAxis[2]->setUpperAngLimit(0.2f);
+		
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT) {
 		TruckCab->body.Push(vec3{ 0,0,0 });
-		TruckWheels[0]->enableAngularMotor(true, -5.f, 100.f);
-		TruckWheels[1]->enableAngularMotor(true, -20.f, 100.f);
-		TruckWheels[3]->enableAngularMotor(true, -20.f, 100.f);
-		TruckWheels[5]->enableAngularMotor(true, -20.f, 100.f);
+		
+			TruckWheels[0]->enableAngularMotor(true, -5.f, 100.f);
+			TruckWheels[1]->enableAngularMotor(true, -20.f, 100.f);
+			TruckWheels[3]->enableAngularMotor(true, -20.f, 100.f);
+			TruckWheels[5]->enableAngularMotor(true, -20.f, 100.f);
 
-		//TruckAxis[0]->setPoweredAngMotor(true);
-		TruckAxis[0]->setTargetAngMotorVelocity(-0.1);
-		//TruckAxis[0]->setMaxAngMotorForce(-10);
-		TruckAxis[0]->setLowerAngLimit(-0.2f);
-		TruckAxis[0]->setUpperAngLimit( 0.2f);
-		TruckAxis[1]->setLowerAngLimit(-0.2f);
-		TruckAxis[1]->setUpperAngLimit( 0.2f);
-		TruckAxis[2]->setLowerAngLimit(-0.2f);
-		TruckAxis[2]->setUpperAngLimit( 0.2f);
+		
+
+		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) {
+			TruckWheels[0]->enableAngularMotor(true, 5.f, 100.f);
+			TruckWheels[1]->enableAngularMotor(true, 20.f, 100.f);
+			TruckWheels[3]->enableAngularMotor(true, 20.f, 100.f);
+			TruckWheels[5]->enableAngularMotor(true, 20.f, 100.f);
+
+		}
+			//TruckAxis[0]->setPoweredAngMotor(true);
+			TruckAxis[0]->setTargetAngMotorVelocity(-0.1);
+			//TruckAxis[0]->setMaxAngMotorForce(-10);
+			TruckAxis[0]->setLowerAngLimit(-0.2f);
+			TruckAxis[0]->setUpperAngLimit(0.2f);
+			TruckAxis[1]->setLowerAngLimit(-0.2f);
+			TruckAxis[1]->setUpperAngLimit(0.2f);
+			TruckAxis[2]->setLowerAngLimit(-0.2f);
+			TruckAxis[2]->setUpperAngLimit(0.2f);
+		
 	}
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) {
 		TruckCab->body.Push(vec3{ 0,0,0 });
