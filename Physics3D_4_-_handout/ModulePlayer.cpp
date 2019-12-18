@@ -24,6 +24,7 @@ bool ModulePlayer::CleanUp()
 
 bool ModulePlayer::Start()
 {
+	App->audio->LoadFx("Assets/Fx/BrumBrum.wav");
 	/*Sensor_cube = new Cube(vec3(5,5, 10),0);
 	Sensor_cube->body.collision_listeners.PushBack(this);
 	Sensor_cube->body.SetAsSensor(true);
@@ -394,6 +395,7 @@ void ModulePlayer::TruckInput(float dt) {
 
 
 	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT) {
+		App->audio->PlayFx(1);
 		TruckCab->body.Push(vec3{ 0,0,0 });
 		TruckWheels[0]->enableAngularMotor(true, -20.f, 100.f);
 		TruckWheels[1]->enableAngularMotor(true, -20.f, 100.f);
@@ -413,7 +415,6 @@ void ModulePlayer::TruckInput(float dt) {
 		
 
 		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) {
-
 			TruckWheels[0]->enableAngularMotor(true, 20.f, 100.f);
 			TruckWheels[1]->enableAngularMotor(true, 5.f, 100.f);
 			TruckWheels[2]->enableAngularMotor(true, 20.f, 100.f);
@@ -461,6 +462,7 @@ void ModulePlayer::TruckInput(float dt) {
 		
 	}
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) {
+		App->audio->PlayFx(1);
 		TruckCab->body.Push(vec3{ 0,0,0 });
 		
 		TruckWheels[0]->enableAngularMotor(true, 20.f, 100.f);
