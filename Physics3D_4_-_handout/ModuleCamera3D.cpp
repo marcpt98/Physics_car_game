@@ -101,12 +101,14 @@ update_status ModuleCamera3D::Update(float dt)
 
 		App->scene_intro->camerafollowhelicopter = false;
 		App->scene_intro->camerafollow = false;
+		App->scene_intro->camerafollowarm = false;
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_B) == KEY_DOWN)
 	{
 		App->scene_intro->camerafollowhelicopter = false;
 		App->scene_intro->camerafollow = true;
+		App->scene_intro->camerafollowarm = false;
 	}
 
 	if (App->scene_intro->camerafollow == true)
@@ -122,6 +124,7 @@ update_status ModuleCamera3D::Update(float dt)
 	{
 		App->scene_intro->camerafollowhelicopter = true;
 		App->scene_intro->camerafollow = false;
+		App->scene_intro->camerafollowarm = false;
 	}
 	if (App->scene_intro->camerafollowhelicopter == true)
 	{
@@ -130,6 +133,21 @@ update_status ModuleCamera3D::Update(float dt)
 		vec3 d;
 		d.Set(pa.x + (f.x * -11), pa.y + (f.y + 40), pa.z + (f.z * -11));
 		App->camera->Look(d, pa);
+
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_M) == KEY_DOWN)
+	{
+		App->scene_intro->camerafollowhelicopter = false;
+		App->scene_intro->camerafollow = false;
+		App->scene_intro->camerafollowarm = true;
+	}
+	if (App->scene_intro->camerafollowarm == true)
+	{
+		vec3 pa = App->player->TruckCab->body.GetPos();
+		const vec3 pe = App->player->Claw->body.GetPos();
+		pa.Set(pa.x, pa.y+4, pa.z);
+		App->camera->Look(pa, pe);
 
 	}
 	return UPDATE_CONTINUE;
