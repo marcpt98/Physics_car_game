@@ -68,11 +68,11 @@ bool ModuleSceneIntro::Start()
 	ball5->color = { 0,255, 0 };
 	ScenePrimitives[4]->name = "ball5";
 
-	case1 = false;
-	case2 = false;
-	case3 = false;
-	case4 = false;
-	case5 = false;
+	case1 = true;
+	case2 = true;
+	case3 = true;
+	case4 = true;
+	case5 = true;
 	EndGame = false;
 
 	
@@ -156,6 +156,9 @@ update_status ModuleSceneIntro::Update(float dt)
 		ScenePrimitives[n]->Update();
 
 	CheckHUDandWall();
+	
+	if (EndGame)
+		restartScene();
 
 	return UPDATE_CONTINUE;
 }
@@ -246,6 +249,34 @@ void ModuleSceneIntro::CheckHUDandWall()
 		EndGame = true;
 	}
 }
+
+void ModuleSceneIntro::restartScene() {
+	case1 = false;
+	case2 = false;
+	case3 = false;
+	case4 = false;
+	case5 = false;
+	EndGame = false;
+	case1 = false;
+	case2 = false;
+	case3 = false;
+	case4 = false;
+	case5 = false;
+	case1Count = false;
+	case2Count = false;
+	case3Count = false;
+	case4Count = false;
+	case5Count = false;
+	showtime = 100000;
+	ballCount = 0;
+	ScenePrimitives[0]->SetPos(-165, 1, -36);
+	ScenePrimitives[1]->SetPos(40, 1, 175);
+	ScenePrimitives[2]->SetPos(-20, 1, 175);
+	ScenePrimitives[3]->SetPos(-98, 1, -118);
+	ScenePrimitives[4]->SetPos(-98, 1, 40);
+	finalWall->SetPos(49, 1, -32.5);
+}
+
 
 void ModuleSceneIntro::CreateMap()
 {

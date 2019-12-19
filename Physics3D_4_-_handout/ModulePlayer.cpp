@@ -228,30 +228,7 @@ void ModulePlayer::TruckInput(float dt) {
 	if (App->input->GetKey(SDL_SCANCODE_F3) == KEY_DOWN || App->scene_intro->EndGame == true) {
 		setInitialPos();
 
-		App->scene_intro->case1 = false;
-		App->scene_intro->case2 = false;
-		App->scene_intro->case3 = false;
-		App->scene_intro->case4 = false;
-		App->scene_intro->case5 = false;
-		App->scene_intro->EndGame = false;
-		App->scene_intro->case1 = false;
-		App->scene_intro->case2 = false;
-		App->scene_intro->case3 = false;
-		App->scene_intro->case4 = false;
-		App->scene_intro->case5 = false;
-		App->scene_intro->case1Count = false;
-		App->scene_intro->case2Count = false;
-		App->scene_intro->case3Count = false;
-		App->scene_intro->case4Count = false;
-		App->scene_intro->case5Count = false;
-		App->scene_intro->showtime = 100000;
-		App->scene_intro->ballCount = 0;
-		App->scene_intro->ScenePrimitives[0]->SetPos(-165, 1, -36);
-		App->scene_intro->ScenePrimitives[1]->SetPos(40, 1, 175);
-		App->scene_intro->ScenePrimitives[2]->SetPos(-20, 1, 175);
-		App->scene_intro->ScenePrimitives[3]->SetPos(-98, 1, -118);
-		App->scene_intro->ScenePrimitives[4]->SetPos(-98, 1, 40);
-		App->scene_intro->finalWall->SetPos(49, 1, -32.5);
+		
 	
 	}
 

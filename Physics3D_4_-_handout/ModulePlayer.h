@@ -25,7 +25,6 @@ public:
 	
 	void createTruck();
 	void OnCollision(PhysBody3D* body1, PhysBody3D* body2) override;
-
 	// Map walls
 	bool CleanUp();
 

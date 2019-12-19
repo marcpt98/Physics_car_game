@@ -26,8 +26,7 @@ public:
 	void CreateMap();
 
 	bool CleanUp();
-
-private:
+	void restartScene();
 	void HandleDebugInput();
 	void DebugSpawnPrimitive(Primitive* p);
 	void CheckHUDandWall();
