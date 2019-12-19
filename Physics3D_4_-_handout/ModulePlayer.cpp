@@ -245,6 +245,7 @@ void ModulePlayer::TruckInput(float dt) {
 		App->scene_intro->case4Count = false;
 		App->scene_intro->case5Count = false;
 		App->scene_intro->showtime = 100000;
+		App->scene_intro->ballCount = 0;
 		App->scene_intro->ScenePrimitives[0]->SetPos(-165, 1, -36);
 		App->scene_intro->ScenePrimitives[1]->SetPos(40, 1, 175);
 		App->scene_intro->ScenePrimitives[2]->SetPos(-20, 1, 175);

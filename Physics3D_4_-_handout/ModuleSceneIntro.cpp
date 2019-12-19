@@ -269,6 +269,7 @@ void ModuleSceneIntro::CreateMap()
 	App->physics->CreateLineBox(5.5, 1, -44, 1, vec3(1, 5, 7), 2, 1);
 	App->physics->CreateLineBox(12.5, 1, -44, 1, vec3(1, 5, 7), 2, 1);
 	App->physics->CreateLineBox(9, 1, -40, 1, vec3(8, 5, 1), 2, 1);
+	App->physics->CreateLineBox(9, 0, -48, 1, vec3(6, 2, 1), 2, 1);
 
 	App->physics->CreateDiagonalBox(18, 1, -47, 4, vec3(1, 5, 2), 2, 1, 4);
 	App->physics->CreateDiagonalBox(0, 1, -47, 4, vec3(1, 5, 2), 2, 3, 4);
