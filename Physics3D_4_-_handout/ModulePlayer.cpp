@@ -279,7 +279,7 @@ void ModulePlayer::createTruck() {
 	CarPrimitives.PushBack(Plataform);
 	Plataform->SetPos(truckposx, truckposy, truckposz - 3.5f);
 	primitivesPos[1] = { truckposx, truckposy, truckposz - 3.5f };
-	temp->color.Set(0, ((std::rand() % 255)) / 255.f, 0);
+	Plataform->color.Set(0, ((std::rand() % 255)) / 255.f, 0);
 
 	temp = new Cube(vec3(2.5f, 0.25, 0.25), 10);
 	CarPrimitives.PushBack(temp);
@@ -407,7 +407,7 @@ void ModulePlayer::createTruck() {
 	temp2->SetPos(truckposx, truckposy + 3, truckposz);
 	CarPrimitives.PushBack(temp2);
 	primitivesPos[14] = { truckposx, truckposy + 3, truckposz };
-	temp->color.Set(0, 0, ((std::rand() % 255)) / 255.f);
+	temp2->color.Set(0, 0, ((std::rand() % 255)) / 255.f);
 
 	temp = new Cube(vec3(0.4, 2, 0.2));
 	CarPrimitives.PushBack(temp);
@@ -429,7 +429,7 @@ void ModulePlayer::createTruck() {
 	CarPrimitives[17]->name = "Claw";
 	CarPrimitives[17]->body.collision_listeners.PushBack(this);
 	primitivesPos[17] = { truckposx + 1, truckposy + 5, truckposz };
-	temp->color.Set(0, 0, ((std::rand() % 255)) / 255.f);
+	Claw->color.Set(0, 0, ((std::rand() % 255)) / 255.f);
 
 
 
