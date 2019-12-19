@@ -30,6 +30,7 @@ public:
 private:
 	void HandleDebugInput();
 	void DebugSpawnPrimitive(Primitive* p);
+	void CheckHUDandWall();
 
 public:
 	p2DynArray<Primitive*> ScenePrimitives;
@@ -53,10 +54,16 @@ public:
 	bool case3 = false;
 	bool case4 = false;
 	bool case5 = false;
+	bool case1Count = false;
+	bool case2Count = false;
+	bool case3Count = false;
+	bool case4Count = false;
+	bool case5Count = false;
 	bool EndGame = false;
 
-	bool starttime = false;
-	int time;
+	int showtime;
+	int ballCount;
+	bool ballAdd = false;
 
 private:
 	Cube* leg1;
