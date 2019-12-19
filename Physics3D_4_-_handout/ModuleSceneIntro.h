@@ -54,6 +54,9 @@ public:
 	bool case5 = false;
 	bool EndGame = false;
 
+	bool starttime = false;
+	int time;
+
 private:
 	Cube* leg1;
 	Cube* leg2;

@@ -153,6 +153,16 @@ update_status ModuleSceneIntro::Update(float dt)
 	{
 		finalWall->SetPos(48, 31, -32.5);
 	}
+
+	if (starttime == false)
+	{
+		time = SDL_GetTicks();
+		starttime = true;
+	}
+	if (SDL_GetTicks() > time + 1000000)
+	{
+		EndGame = true;
+	}
 	return UPDATE_CONTINUE;
 }
 
