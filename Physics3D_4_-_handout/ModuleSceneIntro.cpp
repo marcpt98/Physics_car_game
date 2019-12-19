@@ -22,6 +22,7 @@ bool ModuleSceneIntro::Start()
 	//Sensors
 	Sensor_cube = new Cube(vec3(10, 15, 10), 0);
 	Sensor_cube->SetPos(10, 0, -43);
+
 	//ScenePrimitives.PushBack(Sensor_cube);
 	Sensor_cube->body.SetAsSensor(true);
 	Sensor_cube->name = "sensor1";
@@ -34,30 +35,37 @@ bool ModuleSceneIntro::Start()
 	Rainbow_cube->name = "sensor2";
 	Rainbow_cube->body.collision_listeners.PushBack(this);
 	Rainbow_cube->body.is_sensor = true;
+
 	//Sphere creation 
 	ball1 = new Sphere(1.2, 5);
 	ScenePrimitives.PushBack(ball1);
 	ball1->SetPos(-165, 1, -36);
+	ball1->color = { 255,251,0 };
 	ScenePrimitives[0]->name = "ball1";
+	
 
-	ball1 = new Sphere(1.2, 5);
-	ScenePrimitives.PushBack(ball1);
-	ball1->SetPos(40, 1, 175);
+	ball2 = new Sphere(1.2, 5);
+	ScenePrimitives.PushBack(ball2);
+	ball2->SetPos(40, 1, 175);
+	ball2->color = { 201,0,255 };
 	ScenePrimitives[1]->name = "ball2";
 
-	ball1 = new Sphere(1.2, 5);
-	ScenePrimitives.PushBack(ball1);
-	ball1->SetPos(-20, 1, 175);
+	ball3 = new Sphere(1.2, 5);
+	ScenePrimitives.PushBack(ball3);
+	ball3->SetPos(-20, 1, 175);
+	ball3->color = { 255,0,0 };
 	ScenePrimitives[2]->name = "ball3";
 
-	ball1 = new Sphere(1.2, 5);
-	ScenePrimitives.PushBack(ball1);
-	ball1->SetPos(-98, 1, -118);
+	ball4 = new Sphere(1.2, 5);
+	ScenePrimitives.PushBack(ball4);
+	ball4->SetPos(-98, 1, -118);
+	ball4->color = { 0, 226, 17 };
 	ScenePrimitives[3]->name = "ball4";
 
-	ball1 = new Sphere(1.2, 5);
-	ScenePrimitives.PushBack(ball1);
-	ball1->SetPos(-98, 1, 40);
+	ball5 = new Sphere(1.2, 5);
+	ScenePrimitives.PushBack(ball5);
+	ball5->SetPos(-98, 1, 40);
+	ball5->color = { 0,166,255 };
 	ScenePrimitives[4]->name = "ball5";
 
 	case1 = false;
@@ -176,24 +184,24 @@ void ModuleSceneIntro::OnCollision(PhysBody3D * body1, PhysBody3D * body2)
 	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball1") {
 		//body2->SetPos(App->player->TruckBody->body.GetPos().x, App->player->TruckBody->body.GetPos().y + 1, App->player->TruckBody->body.GetPos().z);
 		//body2->parentPrimitive->name = "none";
-		leg1->color = {255,255,255};
+		leg1->color = {255,251,0};
 		LOG("A spicy meatball");
 		case1 = true;
 	}
 	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball2") {
-		leg2->color = { 255,255,255 };
+		leg2->color = { 201,0,255 };
 		case2 = true;
 	}
 	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball3") {
-		body->color = { 255,255,255 };
+		body->color = { 255,0,0 };
 		case3 = true;
 	}
 	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball4") {
-		arm->color = { 255,255,255 };
+		arm->color = { 0,226,17 };
 		case4 = true;
 	}
 	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball5") {
-		head->color = { 255,255,255 };
+		head->color = { 0,166,255 };
 		case5 = true;
 	}
 
@@ -301,12 +309,12 @@ void ModuleSceneIntro::CreateMap()
 	ScenePrimitives[9]->name = "arm";
 	ScenePrimitives[10]->name = "head";
 
-	leg1->color = { ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f) };
-	leg2->color = { ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f) };
-	body->color = { ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f) };
-	arm->color = { ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f) };
-	head->color = { ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f) };
-	
+	leg1->color = { 255,255,255 };
+	leg2->color = { 255,255,255 };
+	body->color = { 255,255,255 };
+	arm->color = { 255,255,255 };
+	head->color = { 255,255,255 };
+
 	//This code can't change colors
 	/*App->physics->CreateLineBox(12, 1, -36, 1, vec3(3, 7, 3));
 	App->physics->CreateLineBox(7, 1, -36, 1, vec3(3, 7, 3));

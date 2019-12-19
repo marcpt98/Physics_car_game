@@ -41,6 +41,10 @@ public:
 	
 	PhysBody3D* sensor = nullptr;
 	Sphere* ball1;
+	Sphere* ball2;
+	Sphere* ball3;
+	Sphere* ball4;
+	Sphere* ball5;
 
 	Cube* Sensor_cube;
 	Cube* Rainbow_cube;
