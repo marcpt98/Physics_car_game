@@ -65,7 +65,7 @@ bool ModuleSceneIntro::Start()
 	ball5 = new Sphere(1.2, 5);
 	ScenePrimitives.PushBack(ball5);
 	ball5->SetPos(-98, 1, 40);
-	ball5->color = { 0,166,255 };
+	ball5->color = { 0,255, 0 };
 	ScenePrimitives[4]->name = "ball5";
 
 	case1 = false;
@@ -105,10 +105,7 @@ bool ModuleSceneIntro::CleanUp()
 
 void ModuleSceneIntro::HandleDebugInput()
 {
-	if (App->input->GetKey(SDL_SCANCODE_F3) == KEY_DOWN)
-		DebugSpawnPrimitive(new Sphere());
-	if (App->input->GetKey(SDL_SCANCODE_F4) == KEY_DOWN)
-		DebugSpawnPrimitive(new Cube());
+
 
 	if (App->input->GetMouseButton(SDL_BUTTON_LEFT) == KEY_DOWN)
 	{
@@ -179,13 +176,8 @@ void ModuleSceneIntro::OnCollision(PhysBody3D * body1, PhysBody3D * body2)
 {
 	Color color = Color((float)(std::rand() % 255) / 255.f, (float)(std::rand() % 255) / 255.f, (float)(std::rand() % 255) / 255.f);
 
-	//body1->parentPrimitive->color = color;
-	//body2->parentPrimitive->color = color;
 	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball1") {
-		//body2->SetPos(App->player->TruckBody->body.GetPos().x, App->player->TruckBody->body.GetPos().y + 1, App->player->TruckBody->body.GetPos().z);
-		//body2->parentPrimitive->name = "none";
-		leg1->color = {255,251,0};
-		LOG("A spicy meatball");
+		leg1->color = {255,255,255};
 		case1 = true;
 	}
 	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball2") {
@@ -197,11 +189,11 @@ void ModuleSceneIntro::OnCollision(PhysBody3D * body1, PhysBody3D * body2)
 		case3 = true;
 	}
 	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball4") {
-		arm->color = { 0,226,17 };
+		arm->color = { 0, 226, 17 };
 		case4 = true;
 	}
 	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball5") {
-		head->color = { 0,166,255 };
+		head->color = { 0,255, 0 };
 		case5 = true;
 	}
 
