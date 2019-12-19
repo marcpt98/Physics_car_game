@@ -145,6 +145,11 @@ bool ModulePhysics3D::CleanUp()
 		world->removeConstraint(iterator->data);
 		delete iterator->data;
 	}
+
+	for (p2List_item<btSliderConstraint*>* iterator = SliderConstraints.getFirst(); iterator; iterator = iterator->next) {
+		world->removeConstraint(iterator->data);
+		delete iterator->data;
+	}
 	
 	delete world;
 

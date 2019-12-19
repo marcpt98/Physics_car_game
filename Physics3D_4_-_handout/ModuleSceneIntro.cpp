@@ -84,7 +84,12 @@ bool ModuleSceneIntro::Start()
 bool ModuleSceneIntro::CleanUp()
 {
 	LOG("Unloading Intro scene");
+	
 
+	for (uint n = 0; n < ScenePrimitives.Count(); n++)
+		delete ScenePrimitives[n];
+
+	ScenePrimitives.Clear();
 	return true;
 }
 

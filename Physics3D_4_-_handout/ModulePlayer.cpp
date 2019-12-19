@@ -19,6 +19,11 @@ bool ModulePlayer::CleanUp()
 {
 	LOG("Unloading Player");
 
+	for (uint n = 0; n < CarPrimitives.Count(); n++)
+		delete CarPrimitives[n];
+
+	CarPrimitives.Clear();
+
 	return true;
 }
 
