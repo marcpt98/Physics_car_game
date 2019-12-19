@@ -434,11 +434,11 @@ void ModulePhysics3D::CreatePerson(float posx, float posy, float posz, int lengh
 {
 	for (int n = 0; n < lenght; n++)
 	{
-		Cube* s = new Cube({ 0.5, 3, 0.5 }, 0);
-		Cube* d = new Cube({ 0.5, 3, 0.5 }, 0);
-		Cube* f = new Cube({ 2, 1.5, 1 }, 0);
-		Cube* g = new Cube({ 3.5, 0.5, 1 }, 0);
-		Cube* h = new Cube({ 1.5, 1.5, 1.5 }, 0);
+		Cube* s = new Cube({ 0.5, 1.2, 0.5 }, 1);
+		Cube* d = new Cube({ 0.5, 1.2, 0.5 }, 1);
+		Cube* f = new Cube({ 1.5, 1.5, 1 }, 1);
+		Cube* g = new Cube({ 3.5, 0.5, 1 }, 1);
+		Cube* h = new Cube({ 1.2, 1.2, 1.2 }, 1);
 
 		s->color = { ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f) };
 		d->color = { ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f), ((float)(std::rand() % 255) / 255.f) };
@@ -452,11 +452,11 @@ void ModulePhysics3D::CreatePerson(float posx, float posy, float posz, int lengh
 		App->scene_intro->ScenePrimitives.PushBack(g);
 		App->scene_intro->ScenePrimitives.PushBack(h);
 
-		s->SetPos(posx, posy, posz);
-		d->SetPos(posx-1, posy, posz);
+		s->SetPos(posx-0.1, posy+1, posz);
+		d->SetPos(posx-0.9, posy+1, posz);
 		f->SetPos(posx-0.5, posy+2, posz);
 		g->SetPos(posx-0.5, posy+3, posz);
-		h->SetPos(posx-0.5, posy+4, posz);
+		h->SetPos(posx-0.5, posy+3.85, posz);
 
 		// Right
 		if (direction == 0)
