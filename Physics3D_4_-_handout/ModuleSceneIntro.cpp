@@ -70,7 +70,7 @@ bool ModuleSceneIntro::Start()
 	
 	// Creating map
 	CreateMap();
-	finalWall->SetPos(48, 31, -32.5);
+	
 	return ret;
 }
 
