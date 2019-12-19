@@ -237,7 +237,7 @@ void ModulePlayer::TruckInput(float dt) {
 		App->scene_intro->case3Count = false;
 		App->scene_intro->case4Count = false;
 		App->scene_intro->case5Count = false;
-		App->scene_intro->showtime = 1000000;
+		App->scene_intro->showtime = 100000;
 		App->scene_intro->ScenePrimitives[0]->SetPos(-165, 1, -36);
 		App->scene_intro->ScenePrimitives[1]->SetPos(40, 1, 175);
 		App->scene_intro->ScenePrimitives[2]->SetPos(-20, 1, 175);
@@ -261,7 +261,7 @@ void ModulePlayer::createTruck() {
 
 	float truckposx = 45.f, truckposy = 5.f, truckposz = -175.f;
 	TruckCab = new Cube(vec3(2, 2, 2), 10);
-	TruckCab->color.Set(100, 100, 100);
+	TruckCab->color = { ((std::rand() % 255)) / 255.f, 0, 0 };
 	CarPrimitives.PushBack(TruckCab);
 	primitivesPos[0] = { truckposx, truckposy, truckposz };
 	TruckCab->SetPos(truckposx, truckposy, truckposz);
@@ -272,63 +272,67 @@ void ModulePlayer::createTruck() {
 	CarPrimitives.PushBack(temp);
 	temp->SetPos(truckposx, truckposy, truckposz - 3.5f);
 	primitivesPos[1] = { truckposx, truckposy, truckposz - 3.5f };
+	temp->color.Set(0, ((std::rand() % 255)) / 255.f, 0);
 
 	temp = new Cube(vec3(2.5f, 0.25, 0.25), 10);
 	CarPrimitives.PushBack(temp);
 	temp->SetPos(truckposx, truckposy - 1, truckposz);
 	primitivesPos[2] = { truckposx, truckposy - 1, truckposz };
+	temp->color.Set(0, ((std::rand() % 255)) / 255.f, 0);
 
 	temp = new Cube(vec3(2.5f, 0.25, 0.25), 10);
 	CarPrimitives.PushBack(temp);
 	temp->SetPos(truckposx, truckposy - 1, truckposz - 5.5f);
 	primitivesPos[3] = { truckposx, truckposy - 1, truckposz - 5.5f };
+	temp->color.Set(0, ((std::rand() % 255)) / 255.f, 0);
 
 	temp = new Cube(vec3(2.5f, 0.25, 0.25), 10);
 	CarPrimitives.PushBack(temp);
 	temp->SetPos(truckposx, truckposy - 1, truckposz - 2.2f);
 	primitivesPos[4] = { truckposx, truckposy - 1, truckposz - 2.2f };
+	temp->color.Set(0, ((std::rand() % 255)) / 255.f, 0);
 
 
 
 	temp2 = new Cylinder(0.4, 0.2, 0.4);
 	temp2->SetPos(truckposx + 3, truckposy - 1, truckposz);
 	primitivesPos[5] = { truckposx + 3, truckposy - 1, truckposz };
-	temp2->color.Set(225, 0, 0);
+	temp2->color.Set(0, 0, ((std::rand() % 255)) / 255.f);
 	temp2->body.GetBody()->setFriction(5);
 	CarPrimitives.PushBack(temp2);
 
 	temp2 = new Cylinder(0.4, 0.2, 0.4);
 	temp2->SetPos(truckposx - 3, truckposy - 1, truckposz);
 	primitivesPos[6] = { truckposx - 3, truckposy - 1, truckposz };
-	temp2->color.Set(0, 0, 225);
+	temp2->color.Set(0, 0, ((std::rand() % 255)) / 255.f);
 	temp2->body.GetBody()->setFriction(5);
 	CarPrimitives.PushBack(temp2);
 
 	temp2 = new Cylinder(0.4, 0.2, 0.4);
 	temp2->SetPos(truckposx + 3, truckposy - 1, truckposz - 5.5f);
 	primitivesPos[7] = { truckposx + 3, truckposy - 1, truckposz - 5.5f };
-	temp2->color.Set(225, 0, 0);
+	temp2->color.Set(0, 0, ((std::rand() % 255)) / 255.f);
 	temp2->body.GetBody()->setFriction(5);
 	CarPrimitives.PushBack(temp2);
 
 	temp2 = new Cylinder(0.4, 0.2, 0.4);
 	temp2->SetPos(truckposx - 3, truckposy - 1, truckposz - 5.5f);
 	primitivesPos[8] = { truckposx - 3, truckposy - 1, truckposz - 5.5f };
-	temp2->color.Set(0, 0, 225);
+	temp2->color.Set(0, 0, ((std::rand() % 255)) / 255.f);
 	temp2->body.GetBody()->setFriction(5);
 	CarPrimitives.PushBack(temp2);
 
 	temp2 = new Cylinder(0.4, 0.2, 0.4);
 	temp2->SetPos(truckposx + 3, truckposy - 1, truckposz - 2.2f);
 	primitivesPos[9] = { truckposx + 3, truckposy - 1, truckposz - 2.2f };
-	temp2->color.Set(225, 0, 0);
+	temp2->color.Set(0, 0, ((std::rand() % 255)) / 255.f);
 	temp2->body.GetBody()->setFriction(5);
 	CarPrimitives.PushBack(temp2);
 
 	temp2 = new Cylinder(0.4, 0.2, 0.4);
 	temp2->SetPos(truckposx - 3, truckposy - 1, truckposz - 2.2f);
 	primitivesPos[10] = { truckposx - 3, truckposy - 1, truckposz - 2.2f };
-	temp2->color.Set(0, 0, 225);
+	temp2->color.Set(0, 0, ((std::rand() % 255)) / 255.f);
 	temp2->body.GetBody()->setFriction(5);
 	CarPrimitives.PushBack(temp2);
 
@@ -336,17 +340,19 @@ void ModulePlayer::createTruck() {
 	CarPrimitives.PushBack(temp);
 	temp->SetPos(truckposx, truckposy + 1, truckposz - 3.5f);
 	primitivesPos[11] = { truckposx, truckposy + 1, truckposz - 3.5f };
+	temp->color.Set(0, ((std::rand() % 255)) / 255.f, 0);
 
 
 	temp = new Cube(vec3(0.25, 1, 4.5));
 	CarPrimitives.PushBack(temp);
 	temp->SetPos(truckposx - 2, truckposy + 1, truckposz - 3.5f);
 	primitivesPos[12] = { truckposx - 2, truckposy + 1, truckposz - 3.5f };
+	temp->color.Set(0, ((std::rand() % 255)) / 255.f, 0);
 
 	temp = new Cube(vec3(0.25, 1, 4.5));
 	CarPrimitives.PushBack(temp);
 
-	temp->color.Set(225, 0, 0);
+	temp->color.Set(0, ((std::rand() % 255)) / 255.f, 0);
 	temp->SetPos(truckposx + 2, truckposy + 1, truckposz - 3.5f);
 	primitivesPos[13] = { truckposx + 2, truckposy + 1, truckposz - 3.5f };
 
@@ -394,17 +400,20 @@ void ModulePlayer::createTruck() {
 	temp2->SetPos(truckposx, truckposy + 3, truckposz);
 	CarPrimitives.PushBack(temp2);
 	primitivesPos[14] = { truckposx, truckposy + 3, truckposz };
+	temp->color.Set(0, 0, ((std::rand() % 255)) / 255.f);
 
 	temp = new Cube(vec3(0.4, 2, 0.2));
 	CarPrimitives.PushBack(temp);
 	temp->SetPos(truckposx, truckposy + 4, truckposz);
 	primitivesPos[15] = { truckposx, truckposy + 4, truckposz };
+	temp->color.Set(0, 0, ((std::rand() % 255)) / 255.f);
 
 
 	temp = new Cube(vec3(0.3, 2.5, 0.1));
 	CarPrimitives.PushBack(temp);
 	temp->SetPos(truckposx + 1, truckposy + 3, truckposz);
 	primitivesPos[16] = { truckposx + 1, truckposy + 3, truckposz };
+	temp->color.Set(0, 0, ((std::rand() % 255)) / 255.f);
 
 
 	Claw = new Cube(vec3(0.3, 0.6, 0.3), 0.01);
@@ -413,6 +422,7 @@ void ModulePlayer::createTruck() {
 	CarPrimitives[17]->name = "Claw";
 	CarPrimitives[17]->body.collision_listeners.PushBack(this);
 	primitivesPos[17] = { truckposx + 1, truckposy + 5, truckposz };
+	temp->color.Set(0, 0, ((std::rand() % 255)) / 255.f);
 
 
 
@@ -420,6 +430,7 @@ void ModulePlayer::createTruck() {
 	CarPrimitives.PushBack(temp);
 	temp->SetPos(truckposx, truckposy, truckposz - 8);
 	primitivesPos[18] = { truckposx , truckposy , truckposz - 8 };
+	temp->color.Set(0, 0, ((std::rand() % 255)) / 255.f);
 
 	HingeArm[0] = App->physics->AddConstraintHinge(**CarPrimitives.At(0), **CarPrimitives.At(14), btVector3{ 0, 1.2f, 0 }, btVector3{ 0, 0 , 0 }, btVector3{ 0, 1, 0 }, btVector3{ 0, 1 , 0 });
 	HingeArm[1] = App->physics->AddConstraintHinge(**CarPrimitives.At(14), **CarPrimitives.At(15), btVector3{ 0, 0.4, 0 }, btVector3{ 0, -1 , 0 }, btVector3{ 0, 0, 1 }, btVector3{ 0, 0 , 1 });

@@ -7,7 +7,7 @@
 
 ModuleSceneIntro::ModuleSceneIntro(bool start_enabled) : Module(start_enabled)
 {
-	showtime = 1000000;
+	showtime = 100000;
 	ballCount = 0;
 }
 
