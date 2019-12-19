@@ -30,50 +30,17 @@ bool ModulePlayer::CleanUp()
 bool ModulePlayer::Start()
 {
 	App->audio->LoadFx("Assets/Fx/BrumBrum.wav");
-	/*Sensor_cube = new Cube(vec3(5,5, 10),0);
-	Sensor_cube->body.collision_listeners.PushBack(this);
-	Sensor_cube->body.SetAsSensor(true);
-
-	Sensor_cube->body.is_sensor = true;
-	Sensor_cube->body.parentPrimitive->name = "Car";*/
 	createTruck();
 	bool ret = true;
 	grip = nullptr;
 	
-	//btCollisionObject::
-	
-	/*
-	temp3 = new Sphere(0.8, 0.2);
-	CarPrimitives.PushBack(temp3);
-	temp3->SetPos(TruckBody->body.GetPos().x, TruckBody->body.GetPos().y + 1, TruckBody->body.GetPos().z);
-
-	CarPrimitives[19]->name = "Ball";
-
-	temp3 = new Sphere(0.8, 0.2);
-	CarPrimitives.PushBack(temp3);
-	temp3->SetPos(TruckBody->body.GetPos().x, TruckBody->body.GetPos().y + 2, TruckBody->body.GetPos().z);
-	CarPrimitives[20]->name = "Ball";
-
-	temp3 = new Sphere(0.8, 0.2);
-	CarPrimitives.PushBack(temp3);
-	temp3->SetPos(TruckBody->body.GetPos().x, TruckBody->body.GetPos().y + 3, TruckBody->body.GetPos().z);
-	CarPrimitives[21]->name = "Ball";
-
-	temp3 = new Sphere(0.8, 0.2);
-	CarPrimitives.PushBack(temp3);
-	temp3->SetPos(TruckBody->body.GetPos().x, TruckBody->body.GetPos().y + 4, TruckBody->body.GetPos().z);
-	CarPrimitives[22]->name = "Ball";*/
 	return ret;
 }
 
 update_status ModulePlayer::Update(float dt)
 {
-	//Sensor_cube->SetPos(TruckCab->body.GetPos().x, TruckCab->body.GetPos().y, TruckCab->body.GetPos().z);
-	//Sensor_cube->Update();
 
 	TruckInput(dt);
-	//CarInput(dt);
-
 
 	CarPrimitives[15]->body.GetBody()->setGravity(btVector3(0, 0, 0));
 	CarPrimitives[16]->body.GetBody()->setGravity(btVector3(0, 0, 0));
@@ -131,7 +98,7 @@ void ModulePlayer::TruckInput(float dt) {
 	HingeArm[2]->enableAngularMotor(true, 0.f, 10);
 
 
-	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT) {
+	if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) {
 		App->audio->PlayFx(1);
 		TruckCab->body.Push(vec3{ 0,0,0 });
 		TruckWheels[0]->enableAngularMotor(true, -20.f, 100.f);
@@ -142,7 +109,7 @@ void ModulePlayer::TruckInput(float dt) {
 		TruckWheels[5]->enableAngularMotor(true, -20.f, 100.f);
 	}
 	
-	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT) {
+	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) {
 		TruckCab->body.Push(vec3{ 0,0,0 });
 		
 			TruckWheels[0]->enableAngularMotor(true, -20.f, 100.f);
@@ -151,16 +118,14 @@ void ModulePlayer::TruckInput(float dt) {
 			TruckWheels[4]->enableAngularMotor(true, -20.f, 100.f);
 		
 
-		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) {
+		if (App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) {
 			TruckWheels[0]->enableAngularMotor(true, 20.f, 100.f);
 			TruckWheels[1]->enableAngularMotor(true, 5.f, 100.f);
 			TruckWheels[2]->enableAngularMotor(true, 20.f, 100.f);
 			TruckWheels[4]->enableAngularMotor(true, 20.f, 100.f);
 		}
 
-			//TruckAxis[0]->setPoweredAngMotor(true);
 			TruckAxis[0]->setTargetAngMotorVelocity(0.1);
-			//	TruckAxis[0]->setMaxAngMotorForce(10);
 			TruckAxis[0]->setLowerAngLimit(-0.2f);
 			TruckAxis[0]->setUpperAngLimit(0.2f);
 			TruckAxis[1]->setLowerAngLimit(-0.2f);
@@ -170,7 +135,7 @@ void ModulePlayer::TruckInput(float dt) {
 		
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT) {
+	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) {
 		TruckCab->body.Push(vec3{ 0,0,0 });
 		
 			TruckWheels[0]->enableAngularMotor(true, -5.f, 100.f);
@@ -180,16 +145,14 @@ void ModulePlayer::TruckInput(float dt) {
 
 		
 
-		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) {
+		if (App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) {
 			TruckWheels[0]->enableAngularMotor(true, 5.f, 100.f);
 			TruckWheels[1]->enableAngularMotor(true, 20.f, 100.f);
 			TruckWheels[3]->enableAngularMotor(true, 20.f, 100.f);
 			TruckWheels[5]->enableAngularMotor(true, 20.f, 100.f);
 
 		}
-			//TruckAxis[0]->setPoweredAngMotor(true);
 			TruckAxis[0]->setTargetAngMotorVelocity(-0.1);
-			//TruckAxis[0]->setMaxAngMotorForce(-10);
 			TruckAxis[0]->setLowerAngLimit(-0.2f);
 			TruckAxis[0]->setUpperAngLimit(0.2f);
 			TruckAxis[1]->setLowerAngLimit(-0.2f);
@@ -198,7 +161,7 @@ void ModulePlayer::TruckInput(float dt) {
 			TruckAxis[2]->setUpperAngLimit(0.2f);
 		
 	}
-	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) {
+	if (App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) {
 		App->audio->PlayFx(1);
 		TruckCab->body.Push(vec3{ 0,0,0 });
 		
@@ -212,38 +175,43 @@ void ModulePlayer::TruckInput(float dt) {
 
 
 	}
-	if (App->input->GetKey(SDL_SCANCODE_0) == KEY_REPEAT) {
+	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_REPEAT) {
 		TruckCab->body.Push(vec3{ 0,0,0 });
 	Elevator->enableAngularMotor(true, 1.f, 5.f);
 	TruckWheels[6]->enableMotor(false);
 
 
 	}
-	if (App->input->GetKey(SDL_SCANCODE_9) == KEY_REPEAT) {
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) {
 		TruckCab->body.Push(vec3{ 0,0,0 });
 		HingeArm[1]->enableAngularMotor(true, 1.2f, 10);
 		HingeArm[2]->enableAngularMotor(true, 1.f, 10);
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_8) == KEY_REPEAT) {
+	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT) {
 		TruckCab->body.Push(vec3{ 0,0,0 });
 		HingeArm[1]->enableAngularMotor(true, -1.2f, 10);
 		HingeArm[2]->enableAngularMotor(true, -1.f, 10);
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_7) == KEY_REPEAT) {
+	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT) {
 		TruckCab->body.Push(vec3{ 0,0,0 });
 		HingeArm[0]->enableAngularMotor(true, 1.5f, 100);
 
 	}
+	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT) {
+		TruckCab->body.Push(vec3{ 0,0,0 });
+		HingeArm[0]->enableAngularMotor(true, -1.5f, 100);
 
-	if (App->input->GetKey(SDL_SCANCODE_6) == KEY_REPEAT) {
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_REPEAT) {
 		TruckCab->body.Push(vec3{ 0,0,0 });
 		HingeArm[2]->enableAngularMotor(true, 1.f, 10);
 
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_5) == KEY_REPEAT) {
+	if (App->input->GetKey(SDL_SCANCODE_RSHIFT) == KEY_REPEAT) {
 		TruckCab->body.Push(vec3{ 0,0,0 });
 		HingeArm[2]->enableAngularMotor(true, -1.f, 10);
 
@@ -285,9 +253,7 @@ void ModulePlayer::setInitialPos() {
 }
 
 void ModulePlayer::createTruck() {
-	for (uint n = 0; n < CarPrimitives.Count(); n++) {
-		LOG("");
-	}
+
 	float truckposx = 45.f, truckposy = 5.f, truckposz = -175.f;
 	TruckCab = new Cube(vec3(2, 2, 2), 10);
 	TruckCab->color.Set(100, 100, 100);
@@ -452,14 +418,10 @@ void ModulePlayer::createTruck() {
 
 	HingeArm[0] = App->physics->AddConstraintHinge(**CarPrimitives.At(0), **CarPrimitives.At(14), btVector3{ 0, 1.2f, 0 }, btVector3{ 0, 0 , 0 }, btVector3{ 0, 1, 0 }, btVector3{ 0, 1 , 0 });
 	HingeArm[1] = App->physics->AddConstraintHinge(**CarPrimitives.At(14), **CarPrimitives.At(15), btVector3{ 0, 0.4, 0 }, btVector3{ 0, -1 , 0 }, btVector3{ 0, 0, 1 }, btVector3{ 0, 0 , 1 });
-	//HingeArm[1]->setLimit(0.5, 0, 100);
 	HingeArm[2] = App->physics->AddConstraintHinge(**CarPrimitives.At(15), **CarPrimitives.At(16), btVector3{ 0, 0.8, 0.15 }, btVector3{ 0, -1.25 , 0 }, btVector3{ 0, 0, 1 }, btVector3{ 0, 0 , 1 });
-
 	App->physics->AddConstraintP2P(**CarPrimitives.At(16), **CarPrimitives.At(17), btVector3{ 0, 1.3, 0 }, btVector3{ 0, -0.3 , 0 });
 
 	TruckWheels[6] = App->physics->AddConstraintHinge(**CarPrimitives.At(11), **CarPrimitives.At(18), btVector3{ 0, 0.2, -2.2 }, btVector3{ 0, -0.7, 0.125 }, btVector3{ 1, 0,0 }, btVector3{ 1,0,0 });
-	for (uint n = 0; n < CarPrimitives.Count(); n++) {
-		LOG("");
-	}
+
 
 }
