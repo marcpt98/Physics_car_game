@@ -67,7 +67,6 @@ public:
 
 	int showtime;
 	int ballCount;
-	bool ballAdd = false;
 
 private:
 	Cube* leg1;

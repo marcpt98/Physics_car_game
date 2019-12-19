@@ -245,6 +245,7 @@ void ModulePlayer::TruckInput(float dt) {
 		App->scene_intro->case4Count = false;
 		App->scene_intro->case5Count = false;
 		App->scene_intro->showtime = 100000;
+		App->scene_intro->ballCount = 0;
 		App->scene_intro->ScenePrimitives[0]->SetPos(-165, 1, -36);
 		App->scene_intro->ScenePrimitives[1]->SetPos(40, 1, 175);
 		App->scene_intro->ScenePrimitives[2]->SetPos(-20, 1, 175);
@@ -283,6 +284,7 @@ void ModulePlayer::createTruck() {
 	Plataform->SetPos(truckposx, truckposy, truckposz - 3.5f);
 	primitivesPos[1] = { truckposx, truckposy, truckposz - 3.5f };
 	Plataform->color.Set(0.3, 0.3, 0.3);
+
 
 	temp = new Cube(vec3(2.5f, 0.25, 0.25), 10);
 	CarPrimitives.PushBack(temp);
@@ -430,7 +432,7 @@ void ModulePlayer::createTruck() {
 	CarPrimitives[17]->name = "Claw";
 	CarPrimitives[17]->body.collision_listeners.PushBack(this);
 	primitivesPos[17] = { truckposx + 1, truckposy + 5, truckposz };
-	temp->color.Set(0, 0, ((std::rand() % 255)) / 255.f);
+	Claw->color.Set(0, 0, ((std::rand() % 255)) / 255.f);
 
 
 

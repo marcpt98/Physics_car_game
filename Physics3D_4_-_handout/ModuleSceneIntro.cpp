@@ -68,11 +68,11 @@ bool ModuleSceneIntro::Start()
 	ball5->color = { 0,255, 0 };
 	ScenePrimitives[4]->name = "ball5";
 
-	case1 = true;
-	case2 = true;
-	case3 = true;
-	case4 = true;
-	case5 = true;
+	case1 = false;
+	case2 = false;
+	case3 = false;
+	case4 = false;
+	case5 = false;
 	EndGame = false;
 
 	
@@ -269,6 +269,7 @@ void ModuleSceneIntro::CreateMap()
 	App->physics->CreateLineBox(5.5, 1, -44, 1, vec3(1, 5, 7), 2, 1);
 	App->physics->CreateLineBox(12.5, 1, -44, 1, vec3(1, 5, 7), 2, 1);
 	App->physics->CreateLineBox(9, 1, -40, 1, vec3(8, 5, 1), 2, 1);
+	App->physics->CreateLineBox(9, 0, -48, 1, vec3(6, 2, 1), 2, 1);
 
 	App->physics->CreateDiagonalBox(18, 1, -47, 4, vec3(1, 5, 2), 2, 1, 4);
 	App->physics->CreateDiagonalBox(0, 1, -47, 4, vec3(1, 5, 2), 2, 3, 4);
