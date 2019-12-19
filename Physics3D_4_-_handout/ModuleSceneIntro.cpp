@@ -273,6 +273,11 @@ void ModuleSceneIntro::restartScene() {
 	ScenePrimitives[3]->SetPos(-98, 1, -118);
 	ScenePrimitives[4]->SetPos(-98, 1, 40);
 	finalWall->SetPos(49, 1, -32.5);
+	arm->color = {255,255,255};
+	leg1->color = { 255,255,255 };
+	leg2->color = { 255,255,255 };
+	body->color = { 255,255,255 };
+	head->color = { 255,255,255 };
 }
 
 
