@@ -97,14 +97,14 @@ update_status ModuleCamera3D::Update(float dt)
 
 	//Camera following code
 
-	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
+	if (App->input->GetKey(SDL_SCANCODE_4) == KEY_DOWN) {
 
 		App->scene_intro->camerafollowhelicopter = false;
 		App->scene_intro->camerafollow = false;
 		App->scene_intro->camerafollowarm = false;
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_B) == KEY_DOWN)
+	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
 	{
 		App->scene_intro->camerafollowhelicopter = false;
 		App->scene_intro->camerafollow = true;
@@ -120,7 +120,7 @@ update_status ModuleCamera3D::Update(float dt)
 		App->camera->Look(d, pa);
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_N) == KEY_DOWN) 
+	if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN) 
 	{
 		App->scene_intro->camerafollowhelicopter = true;
 		App->scene_intro->camerafollow = false;
@@ -136,7 +136,7 @@ update_status ModuleCamera3D::Update(float dt)
 
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_M) == KEY_DOWN)
+	if (App->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
 	{
 		App->scene_intro->camerafollowhelicopter = false;
 		App->scene_intro->camerafollow = false;

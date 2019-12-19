@@ -7,6 +7,8 @@
 
 ModuleSceneIntro::ModuleSceneIntro(bool start_enabled) : Module(start_enabled)
 {
+	showtime = 1000000;
+	ballCount = 0;
 }
 
 ModuleSceneIntro::~ModuleSceneIntro()
@@ -103,10 +105,7 @@ bool ModuleSceneIntro::CleanUp()
 
 void ModuleSceneIntro::HandleDebugInput()
 {
-	if (App->input->GetKey(SDL_SCANCODE_F3) == KEY_DOWN)
-		DebugSpawnPrimitive(new Sphere());
-	if (App->input->GetKey(SDL_SCANCODE_F4) == KEY_DOWN)
-		DebugSpawnPrimitive(new Cube());
+
 
 	if (App->input->GetMouseButton(SDL_BUTTON_LEFT) == KEY_DOWN)
 	{
@@ -156,21 +155,8 @@ update_status ModuleSceneIntro::Update(float dt)
 	for (uint n = 0; n < ScenePrimitives.Count(); n++)
 		ScenePrimitives[n]->Update();
 
+	CheckHUDandWall();
 
-	if (case1 == true && case2 == true && case3 == true && case4 == true && case5 == true)
-	{
-		finalWall->SetPos(48, 31, -32.5);
-	}
-
-	if (starttime == false)
-	{
-		time = SDL_GetTicks();
-		starttime = true;
-	}
-	if (SDL_GetTicks() > time + 1000000)
-	{
-		EndGame = true;
-	}
 	return UPDATE_CONTINUE;
 }
 
@@ -190,13 +176,8 @@ void ModuleSceneIntro::OnCollision(PhysBody3D * body1, PhysBody3D * body2)
 {
 	Color color = Color((float)(std::rand() % 255) / 255.f, (float)(std::rand() % 255) / 255.f, (float)(std::rand() % 255) / 255.f);
 
-	//body1->parentPrimitive->color = color;
-	//body2->parentPrimitive->color = color;
 	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball1") {
-		//body2->SetPos(App->player->TruckBody->body.GetPos().x, App->player->TruckBody->body.GetPos().y + 1, App->player->TruckBody->body.GetPos().z);
-		//body2->parentPrimitive->name = "none";
-		leg1->color = {255,251,0};
-		LOG("A spicy meatball");
+		leg1->color = {255,255,255};
 		case1 = true;
 	}
 	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball2") {
@@ -217,6 +198,51 @@ void ModuleSceneIntro::OnCollision(PhysBody3D * body1, PhysBody3D * body2)
 	}
 
 	if (body1->parentPrimitive->name == "sensor2" && body2->parentPrimitive->name == "Cart") {
+		EndGame = true;
+	}
+}
+
+void ModuleSceneIntro::CheckHUDandWall()
+{
+	if (case1 == true && case2 == true && case3 == true && case4 == true && case5 == true)
+	{
+		finalWall->SetPos(48, 31, -32.5);
+	}
+
+	if (case1Count == false && case1 == true)
+	{
+		ballCount += 1;
+		case1Count = true;
+	}
+
+	if (case2Count == false && case2 == true)
+	{
+		ballCount += 1;
+		case2Count = true;
+	}
+
+	if (case3Count == false && case3 == true)
+	{
+		ballCount += 1;
+		case3Count = true;
+	}
+
+	if (case4Count == false && case4 == true)
+	{
+		ballCount += 1;
+		case4Count = true;
+	}
+
+	if (case5Count == false && case5 == true)
+	{
+		ballCount += 1;
+		case5Count = true;
+	}
+
+	showtime--;
+
+	if (showtime == 0)
+	{
 		EndGame = true;
 	}
 }

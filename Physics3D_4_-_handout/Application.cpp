@@ -82,6 +82,9 @@ void Application::PrepareUpdate()
 // ---------------------------------------------
 void Application::FinishUpdate()
 {
+	static char title[256];
+	sprintf_s(title, 256, "UNEMPLOYED TRUCK DRIVER SIMULATOR | BALLS COLLECTED: %i/5 | TIME LEFT: %i", App->scene_intro->ballCount, App->scene_intro->showtime);
+	App->window->SetTitle(title);
 }
 
 // Call PreUpdate, Update and PostUpdate on all modules
