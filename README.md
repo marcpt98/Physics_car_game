@@ -1,5 +1,5 @@
 # Unemployed truck driver simulator
-You're Fo0rte, a despressed guy that wanted to be a game developer a long time ago but because of a professor that ordered him a lot of work and was making his life impossible, he gave up and became an alcoholic. He went to buy some milk and left his wife and kids behind forever. Now, he's an acloholic truck driver that has to collect the 5 magical balls in order to restore his life and come back with his family again.
+You're Forte, a depressed guy that wanted to be a game developer a long time ago but because of a professor that ordered him a lot of work and was making his life impossible, he gave up and became an alcoholic. He went to buy some milk and left his wife and kids behind forever. Now, he's an acloholic truck driver that has to collect the 5 magical balls in order to restore his life and come back with his family again.
 In order to collect the balls, you have to touch it with the claw from the truck and the ball will automatically teleport into the tuck. Then, you have to bring the ball to the roundabout positioned in the center of the map and offer it to the GIANT, a part of the GIANT will change to the same color of the ball, absorbing it's colorfull powers!!
 When you collect all balls, the figure will be completely colored with the power of the Rainbow! and the door of the tunnel will be opened. You have to enter in the final tunnel (Bifröst) in order to finish the game, entering to the Bifröst you'll get teleported to another world. But don't be too slow! You have 10 minutes to complete it.
 
@@ -28,9 +28,13 @@ When you collect all balls, the figure will be completely colored with the power
 
 - D: Move right
 
-- UP: Move claw up
+- RSHIFT: Move lower claw arm down
 
-- DOWN: Move claw down
+- LSHIFT: Move lower claw arm up
+
+- UP: Move upper claw arm up
+
+- DOWN: Move upper claw arm down
 
 - LEFT: Move claw left
 
