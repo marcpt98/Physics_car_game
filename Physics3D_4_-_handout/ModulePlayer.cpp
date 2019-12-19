@@ -239,7 +239,12 @@ void ModulePlayer::TruckInput(float dt) {
 		App->scene_intro->case3 = false;
 		App->scene_intro->case4 = false;
 		App->scene_intro->case5 = false;
-		App->scene_intro->starttime = false;
+		App->scene_intro->case1Count = false;
+		App->scene_intro->case2Count = false;
+		App->scene_intro->case3Count = false;
+		App->scene_intro->case4Count = false;
+		App->scene_intro->case5Count = false;
+		App->scene_intro->showtime = 1000000;
 		App->scene_intro->ScenePrimitives[0]->SetPos(-165, 1, -36);
 		App->scene_intro->ScenePrimitives[1]->SetPos(40, 1, 175);
 		App->scene_intro->ScenePrimitives[2]->SetPos(-20, 1, 175);

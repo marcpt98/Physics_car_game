@@ -30,6 +30,7 @@ public:
 private:
 	void HandleDebugInput();
 	void DebugSpawnPrimitive(Primitive* p);
+	void CheckHUDandWall();
 
 public:
 	p2DynArray<Primitive*> ScenePrimitives;
@@ -40,6 +41,10 @@ public:
 	
 	PhysBody3D* sensor = nullptr;
 	Sphere* ball1;
+	Sphere* ball2;
+	Sphere* ball3;
+	Sphere* ball4;
+	Sphere* ball5;
 
 	Cube* Sensor_cube;
 	Cube* Rainbow_cube;
@@ -53,10 +58,16 @@ public:
 	bool case3 = false;
 	bool case4 = false;
 	bool case5 = false;
+	bool case1Count = false;
+	bool case2Count = false;
+	bool case3Count = false;
+	bool case4Count = false;
+	bool case5Count = false;
 	bool EndGame = false;
 
-	bool starttime = false;
-	int time;
+	int showtime;
+	int ballCount;
+	bool ballAdd = false;
 
 private:
 	Cube* leg1;
