@@ -15,6 +15,7 @@ class Sphere;
 class Cube;
 class Cylinder;
 class Plane;
+class btQuaternion;
 
 class Primitive;
 
@@ -33,6 +34,8 @@ public:
 	void GetTransform(float* matrix) const;
 	void SetTransform(const float* matrix) const;
 	void SetPos(float x, float y, float z);
+	void SetRotation(btQuaternion quat);
+
 	const vec3 GetPos() const;
 	vec3 GetForwardVector() const;
 	vec3 GetaAboveVector() const;

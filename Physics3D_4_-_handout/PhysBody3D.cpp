@@ -90,6 +90,17 @@ void PhysBody3D::SetPos(float x, float y, float z)
 	body->activate();
 }
 
+void PhysBody3D::SetRotation(btQuaternion quat)
+{
+	if (HasBody() == false)
+		return;
+
+	btTransform trans = body->getWorldTransform();
+	trans.setRotation(quat);
+	body->setWorldTransform(trans);
+	body->activate();
+}
+
 void PhysBody3D::SetSpeed(vec3 speed)
 {
 	Stop();
