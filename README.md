@@ -1,7 +1,7 @@
 # Unemployed truck driver simulator
-This is our first 3D game with physics. In the game, you are a truck in a city and your objective is to look around in order to find the 5 balls that are in differents parts of the map. 
-In order to collect it, you have to touch it with the claw and the boll will automatically teleport into the tuck. Then, you have to bring the ball to the roundabout positioned in the center of the map and a part of the figure in the center will change his color to white!
-When you collect all balls, the figure will be completely white and the door of the tunnel will be opened. You have to enter in the final tunnel in order to finish the game. But don't be too slow! You have 10 minutes to complete it.
+You're Fo0rte, a despressed guy that wanted to be a game developer a long time ago but because of a professor that ordered him a lot of work and was making his life impossible, he gave up and became an alcoholic. He went to buy some milk and left his wife and kids behind forever. Now, he's an acloholic truck driver that has to collect the 5 magical balls in order to restore his life and come back with his family again.
+In order to collect the balls, you have to touch it with the claw from the truck and the ball will automatically teleport into the tuck. Then, you have to bring the ball to the roundabout positioned in the center of the map and offer it to the GIANT, a part of the GIANT will change to the same color of the ball, absorbing it's colorfull powers!!
+When you collect all balls, the figure will be completely colored with the power of the Rainbow! and the door of the tunnel will be opened. You have to enter in the final tunnel (Bifröst) in order to finish the game, entering to the Bifröst you'll get teleported to another world. But don't be too slow! You have 10 minutes to complete it.
 
 
 ## Team:
@@ -9,35 +9,40 @@ When you collect all balls, the figure will be completely white and the door of 
   
   Task: Truck
 
-- Pol de la Torre Solé https://github.com/polf780.
+- Pol de la Torre Solé https://github.com/polf780
 
-  Task: Sensors.
+  Task: Sensors, camera
 
-- Marc Palma Turón https://github.com/marcpt98.
+- Marc Palma Turón https://github.com/marcpt98
 
-  Task: Map.
+  Task: Map
 
 
 ## Controls 
 
-- W: Move forward.
+- W: Move forward
 
-- S: Move backwards.
+- S: Move backwards
 
-- A: Move left.
+- A: Move left
 
-- D: Move right.
+- D: Move right
 
-- UP: Move claw up.
+- UP: Move claw up
 
-- DOWN: Move claw down.
+- DOWN: Move claw down
 
-- LEFT: Move claw left.
+- LEFT: Move claw left
 
-- RIGHT: Move claw right.
+- RIGHT: Move claw right
 
-- SPACE BAR: Change camera view.
+- ENTER: Unload the payload
 
+- 1: Normal camera view
+
+- 2: Aerial camera view
+
+- 3: Claw camera view
 
 ## Other controls
 - F1: Show debug
@@ -45,6 +50,8 @@ When you collect all balls, the figure will be completely white and the door of 
 - F2: Show wireframe
 
 - F3: Restart game
+
+- 4: Free camera view
   
   
 ## Disclosure
