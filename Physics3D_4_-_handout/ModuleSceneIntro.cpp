@@ -74,8 +74,6 @@ bool ModuleSceneIntro::Start()
 	case4 = true;
 	case5 = true;
 	EndGame = false;
-
-	
 	bool ret = true;
 
 	App->camera->Move(vec3(1.0f, 1.0f, 0.0f));

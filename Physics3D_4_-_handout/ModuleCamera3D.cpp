@@ -114,7 +114,7 @@ update_status ModuleCamera3D::Update(float dt)
 	if (App->scene_intro->camerafollow == true)
 	{
 		const vec3 pa = App->player->TruckCab->body.GetPos();
-		const vec3 f = App->player->Plataform->body.GetForwardVector();
+		const vec3 f = App->player->Platform->body.GetForwardVector();
 		vec3 d;
 		d.Set(pa.x + (f.x * -12), pa.y + (f.y + 5), pa.z + (f.z * -12));
 		App->camera->Look(d, pa);

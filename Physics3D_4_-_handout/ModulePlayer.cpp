@@ -256,11 +256,11 @@ void ModulePlayer::createTruck() {
 	TruckCab->name = "Cart";
 	TruckCab->body.collision_listeners.PushBack(this);
 
-	Plataform = new Cube(vec3(2.4, 0.5, 5), 10);
-	CarPrimitives.PushBack(Plataform);
-	Plataform->SetPos(truckposx, truckposy, truckposz - 3.5f);
+	Platform = new Cube(vec3(2.4, 0.5, 5), 10);
+	CarPrimitives.PushBack(Platform);
+	Platform->SetPos(truckposx, truckposy, truckposz - 3.5f);
 	primitivesPos[1] = { truckposx, truckposy, truckposz - 3.5f };
-	Plataform->color.Set(0.3, 0.3, 0.3);
+	Platform->color.Set(0.3, 0.3, 0.3);
 
 
 	temp = new Cube(vec3(2.5f, 0.25, 0.25), 10);
@@ -343,8 +343,6 @@ void ModulePlayer::createTruck() {
 	temp->SetPos(truckposx + 2, truckposy + 1, truckposz - 3.5f);
 	primitivesPos[13] = { truckposx + 2, truckposy + 1, truckposz - 3.5f };
 
-
-
 	App->physics->AddConstraintHinge(**CarPrimitives.At(0), **CarPrimitives.At(1), btVector3{ 0,-0.7 ,-1.2 }, btVector3{ 0,0, 2.6 }, btVector3{ 0, 1, 0 }, btVector3{ 0, 1, 0 });
 
 	btTransform localA;
@@ -382,26 +380,23 @@ void ModulePlayer::createTruck() {
 	App->physics->AddConstraintP2P(**CarPrimitives.At(11), **CarPrimitives.At(13), btVector3{ 1.1, 0.5, 2 }, btVector3{ -0.25, -0.0 , 2 });
 	App->physics->AddConstraintP2P(**CarPrimitives.At(11), **CarPrimitives.At(12), btVector3{ -1.1,0.5, 2 }, btVector3{ 0.25,  -0.0 , 2 });
 
-
 	temp2 = new Cylinder(0.4, 0.4, 0.4);
 	temp2->SetPos(truckposx, truckposy + 3, truckposz);
 	CarPrimitives.PushBack(temp2);
 	primitivesPos[14] = { truckposx, truckposy + 3, truckposz };
-	temp2->color.Set(0, 0, ((std::rand() % 255)) / 255.f);
+	temp2->color.Set(0.8, 0.8, 0.8);
 
 	temp = new Cube(vec3(0.4, 2, 0.2));
 	CarPrimitives.PushBack(temp);
 	temp->SetPos(truckposx, truckposy + 4, truckposz);
 	primitivesPos[15] = { truckposx, truckposy + 4, truckposz };
-	temp->color.Set(0, 0, ((std::rand() % 255)) / 255.f);
-
+	temp->color.Set(0.8, 0.8, 0.8);
 
 	temp = new Cube(vec3(0.3, 2.5, 0.1));
 	CarPrimitives.PushBack(temp);
 	temp->SetPos(truckposx + 1, truckposy + 3, truckposz);
 	primitivesPos[16] = { truckposx + 1, truckposy + 3, truckposz };
-	temp->color.Set(0, 0, ((std::rand() % 255)) / 255.f);
-
+	temp->color.Set(0.8, 0.8, 0.8);
 
 	Claw = new Cube(vec3(0.3, 0.6, 0.3), 0.01);
 	CarPrimitives.PushBack(Claw);
@@ -409,15 +404,13 @@ void ModulePlayer::createTruck() {
 	CarPrimitives[17]->name = "Claw";
 	CarPrimitives[17]->body.collision_listeners.PushBack(this);
 	primitivesPos[17] = { truckposx + 1, truckposy + 5, truckposz };
-	Claw->color.Set(0, 0, ((std::rand() % 255)) / 255.f);
-
-
+	Claw->color.Set(0.8, 0.8, 0.8);
 
 	temp = new Cube(vec3(3, 1.2, 0.25));
 	CarPrimitives.PushBack(temp);
 	temp->SetPos(truckposx, truckposy, truckposz - 8);
 	primitivesPos[18] = { truckposx , truckposy , truckposz - 8 };
-	temp->color.Set(0, 0, ((std::rand() % 255)) / 255.f);
+	temp->color.Set(0.2, 0.,  0.);
 
 	HingeArm[0] = App->physics->AddConstraintHinge(**CarPrimitives.At(0), **CarPrimitives.At(14), btVector3{ 0, 1.2f, 0 }, btVector3{ 0, 0 , 0 }, btVector3{ 0, 1, 0 }, btVector3{ 0, 1 , 0 });
 	HingeArm[1] = App->physics->AddConstraintHinge(**CarPrimitives.At(14), **CarPrimitives.At(15), btVector3{ 0, 0.4, 0 }, btVector3{ 0, -1 , 0 }, btVector3{ 0, 0, 1 }, btVector3{ 0, 0 , 1 });
@@ -425,6 +418,5 @@ void ModulePlayer::createTruck() {
 	App->physics->AddConstraintP2P(**CarPrimitives.At(16), **CarPrimitives.At(17), btVector3{ 0, 1.3, 0 }, btVector3{ 0, -0.3 , 0 });
 
 	TruckWheels[6] = App->physics->AddConstraintHinge(**CarPrimitives.At(11), **CarPrimitives.At(18), btVector3{ 0, 0.2, -2.2 }, btVector3{ 0, -0.7, 0.125 }, btVector3{ 1, 0,0 }, btVector3{ 1,0,0 });
-
-
+	
 }
