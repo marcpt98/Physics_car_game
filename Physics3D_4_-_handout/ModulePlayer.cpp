@@ -101,12 +101,12 @@ void ModulePlayer::TruckInput(float dt) {
 	if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) {
 		App->audio->PlayFx(1);
 		TruckCab->body.Push(vec3{ 0,0,0 });
-		TruckWheels[0]->enableAngularMotor(true, -20.f, 100.f);
-		TruckWheels[1]->enableAngularMotor(true, -20.f, 100.f);
-		TruckWheels[2]->enableAngularMotor(true, -20.f, 100.f);
-		TruckWheels[3]->enableAngularMotor(true, -20.f, 100.f);
-		TruckWheels[4]->enableAngularMotor(true, -20.f, 100.f);
-		TruckWheels[5]->enableAngularMotor(true, -20.f, 100.f);
+		TruckWheels[0]->enableAngularMotor(true, -30.f, 100.f);
+		TruckWheels[1]->enableAngularMotor(true, -30.f, 100.f);
+		TruckWheels[2]->enableAngularMotor(true, -30.f, 100.f);
+		TruckWheels[3]->enableAngularMotor(true, -30.f, 100.f);
+		TruckWheels[4]->enableAngularMotor(true, -30.f, 100.f);
+		TruckWheels[5]->enableAngularMotor(true, -30.f, 100.f);
 	}
 	
 	if (App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) {
@@ -265,10 +265,13 @@ void ModulePlayer::setInitialPos() {
 }
 
 void ModulePlayer::createTruck() {
+	Cube* temp;
+	Cylinder* temp2;
+
 
 	float truckposx = 45.f, truckposy = 2.f, truckposz = -175.f;
 	TruckCab = new Cube(vec3(2, 2, 2), 10);
-	TruckCab->color = { ((std::rand() % 255)) / 255.f, 0, 0 };
+	TruckCab->color = { 0.75, 0.7, 0 };
 	CarPrimitives.PushBack(TruckCab);
 	primitivesPos[0] = { truckposx, truckposy, truckposz };
 	TruckCab->SetPos(truckposx, truckposy, truckposz);
@@ -279,67 +282,66 @@ void ModulePlayer::createTruck() {
 	CarPrimitives.PushBack(Plataform);
 	Plataform->SetPos(truckposx, truckposy, truckposz - 3.5f);
 	primitivesPos[1] = { truckposx, truckposy, truckposz - 3.5f };
-	temp->color.Set(0, ((std::rand() % 255)) / 255.f, 0);
+	Plataform->color.Set(0.3, 0.3, 0.3);
 
 	temp = new Cube(vec3(2.5f, 0.25, 0.25), 10);
 	CarPrimitives.PushBack(temp);
 	temp->SetPos(truckposx, truckposy - 1, truckposz);
 	primitivesPos[2] = { truckposx, truckposy - 1, truckposz };
-	temp->color.Set(0, ((std::rand() % 255)) / 255.f, 0);
+	temp->color.Set(0.5, 0.5, 0.5);
 
 	temp = new Cube(vec3(2.5f, 0.25, 0.25), 10);
 	CarPrimitives.PushBack(temp);
 	temp->SetPos(truckposx, truckposy - 1, truckposz - 5.5f);
 	primitivesPos[3] = { truckposx, truckposy - 1, truckposz - 5.5f };
-	temp->color.Set(0, ((std::rand() % 255)) / 255.f, 0);
+	temp->color.Set(0.5, 0.5, 0.5);
 
 	temp = new Cube(vec3(2.5f, 0.25, 0.25), 10);
 	CarPrimitives.PushBack(temp);
 	temp->SetPos(truckposx, truckposy - 1, truckposz - 2.2f);
 	primitivesPos[4] = { truckposx, truckposy - 1, truckposz - 2.2f };
-	temp->color.Set(0, ((std::rand() % 255)) / 255.f, 0);
-
+	temp->color.Set(0.5, 0.5, 0.5);
 
 
 	temp2 = new Cylinder(0.4, 0.2, 0.4);
 	temp2->SetPos(truckposx + 3, truckposy - 1, truckposz);
 	primitivesPos[5] = { truckposx + 3, truckposy - 1, truckposz };
-	temp2->color.Set(0, 0, ((std::rand() % 255)) / 255.f);
+	temp2->color.Set(0.1, 0.1, 0.1);
 	temp2->body.GetBody()->setFriction(5);
 	CarPrimitives.PushBack(temp2);
 
 	temp2 = new Cylinder(0.4, 0.2, 0.4);
 	temp2->SetPos(truckposx - 3, truckposy - 1, truckposz);
 	primitivesPos[6] = { truckposx - 3, truckposy - 1, truckposz };
-	temp2->color.Set(0, 0, ((std::rand() % 255)) / 255.f);
+	temp2->color.Set(0.1, 0.1, 0.1);
 	temp2->body.GetBody()->setFriction(5);
 	CarPrimitives.PushBack(temp2);
 
 	temp2 = new Cylinder(0.4, 0.2, 0.4);
 	temp2->SetPos(truckposx + 3, truckposy - 1, truckposz - 5.5f);
 	primitivesPos[7] = { truckposx + 3, truckposy - 1, truckposz - 5.5f };
-	temp2->color.Set(0, 0, ((std::rand() % 255)) / 255.f);
+	temp2->color.Set(0.1, 0.1, 0.1);
 	temp2->body.GetBody()->setFriction(5);
 	CarPrimitives.PushBack(temp2);
 
 	temp2 = new Cylinder(0.4, 0.2, 0.4);
 	temp2->SetPos(truckposx - 3, truckposy - 1, truckposz - 5.5f);
 	primitivesPos[8] = { truckposx - 3, truckposy - 1, truckposz - 5.5f };
-	temp2->color.Set(0, 0, ((std::rand() % 255)) / 255.f);
+	temp2->color.Set(0.1, 0.1, 0.1);
 	temp2->body.GetBody()->setFriction(5);
 	CarPrimitives.PushBack(temp2);
 
 	temp2 = new Cylinder(0.4, 0.2, 0.4);
 	temp2->SetPos(truckposx + 3, truckposy - 1, truckposz - 2.2f);
 	primitivesPos[9] = { truckposx + 3, truckposy - 1, truckposz - 2.2f };
-	temp2->color.Set(0, 0, ((std::rand() % 255)) / 255.f);
+	temp2->color.Set(0.1, 0.1, 0.1);
 	temp2->body.GetBody()->setFriction(5);
 	CarPrimitives.PushBack(temp2);
 
 	temp2 = new Cylinder(0.4, 0.2, 0.4);
 	temp2->SetPos(truckposx - 3, truckposy - 1, truckposz - 2.2f);
 	primitivesPos[10] = { truckposx - 3, truckposy - 1, truckposz - 2.2f };
-	temp2->color.Set(0, 0, ((std::rand() % 255)) / 255.f);
+	temp2->color.Set(0.1, 0.1, 0.1);
 	temp2->body.GetBody()->setFriction(5);
 	CarPrimitives.PushBack(temp2);
 
@@ -347,19 +349,18 @@ void ModulePlayer::createTruck() {
 	CarPrimitives.PushBack(temp);
 	temp->SetPos(truckposx, truckposy + 1, truckposz - 3.5f);
 	primitivesPos[11] = { truckposx, truckposy + 1, truckposz - 3.5f };
-	temp->color.Set(0, ((std::rand() % 255)) / 255.f, 0);
+	temp->color.Set(0.75, 0.7, 0);
 
 
 	temp = new Cube(vec3(0.25, 1, 4.5));
 	CarPrimitives.PushBack(temp);
 	temp->SetPos(truckposx - 2, truckposy + 1, truckposz - 3.5f);
 	primitivesPos[12] = { truckposx - 2, truckposy + 1, truckposz - 3.5f };
-	temp->color.Set(0, ((std::rand() % 255)) / 255.f, 0);
+	temp->color.Set(0, 0, 0.2);
 
 	temp = new Cube(vec3(0.25, 1, 4.5));
 	CarPrimitives.PushBack(temp);
-
-	temp->color.Set(0, ((std::rand() % 255)) / 255.f, 0);
+		temp->color.Set(0, 0, 0.2);
 	temp->SetPos(truckposx + 2, truckposy + 1, truckposz - 3.5f);
 	primitivesPos[13] = { truckposx + 2, truckposy + 1, truckposz - 3.5f };
 
@@ -407,7 +408,7 @@ void ModulePlayer::createTruck() {
 	temp2->SetPos(truckposx, truckposy + 3, truckposz);
 	CarPrimitives.PushBack(temp2);
 	primitivesPos[14] = { truckposx, truckposy + 3, truckposz };
-	temp->color.Set(0, 0, ((std::rand() % 255)) / 255.f);
+	temp2->color.Set(0, 0, ((std::rand() % 255)) / 255.f);
 
 	temp = new Cube(vec3(0.4, 2, 0.2));
 	CarPrimitives.PushBack(temp);
