@@ -177,7 +177,7 @@ void ModuleSceneIntro::OnCollision(PhysBody3D * body1, PhysBody3D * body2)
 	Color color = Color((float)(std::rand() % 255) / 255.f, (float)(std::rand() % 255) / 255.f, (float)(std::rand() % 255) / 255.f);
 
 	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball1") {
-		leg1->color = {255,255,255};
+		leg1->color = { 255,251,0 };
 		case1 = true;
 	}
 	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball2") {
