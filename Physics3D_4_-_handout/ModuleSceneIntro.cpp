@@ -68,11 +68,11 @@ bool ModuleSceneIntro::Start()
 	ball5->color = { 0,255, 0 };
 	ScenePrimitives[4]->name = "ball5";
 
-	case1 = true;
-	case2 = true;
-	case3 = true;
-	case4 = true;
-	case5 = true;
+	case1 = false;
+	case2 = false;
+	case3 = false;
+	case4 = false;
+	case5 = false;
 	EndGame = false;
 	bool ret = true;
 
