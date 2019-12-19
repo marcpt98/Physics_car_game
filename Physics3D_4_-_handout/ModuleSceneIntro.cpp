@@ -58,14 +58,20 @@ bool ModuleSceneIntro::Start()
 	ball1->SetPos(-98, 1, 40);
 	ScenePrimitives[4]->name = "ball5";
 
-	
+	case1 = false;
+	case2 = false;
+	case3 = false;
+	case4 = false;
+	case5 = false;
+	EndGame = false;
 
-	LOG("Loading Intro assets");
+	
 	bool ret = true;
 
 	App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
 	App->camera->LookAt(vec3(0, 0, 0));
 	camerafollow = true;
+
 	
 	
 	// Creating map
@@ -172,22 +178,18 @@ void ModuleSceneIntro::OnCollision(PhysBody3D * body1, PhysBody3D * body2)
 	}
 	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball2") {
 		leg2->color = { 255,255,255 };
-		LOG("A spicy meatball");
 		case2 = true;
 	}
 	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball3") {
 		body->color = { 255,255,255 };
-		LOG("A spicy meatball");
 		case3 = true;
 	}
 	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball4") {
 		arm->color = { 255,255,255 };
-		LOG("A spicy meatball");
 		case4 = true;
 	}
 	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball5") {
 		head->color = { 255,255,255 };
-		LOG("A spicy meatball");
 		case5 = true;
 	}
 
