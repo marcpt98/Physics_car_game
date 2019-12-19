@@ -95,10 +95,7 @@ bool ModuleSceneIntro::CleanUp()
 
 void ModuleSceneIntro::HandleDebugInput()
 {
-	if (App->input->GetKey(SDL_SCANCODE_F3) == KEY_DOWN)
-		DebugSpawnPrimitive(new Sphere());
-	if (App->input->GetKey(SDL_SCANCODE_F4) == KEY_DOWN)
-		DebugSpawnPrimitive(new Cube());
+
 
 	if (App->input->GetMouseButton(SDL_BUTTON_LEFT) == KEY_DOWN)
 	{
@@ -182,11 +179,7 @@ void ModuleSceneIntro::OnCollision(PhysBody3D * body1, PhysBody3D * body2)
 {
 	Color color = Color((float)(std::rand() % 255) / 255.f, (float)(std::rand() % 255) / 255.f, (float)(std::rand() % 255) / 255.f);
 
-	//body1->parentPrimitive->color = color;
-	//body2->parentPrimitive->color = color;
 	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball1") {
-		//body2->SetPos(App->player->TruckBody->body.GetPos().x, App->player->TruckBody->body.GetPos().y + 1, App->player->TruckBody->body.GetPos().z);
-		//body2->parentPrimitive->name = "none";
 		leg1->color = {255,255,255};
 		LOG("A spicy meatball");
 		case1 = true;
