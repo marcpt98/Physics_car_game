@@ -1,4 +1,4 @@
-# Physics_car_game
+# Unemployed truck driver simulator
 This is our first 3D game with physics. In the game, you are a truck in a city and your objective is to look around in order to find the 5 balls that are in differents parts of the map. 
 In order to collect it, you have to touch it with the claw and the boll will automatically teleport into the tuck. Then, you have to bring the ball to the roundabout positioned in the center of the map and a part of the figure in the center will change his color to white!
 When you collect all balls, the figure will be completely white and the door of the tunnel will be opened. You have to enter in the final tunnel in order to finish the game. But don't be too slow! You have 10 minutes to complete it.
