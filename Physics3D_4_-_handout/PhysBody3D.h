@@ -35,6 +35,7 @@ public:
 	void SetPos(float x, float y, float z);
 	const vec3 GetPos() const;
 	vec3 GetForwardVector() const;
+	vec3 GetaAboveVector() const;
 
 	void SetAsSensor(bool is_sensor);
 	bool IsSensor() const;

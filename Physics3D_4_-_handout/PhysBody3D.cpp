@@ -156,6 +156,18 @@ vec3 PhysBody3D::GetForwardVector() const
 	return forward;
 }
 
+vec3 PhysBody3D::GetaAboveVector() const
+{
+	mat4x4 transform;
+	body->getWorldTransform().getOpenGLMatrix(&transform); //Here we pick the rotation and the translation 
+	mat3x3 rotation(transform);       //And here we save the translation
+
+	vec3 forward(0.f, 1.f, 0.f);
+	forward = rotation * forward;
+
+	return forward;
+}
+
 void PhysBody3D::SetAsSensor(bool is_sensor)
 {
 	if (this->is_sensor != is_sensor)

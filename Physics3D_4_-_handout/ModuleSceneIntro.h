@@ -36,6 +36,7 @@ public:
 
 	bool camerafollow = false;
 	bool camerafollowhelicopter = false;
+	bool camerafollowarm = false;
 	
 	PhysBody3D* sensor = nullptr;
 	Sphere* ball1;

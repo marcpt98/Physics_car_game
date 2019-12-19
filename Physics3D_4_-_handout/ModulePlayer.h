@@ -50,6 +50,7 @@ public:
 	Cube* TruckBody;
 	Cube* car;
 	Cube* temp;
+	Cube* Claw;
 	Cylinder* temp2;
 	Sphere* temp3;
 	p2DynArray<Primitive*> CarPrimitives;

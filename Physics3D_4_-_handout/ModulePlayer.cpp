@@ -286,9 +286,9 @@ bool ModulePlayer::Start()
 	primitivesPos[16] = { truckposx + 1, truckposy + 3, truckposz };
 
 
-	temp = new Cube(vec3(0.3, 0.6, 0.3), 0.01);
-	CarPrimitives.PushBack(temp);
-	temp->SetPos(truckposx + 1, truckposy + 5, truckposz);
+	Claw = new Cube(vec3(0.3, 0.6, 0.3), 0.01);
+	CarPrimitives.PushBack(Claw);
+	Claw->SetPos(truckposx + 1, truckposy + 5, truckposz);
 	CarPrimitives[17]->name = "Claw";
 	CarPrimitives[17]->body.collision_listeners.PushBack(this);
 	primitivesPos[17] = { truckposx + 1, truckposy + 5, truckposz };
