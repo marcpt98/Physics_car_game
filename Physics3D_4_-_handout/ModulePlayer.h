@@ -47,6 +47,7 @@ public:
 
 	//Cube* Sensor_cube;
 	Cube* TruckCab;
+	Cube* Plataform;
 	Cube* TruckBody;
 	Cube* car;
 	Cube* temp;

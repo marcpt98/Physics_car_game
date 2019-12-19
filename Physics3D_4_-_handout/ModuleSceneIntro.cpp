@@ -63,7 +63,7 @@ bool ModuleSceneIntro::Start()
 	ball5 = new Sphere(1.2, 5);
 	ScenePrimitives.PushBack(ball5);
 	ball5->SetPos(-98, 1, 40);
-	ball5->color = { 0,166,255 };
+	ball5->color = { 0,255, 0 };
 	ScenePrimitives[4]->name = "ball5";
 
 	case1 = false;
@@ -208,11 +208,11 @@ void ModuleSceneIntro::OnCollision(PhysBody3D * body1, PhysBody3D * body2)
 		case3 = true;
 	}
 	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball4") {
-		arm->color = { 0,226,17 };
+		arm->color = { 0, 226, 17 };
 		case4 = true;
 	}
 	if (body1->parentPrimitive->name == "sensor1" && body2->parentPrimitive->name == "ball5") {
-		head->color = { 0,166,255 };
+		head->color = { 0,255, 0 };
 		case5 = true;
 	}
 

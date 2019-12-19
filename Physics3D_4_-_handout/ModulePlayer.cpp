@@ -263,9 +263,9 @@ void ModulePlayer::createTruck() {
 	TruckCab->name = "Cart";
 	TruckCab->body.collision_listeners.PushBack(this);
 
-	temp = new Cube(vec3(2.4, 0.5, 5), 10);
-	CarPrimitives.PushBack(temp);
-	temp->SetPos(truckposx, truckposy, truckposz - 3.5f);
+	Plataform = new Cube(vec3(2.4, 0.5, 5), 10);
+	CarPrimitives.PushBack(Plataform);
+	Plataform->SetPos(truckposx, truckposy, truckposz - 3.5f);
 	primitivesPos[1] = { truckposx, truckposy, truckposz - 3.5f };
 
 	temp = new Cube(vec3(2.5f, 0.25, 0.25), 10);
